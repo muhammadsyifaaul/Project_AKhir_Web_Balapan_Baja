@@ -1,7 +1,8 @@
+import './Nav.css'
 export default function Nav() {
     return (
-        <div>
+        <nav>
             <h1>Nav</h1>
-        </div>
+        </nav>
     )
 }
