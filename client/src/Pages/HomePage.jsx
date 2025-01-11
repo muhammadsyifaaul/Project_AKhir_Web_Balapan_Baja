@@ -1,5 +1,5 @@
 import Home from "../components/Home/Home";
-import MainContainer from "../components/MainContainer";
+import MainContainer from "../components/MainLayout";
 
 export default function HomePage() {
     return (

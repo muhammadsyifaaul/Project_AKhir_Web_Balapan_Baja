@@ -1,8 +1,16 @@
-import './Header.css'
+import "./Header.css";
+
 export default function Header() {
-    return (
-        <header>
-            <h1>Header</h1>
-        </header>
-    )
+  return (
+    <div className="header">
+      <div class="left-logo">
+        <img src="logo.png" alt="Logo" />
+        <h1>BALAPAN BAJA</h1>
+      </div>
+      <div class="access-date">
+        <p>Akses Terakhir: 15:30:46 | 23 Januari 2023</p>
+        <img src="icon.png" alt="Icon" />
+      </div>
+    </div>
+  );
 }

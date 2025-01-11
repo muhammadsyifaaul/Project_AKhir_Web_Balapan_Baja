@@ -2,3 +2,15 @@ nav {
     width: 20%;
     background-color: aquamarine;
 }
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    gap: 5vh;
+}
+.nav-menu ul {
+    display: flex;
+    flex-direction: column;
+    gap: 2vh;
+}

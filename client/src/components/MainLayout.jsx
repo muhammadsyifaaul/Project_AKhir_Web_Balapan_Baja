@@ -1,6 +1,6 @@
 import Header from "./Header/Header";
 import Nav from "./Nav/Nav";
-import './MainContainer.css';
+import './MainLayout.css';
 
 export default function MainContainer({children}) {
     return(

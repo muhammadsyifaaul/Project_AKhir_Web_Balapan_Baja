@@ -1,4 +1,21 @@
-header {
-    width: 100%;
-    background-color: rgb(43, 255, 0);
-}
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+  }
+  .left-logo {
+    display: flex;
+    align-items: center;
+  }
+  .left-logo img {
+    margin-right: 10px;
+  }
+  .access-date {
+    display: flex;
+    align-items: center;
+  }
+  .access-date img {
+    margin-left: 10px;
+  }
