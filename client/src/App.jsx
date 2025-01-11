@@ -1,35 +1,46 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import {
+  DataPaketPage,
+  DetailAksiPenyediaPage,
+  DetailAksiTenagaAhliPage,
+  DetailPaketPage,
+  DetailPenyediaPage,
+  DetailTenagaAhliPage,
+  HomePage,
+  KelolaUserPage,
+  LoginPage,
+  PenyediaPage,
+  TambahPaketPage,
+  TenagaAhliPage,
+} from "./Pages";
 
-function App() {
-  const [count, setCount] = useState(0)
 
+const App = () => {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <Router>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/Home" element={<HomePage />} />
+        <Route path="/Penyedia" element={<PenyediaPage />} />
+        <Route path="/TenagaAhli" element={<TenagaAhliPage />} />
+        <Route path="/DetailPenyedia" element={<DetailPenyediaPage />} />
+        <Route path="/DetailTenagaAhli" element={<DetailTenagaAhliPage />} />
+        <Route path="/DetailPaket" element={<DetailPaketPage />} />
+        <Route
+          path="/DetailAksiPenyedia"
+          element={<DetailAksiPenyediaPage />}
+        />
+        <Route
+          path="/DetailAksiTenagaAhli"
+          element={<DetailAksiTenagaAhliPage />}
+        />
+        <Route path="/TambahPaket" element={<TambahPaketPage />} />
+        <Route path="/KelolaUser" element={<KelolaUserPage />} />
+        <Route path="/DataPaket" element={<DataPaketPage />} />
+      </Routes>
+    </Router>
+  );
+};
 
-export default App
+export default App;
