@@ -1,7 +1,10 @@
+import TenagaAhli from "../components/TenagaAhli/TenagaAhli";
+import MainLayoout from "../components/MainLayout";
+
 export default function TenagaAhliPage() {
     return (
-        <div>
-            <h1>Tenaga Ahli Page</h1>
-        </div>
+        <MainLayoout>
+            <TenagaAhli />
+        </MainLayoout>
     )
 }

@@ -1,8 +1,9 @@
+import MainLayout from "../components/MainLayout"
+import Penyedia from "../components/Penyedia/Penyedia"
 export default function PenyediaPage() {
     return (
-        <div>
-            <h1>Penyedia Page</h1>
-            <p>Welcome to the Penyedia Page!</p>
-        </div>
-    );
+        <MainLayout>
+            <Penyedia />
+        </MainLayout>
+    )
 }

@@ -1,20 +1,32 @@
 .header {
+  height: 7vh;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px;
     background-color: #f2f2f2;
   }
   .left-logo {
+    width: 20%;
+    height: 100%;
     display: flex;
     align-items: center;
+    justify-content: center;
+    background-color: #ff6e31;
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: bold;
   }
   .left-logo img {
-    margin-right: 10px;
+    width: 20%;
+    height: auto;
   }
   .access-date {
+    width: 80%;
+    height: 100%;
+    background-color: #ffebb7;
     display: flex;
     align-items: center;
+    justify-content: flex-end;
   }
   .access-date img {
     margin-left: 10px;

@@ -4,8 +4,8 @@ export default function Header() {
   return (
     <div className="header">
       <div class="left-logo">
-        <img src="logo.png" alt="Logo" />
-        <h1>BALAPAN BAJA</h1>
+        <img src="/images/logo_smg.webp" alt="Logo" />
+        <h2>BALAPAN BAJA</h2>
       </div>
       <div class="access-date">
         <p>Akses Terakhir: 15:30:46 | 23 Januari 2023</p>
