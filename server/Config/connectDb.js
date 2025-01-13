@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const connectDb = async () => {
-    mongoose.connect(process.env.MONGO_URI)
+    mongoose.connect('mongodb://localhost:27017/balapan_baja')
     .then(() => {
         console.log("Database connected");
     }).catch((err) => {
@@ -8,4 +8,4 @@ const connectDb = async () => {
     })
 }
 
-module.exports = { connectDb };
+module.exports = connectDb ;
