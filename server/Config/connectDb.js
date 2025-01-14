@@ -1,6 +1,8 @@
 const mongoose = require("mongoose");
+require('dotenv').config();
+const { MONGO_URI } = process.env
 const connectDb = async () => {
-    mongoose.connect('mongodb://localhost:27017/balapan_baja')
+    mongoose.connect(MONGO_URI)
     .then(() => {
         console.log("Database connected");
     }).catch((err) => {

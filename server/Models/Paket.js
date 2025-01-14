@@ -1,14 +1,14 @@
 const mongoose = require("mongoose");
 
 const paketSchema = new mongoose.Schema({
-    OPD: String,
-    NamaPekerjaan: String,
-    MulaiKontrak: Date,
-    SelesaiKontrak: Date,
-    NomorKontrak: Number,
-    NPWPPenyedia: Number,
-    NamaPenyedia: String,
-    AlamatPenyedia: String,
-    NilaiKontrak: Number,
-    NamaTenagaAhli: String,
+    opd: String,
+    namaPekerjaan: String,
+    mulaiKontrak: Date,
+    selesaiKontrak: Date,
+    nomorKontrak: Number,
+    npwpPenyedia: Number,
+    namaPenyedia: String,
+    alamatPenyedia: String,
+    nilaiKontrak: Number,
+    namaTenagaAhli: String,
 })

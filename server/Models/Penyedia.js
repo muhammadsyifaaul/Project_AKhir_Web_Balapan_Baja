@@ -1,11 +1,11 @@
 const mongoose = require("mongoose");
 
 const penyediaSchema = new mongoose.Schema({
-    NPWP: String,
-    Nama: String,
-    Alamat: String,
-    SLP: Number,
-    Jenis: {
+    npwp: String,
+    nama: String,
+    alamat: String,
+    slp: Number,
+    jenis: {
         type: String,
         enum: ["Kecil", "Non Kecil"]
     }

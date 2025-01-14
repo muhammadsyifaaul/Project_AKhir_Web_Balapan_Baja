@@ -5,9 +5,10 @@ const port = 3000;
 const connectDb = require('./Config/connectDb');
 const cors = require('cors');
 require('dotenv').config();
+const mainRoutes = require('./Routes/mainRoutes');
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'http://localhost:5000',
     credentials: true,
 }));
 // Middleware untuk session
@@ -15,7 +16,7 @@ app.use(session({
     secret: 'your-secret-key',
     resave: false,
     saveUninitialized: false,
-    cookie: { secure: false } // Atur ke true jika menggunakan HTTPS
+    cookie: { secure: false }
 }));
 
 // Middleware untuk parsing body request
@@ -26,6 +27,7 @@ connectDb();
 const authRoutes = require('./Routes/authRoutes');
 
 app.use('/', authRoutes);
+app.use(mainRoutes)
 
 app.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);

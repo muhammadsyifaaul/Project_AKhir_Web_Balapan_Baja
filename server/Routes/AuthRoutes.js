@@ -10,16 +10,8 @@ const loginLimiter = rateLimit({
 });
 
 router.post('/Login', loginLimiter, authController.login);
-router.get('/check-session', authController.checkSession);
+router.get('/api/check-session', authController.checkSession);
 
-// Add protected routes
-router.get('/Home', authController.protectedRoute, (req, res) => {
-    res.redirect('/Home');
-});
-router.get('/Penyedia', authController.protectedRoute, (req, res) => {
-    res.redirect('/Penyedia');
-});
 
-// Add more protected routes as needed...
 
 module.exports = router;
