@@ -15,12 +15,20 @@ import {
   TenagaAhliPage,
 } from "./Pages";
 import ProtectedRoute from "./components/ProtectedRoute";
+import PublicRoute from "./components/PublicRoute";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/Login" element={<LoginPage />} />
+      <Route
+      path="/Login"
+      element={
+        <PublicRoute>
+          <LoginPage />
+        </PublicRoute>
+      }
+    />
 
         <Route
           path="/"
