@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const argon2 = require("argon2");
 const userSchema = new mongoose.Schema({
-    email: String,
+    nama: String,
     username: String,
     password: String,
     role: {

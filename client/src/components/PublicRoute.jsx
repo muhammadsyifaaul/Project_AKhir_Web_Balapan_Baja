@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import axios from "axios";
 
-const ProtectedRoute = ({ children }) => {
+const PublicRoute = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(null);
 
   useEffect(() => {
@@ -12,7 +12,7 @@ const ProtectedRoute = ({ children }) => {
         setIsLoggedIn(response.data.isLoggedIn);
       } catch (error) {
         console.error("Error checking session:", error.message);
-        setIsLoggedIn(false); 
+        setIsLoggedIn(false);
       }
     };
 
@@ -23,9 +23,7 @@ const ProtectedRoute = ({ children }) => {
     return <div>Loading...</div>;
   }
 
-  return isLoggedIn ? children : <Navigate to="/Login" />;
+  return isLoggedIn ? <Navigate to="/Home" /> : children;
 };
 
-
-export default ProtectedRoute;
-
+export default PublicRoute;

@@ -5,6 +5,7 @@ const authController = require('../Controllers/authControllers');
 router.get('/Home', authController.protectedRoute, (req, res) => {
     res.redirect('/Home');
 });
+router.get('/GetUser',authController.getUser);
 router.get('/DataPaket', authController.protectedRoute, (req, res) => {
     res.redirect('/DataPaket');
 });
