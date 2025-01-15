@@ -1,10 +1,10 @@
 import './Nav.css'
-export default function Nav() {
+export default function Nav({user = 'User'}) {
     return (
         <nav className='nav'>
             <div className="nav-logo">
                 <img src="logo.png" alt="Logo" />
-                <h1>admin@gmail.com</h1>
+                <h1>{user}</h1>
             </div>
             <div className="nav-menu">
                 <ul>
