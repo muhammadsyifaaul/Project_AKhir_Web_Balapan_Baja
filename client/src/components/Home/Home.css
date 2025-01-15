@@ -1,4 +1,59 @@
-.home {
+/* .home {
     width: 80%;
     background-color: rgb(14, 25, 168);
+} */
+/* Konten utama */
+.main-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Tinggi penuh */
+    width: 100vw; /* Lebar penuh */
+    background: linear-gradient(to bottom right, #ffffff, #eaeaea); /* Gradien latar belakang putih */
+    font-family: Arial, sans-serif;
+    text-align: center;
+    margin: 0;
+    color: #34495e; /* Warna teks lebih gelap */
+}
+
+.logo-container {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.logo {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 5px solid #34495e; /* Garis abu gelap di sekitar logo */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    z-index: 2;
+    position: relative;
+}
+
+.circle {
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background: rgba(52, 73, 94, 0.1); /* Lingkaran transparan abu-abu */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+.main-content h1 {
+    font-size: 32px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2c3e50; /* Warna teks gelap */
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2); /* Bayangan teks lebih halus */
+}
+
+.main-content p {
+    font-size: 18px;
+    color: #2c3e50; /* Warna teks lebih gelap */
+    text-shadow: none; /* Hapus bayangan teks untuk keterbacaan */
 }

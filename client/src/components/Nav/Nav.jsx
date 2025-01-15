@@ -8,11 +8,25 @@ export default function Nav() {
             </div>
             <div className="nav-menu">
                 <ul>
+                    <li>
+                        <a href="/DataPaket">Pekerjaan</a>
+                    </li>
+                    <li>
+                        <a href="/Penyedia">Penyedia</a>
+                    </li>
+                    <li>
+                        <a href="/TenagaAhli">Tenaga Ahli</a>
+                    </li>
+                    <li>
+                        <a href="/KelolaUser">Kelola User</a>
+                    </li>
+                </ul>
+                {/* <ul>
                     <li><a href="/DataPaket">Pekerjaan</a></li>
                     <li><a href="/Penyedia">Penyedia</a></li>
                     <li><a href="/TenagaAhli">Tenaga Ahli</a></li>
                     <li><a href="/KelolaUser">Kelola User</a></li>
-                </ul>
+                </ul> */}
             </div>
         </nav>
     )
