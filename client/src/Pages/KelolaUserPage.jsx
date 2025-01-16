@@ -1,10 +1,10 @@
 import MainLayout from "../components/MainLayout";
-import KelolaUser from "../components/KelolaUser/KelolaUser";
+import ShowKelolaUser from "../components/KelolaUser/ShowKelolaUser";
 
 export default function KelolaUserPage() {
     return (
         <MainLayout>
-            <KelolaUser />
+            <ShowKelolaUser />
         </MainLayout>
     )
 }

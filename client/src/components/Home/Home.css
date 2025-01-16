@@ -8,8 +8,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 100vh; /* Tinggi penuh */
-    width: 100vw; /* Lebar penuh */
+    width: 80%; /* Lebar penuh */
     background: linear-gradient(to bottom right, #ffffff, #eaeaea); /* Gradien latar belakang putih */
     font-family: Arial, sans-serif;
     text-align: center;

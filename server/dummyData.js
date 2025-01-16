@@ -3,17 +3,18 @@ const mongoose = require("mongoose");
 
 const dummyUser = [
     {
-        nama: "Admin Diskominfo",
-        username: "admin@admin",
-        password: "admin",
-        role: "Admin OPD"
-    },
-    {
         nama: "Super Admin",
         username: "superadmin@admin",
         password: "superadmin",
         role: "Super Admin"
+    },
+    {
+        nama: "Admin Diskominfo",
+        username: "admin@admin",
+        password: "admin",
+        role: "Admin OPD"
     }
+    
 ]
 
 const connectDb = async () => {
@@ -26,35 +27,13 @@ const connectDb = async () => {
 }
 connectDb();
 
-// const seedUsers = async () => {
-//     try {
-//         await User.deleteMany();
-//         for (const user of dummyUser) {
-//             await User.create(user); 
-//         }
-
-//         console.log("Data inserted successfully");
-//         process.exit(0);
-//     } catch (err) {
-//         console.error("Error seeding data:", err);
-//         process.exit(1);
-//     }
-// };
-
-// seedUsers();
-const Penyedia = require("./Models/Penyedia");
-
-const dummyPenyedia = {
-    npwp: "1234567890",
-    nama: "Penyedia 1",
-    alamat: "Jalan Penyedia 1",
-    skp: 5
-}
-
-const seedData = async () => {
+const seedUsers = async () => {
     try {
-        await Penyedia.deleteMany();
-        await Penyedia.create(dummyPenyedia);
+        await User.deleteMany();
+        for (const user of dummyUser) {
+            await User.create(user); 
+        }
+
         console.log("Data inserted successfully");
         process.exit(0);
     } catch (err) {
@@ -63,4 +42,53 @@ const seedData = async () => {
     }
 };
 
-seedData();
+seedUsers();
+const Penyedia = require("./Models/Penyedia");
+const Opd = require("./Models/Opd");
+const TenagaAhli = require("./Models/TenagaAhli");
+
+const dummyPenyedia = {
+    npwp: "1234567890",
+    nama: "Penyedia 1",
+    alamat: "Jalan Penyedia 1",
+    skp: 5
+}
+const dummyOpd = [
+    {
+        namaOpd: 'Dinas Pendidikan'
+    },
+    {
+        namaOpd: 'Dinas Kesehatan'
+    },
+    {
+        namaOpd: 'Dinas Pertanian'
+    }
+]
+const dummyTenagaAhli = [
+    {
+        npwp: "377321783728347",
+        nama: "Tenaga Ahli 1",
+        alamat: "Jalan Tenaga Ahli 1"
+    },
+    {
+        npwp: "377321783728347",
+        nama: "Tenaga Ahli 2",
+        alamat: "Jalan Tenaga Ahli 2"
+    }
+]
+const seedData = async () => {
+    try {
+        await TenagaAhli.deleteMany();
+        for (const tenagaAhli of dummyTenagaAhli) {
+            await TenagaAhli.create(tenagaAhli);
+        }
+
+        console.log("Data inserted successfully");
+        process.exit(0);
+    } catch (err) {
+        console.error("Error seeding data:", err);
+        process.exit(1);
+    }
+};
+
+// seedData();

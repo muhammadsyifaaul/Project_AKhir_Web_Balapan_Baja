@@ -12,3 +12,7 @@ const paketSchema = new mongoose.Schema({
     nilaiKontrak: Number,
     namaTenagaAhli: String,
 })
+
+const Paket = mongoose.model("Paket", paketSchema);
+
+module.exports = Paket;
