@@ -90,5 +90,27 @@ const seedData = async () => {
         process.exit(1);
     }
 };
+const dummyPaket = [
+    {
+        opd: 'Dinas Pendidikan',
+        namaPekerjaan: 'Pekerjaan 1',
+        mulaiKontrak: new Date('2025-01-01'), 
+        selesaiKontrak: new Date('2025-12-31'),
+        nomorKontrak: 1,
+        npwpPenyedia: "1234567890", 
+        namaPenyedia: "Penyedia 1",
+    },
+    {
+        opd: 'Dinas Kesehatan',
+        namaPekerjaan: 'Pekerjaan 2',
+        mulaiKontrak: new Date('2025-01-01'), 
+        selesaiKontrak: new Date('2025-12-31'),
+        nomorKontrak: 2,
+        npwpPenyedia: "1234567890", 
+        namaPenyedia: "Penyedia 1",
+        nilaiKontrak: 210000000,
+    }
+];
+
 
 // seedData();

@@ -1,7 +1,13 @@
+import { useNavigate } from 'react-router-dom';
 export default function Paket() {
+    const navigate = useNavigate();
+
+    const handleTambahClick = () => {
+        navigate('/TambahPaket');
+    };
     return (
         <div>
-            <h1>Paket</h1>
+            <button onClick={handleTambahClick}>Tambah</button>
         </div>
     )
 }
