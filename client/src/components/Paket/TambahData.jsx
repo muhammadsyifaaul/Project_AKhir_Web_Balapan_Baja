@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useState, useEffect } from "react";
 
 export default function TambahData() {
@@ -5,6 +6,24 @@ export default function TambahData() {
   const [selesaiKontrak, setSelesaiKontrak] = useState("");
   const [jangkaWaktu, setJangkaWaktu] = useState("");
   const [npwpPenyedia, setNpwpPenyedia] = useState("");
+  const [opd,setOpd] = useState([]);
+  const [dataPenyedia, setDataPenyedia] = useState({});
+
+  useEffect(() => {
+    const fetchOpd = async () => {
+      try {
+        const response = await axios.get("http://localhost:5000/getAllOpd");
+        setOpd(response.data);
+      } catch (error) {
+        console.error("Error fetching OPD data:", error);
+      }
+    };
+    fetchOpd();
+  }, []);
+
+  useEffect(() => {
+    console.log("Updated dataPenyedia:", dataPenyedia);
+  }, [dataPenyedia]);
 
   const hitungJangkaWaktu = (mulai, selesai) => {
     if (mulai && selesai) {
@@ -23,19 +42,38 @@ export default function TambahData() {
     hitungJangkaWaktu(mulaiKontrak, selesaiKontrak);
   }, [mulaiKontrak, selesaiKontrak]);
 
+  const cekNpwp = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/cekNpwp/${npwpPenyedia}`
+      );
+      setDataPenyedia(response.data);
+    } catch (error) {
+      console.error("Error fetching NPWP data:", error);
+    }
+  };
+
   const handleResetState = () => {
     setMulaiKontrak("");
     setSelesaiKontrak("");
     setJangkaWaktu("");
+    setNpwpPenyedia("");
+    setDataPenyedia({});
   };
+
 
   return (
     <div>
       <form action="" method="post">
-        <label htmlFor="opd">Nama Paket</label>
-        <select name="opd" id="opd">
-          <option value="opd">OPD</option>
-          <option value="opd">opd</option>
+        <label htmlFor="opd">OPD</label>
+        <select name="opd" id="opd ">
+          <option value="">Pilih OPD</option>
+          {opd.map((opd) => (
+            <option key={opd._id} value={opd.namaOpd}>
+              {opd.namaOpd}
+            </option>
+          ))}
         </select>
 
         <label htmlFor="namaPekerjaan">Nama Pekerjaan</label>
@@ -77,12 +115,39 @@ export default function TambahData() {
           name="npwpPenyedia"
           id="npwpPenyedia"
           value={npwpPenyedia}
-          onChange={handleInputChange}
+          onChange={(e) => setNpwpPenyedia(e.target.value)}
+          placeholder="Tanpa tanda titik[.] dan tanda strip[-]"
         />
         <button onClick={cekNpwp}>Cek</button>
 
         <label htmlFor="namaPenyedia">Nama Penyedia</label>
-        <input type="text" name="namaPenyedia" id="namaPenyedia" />
+        <input
+          type="text"
+          name="namaPenyedia"
+          id="namaPenyedia"
+          value={dataPenyedia.nama || ""}
+          readOnly
+        />
+
+        <label htmlFor="alamatPenyedia">Alamat Penyedia</label>
+        <input
+          type="text"
+          name="alamatPenyedia"
+          id="alamatPenyedia"
+          value={dataPenyedia.alamat || ""}
+          readOnly
+        />
+
+        <label htmlFor="skp">Sisa Kemampuan Paket</label>
+        <input type="number" name="skp" id="skp" />
+
+        <label htmlFor="jenis">Kategori Pekerjaan</label>
+        <select name="jenis" id="">
+          <option value="Kecil">Kecil</option>
+          <option value="Non Kecil">Non Kecil</option>
+        </select>
+
+        <label htmlFor="jenis">Kategori Pekerjaan</label>
 
         <label htmlFor="nilaiKontrak">Nilai Kontrak</label>
         <input type="number" name="nilaiKontrak" id="nilaiKontrak" />

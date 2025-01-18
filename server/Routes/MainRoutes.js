@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const authController = require('../Controllers/authControllers');
-const { getPenyedia, getTenagaAhli, getAllUser } = require('../Controllers/mainControllers');
+const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp } = require('../Controllers/mainControllers');
 
 router.get('/Home', authController.protectedRoute, (req, res) => {
     res.redirect('/Home');
@@ -13,6 +13,8 @@ router.get('/getAllUser',getAllUser);
 router.get('/DataPaket', authController.protectedRoute, (req, res) => {
     res.redirect('/DataPaket');
 });
+router.get('/getAllOpd',getAllOpd);
+router.get('/cekNpwp/:npwp',cekNpwp);
 
 router.get('/Penyedia', authController.protectedRoute, (req, res) => {
     res.redirect('/Penyedia');
