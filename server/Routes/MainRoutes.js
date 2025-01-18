@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
+require('dotenv').config();
 const authController = require('../Controllers/authControllers');
-const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli } = require('../Controllers/mainControllers');
+const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket } = require('../Controllers/mainControllers');
 
 router.get('/Home', authController.protectedRoute, (req, res) => {
     res.redirect('/Home');
@@ -28,6 +29,8 @@ router.get('/TenagaAhli', authController.protectedRoute, (req, res) => {
 router.get('/KelolaUser', authController.protectedRoute, (req, res) => {
     res.redirect('/KelolaUser');
 });
+
+router.post('/TambahDataPaket',tambahDataPaket);
 
 
 
