@@ -29,3 +29,22 @@ exports.cekNpwp = async (req, res) => {
     console.log(penyedia);
     res.json(penyedia);
 }
+
+exports.cekTenagaAhli = async (req, res) => {
+    const { npwp, nama } = req.query; 
+    const filter = {}; 
+    if (npwp) filter.npwp = npwp;
+    if (nama) filter.nama = nama; 
+    console.log(filter);
+  
+    try {
+      const tenagaAhli = await TenagaAhli.findOne(filter); 
+      console.log(tenagaAhli);
+      res.json(tenagaAhli); 
+    } catch (error) {
+      console.error("Error fetching tenaga ahli data:", error);
+      res.status(500).json({ error: "Internal server error" }); 
+    }
+  };
+  
+  

@@ -6,8 +6,10 @@ export default function TambahData() {
   const [selesaiKontrak, setSelesaiKontrak] = useState("");
   const [jangkaWaktu, setJangkaWaktu] = useState("");
   const [npwpPenyedia, setNpwpPenyedia] = useState("");
-  const [opd,setOpd] = useState([]);
+  const [opd, setOpd] = useState([]);
+  const [nilaiKontrak, setNilaiKontrak] = useState(false);
   const [dataPenyedia, setDataPenyedia] = useState({});
+  const [inputTenagaAhli, setInputTenagaAhli] = useState("");
 
   useEffect(() => {
     const fetchOpd = async () => {
@@ -53,6 +55,29 @@ export default function TambahData() {
       console.error("Error fetching NPWP data:", error);
     }
   };
+  const handleNilaiKontrak = (e) => {
+    if (e.target.value >= 200000000) {
+      setNilaiKontrak(true);
+    } else {
+      setNilaiKontrak(false);
+    }
+  };
+  const handleInputTenagaAhli = (e) => {
+    setInputTenagaAhli(e.target.value);
+  };
+
+  const cekTenagaAhli = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.get(
+        `http://localhost:5000/cekTenagaAhli?tenagaAhli=${inputTenagaAhli}` 
+      );
+      console.log(response.data);
+      setInputTenagaAhli(`${response.data.npwp} ${response.data.nama} `);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const handleResetState = () => {
     setMulaiKontrak("");
@@ -60,12 +85,13 @@ export default function TambahData() {
     setJangkaWaktu("");
     setNpwpPenyedia("");
     setDataPenyedia({});
+    setNilaiKontrak(false);
+    setInputTenagaAhli("");
   };
-
 
   return (
     <div>
-      <form action="" method="post">
+      <form action="/TambahDataPaket" method="post">
         <label htmlFor="opd">OPD</label>
         <select name="opd" id="opd ">
           <option value="">Pilih OPD</option>
@@ -98,13 +124,7 @@ export default function TambahData() {
         />
 
         <label htmlFor="jangkaWaktu">Jangka Waktu (Hari)</label>
-        <input
-          type="text"
-          name="jangkaWaktu"
-          id="jangkaWaktu"
-          value={jangkaWaktu || "Masukkan tanggal"}
-          readOnly
-        />
+        <textarea name="jangkaWaktu" id="" value={jangkaWaktu}></textarea>
 
         <label htmlFor="nomorKontrak">Nomor Kontrak</label>
         <input type="text" name="nomorKontrak" id="nomorKontrak" />
@@ -150,10 +170,27 @@ export default function TambahData() {
         <label htmlFor="jenis">Kategori Pekerjaan</label>
 
         <label htmlFor="nilaiKontrak">Nilai Kontrak</label>
-        <input type="number" name="nilaiKontrak" id="nilaiKontrak" />
+        <input
+          type="number"
+          name="nilaiKontrak"
+          id="nilaiKontrak"
+          onChange={handleNilaiKontrak}
+        />
 
-        <label htmlFor="namaTenagaAhli">Nama Tenaga Ahli</label>
-        <input type="text" name="namaTenagaAhli" id="namaTenagaAhli" />
+        {nilaiKontrak ? (
+          <>
+            <label htmlFor="tenagaAhli">Tenaga Ahli</label>
+            <input
+              type="text"
+              name="namaTenagaAhli"
+              id="namaTenagaAhli"
+              placeholder="NPWP atau Nama"
+              onChange={handleInputTenagaAhli}
+              value={inputTenagaAhli}
+            />
+            <button onClick={cekTenagaAhli}>Cek</button>
+          </>
+        ) : null}
 
         <button type="reset" onClick={handleResetState}>
           Reset
