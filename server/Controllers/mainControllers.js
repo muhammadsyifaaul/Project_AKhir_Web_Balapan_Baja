@@ -50,33 +50,16 @@ exports.cekTenagaAhli = async (req, res) => {
   
   exports.tambahDataPaket = async (req, res) => {
     const {
-        opd, namaPekerjaan, mulaiKontrak, selesaiKontrak,jangkaWaktu,
+        opd, namaPekerjaan, mulaiKontrak, selesaiKontrak, jangkaWaktu,
         nomorKontrak, nilaiKontrak, namaTenagaAhli,
         npwpPenyedia, namaPenyedia, alamatPenyedia,
         skp, jenis
     } = req.body;
 
-    // if (typeof skp !== 'number' || skp <= 0) {
-    //     return res.status(400).json({ message: "Invalid 'skp' value" });
-    // }
-
-    const paket = new Paket({
-        opd: opd,
-        namaPekerjaan: namaPekerjaan,
-        mulaiKontrak: mulaiKontrak,
-        selesaiKontrak: selesaiKontrak,
-        jangkaWaktu: jangkaWaktu,
-        nomorKontrak: nomorKontrak,
-        npwpPenyedia: npwpPenyedia,
-        namaPenyedia: namaPenyedia,
-        alamatPenyedia: alamatPenyedia,
-        skp: skp,
-        jenis: jenis,
-        nilaiKontrak: nilaiKontrak,
-        namaTenagaAhli: namaTenagaAhli,
-    });
-
     try {
+        // if (typeof nilaiKontrak !== 'number' || nilaiKontrak <= 0) {
+        //     return res.status(400).json({ message: "Invalid 'nilaiKontrak' value" });
+        // }
         const penyedia = await Penyedia.findOne({ npwp: npwpPenyedia });
         if (!penyedia) {
             return res.status(404).json({ message: "Penyedia not found" });
@@ -84,16 +67,35 @@ exports.cekTenagaAhli = async (req, res) => {
         if (penyedia.skp - skp < 0) {
             return res.status(400).json({ message: "Insufficient SKP for the provider" });
         }
+        const paketData = {
+            opd: opd,
+            namaPekerjaan: namaPekerjaan,
+            mulaiKontrak: mulaiKontrak,
+            selesaiKontrak: selesaiKontrak,
+            jangkaWaktu: jangkaWaktu,
+            nomorKontrak: nomorKontrak,
+            npwpPenyedia: npwpPenyedia,
+            namaPenyedia: namaPenyedia,
+            alamatPenyedia: alamatPenyedia,
+            skp: skp,
+            jenis: jenis,
+            nilaiKontrak: nilaiKontrak,
+        };
+
+        if (nilaiKontrak >= 200000000) {
+            paketData.namaTenagaAhli = namaTenagaAhli;
+        }
+        const paket = new Paket(paketData);
+
         await Promise.all([
             paket.save(),
-            Penyedia.updateOne(
+            Penyedia.findOneAndUpdate(
                 { npwp: npwpPenyedia },
                 { $inc: { skp: -skp } }
             ),
         ]);
-
         console.log("Data inserted successfully");
-        const frontendUrl = process.env.FRONTEND_URL; 
+        const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
         res.redirect(`${frontendUrl}/DataPaket`);
     } catch (error) {
         console.error("Error while inserting data:", error);
