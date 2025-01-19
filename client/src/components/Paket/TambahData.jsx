@@ -12,21 +12,27 @@ export default function TambahData() {
     setNpwpPenyedia,
     opd,
     nilaiKontrak,
-    handleNilaiKontrak,
-    dataPenyedia,
-    cekNpwp,
+    setNilaiKontrak,
+    dataPenyedia, 
     inputTenagaAhli,
+    handleNilaiKontrak,
     handleInputTenagaAhli,
+    cekNpwp,
     cekTenagaAhli,
     handleResetState,
-    handleFormSubmit
+    handleFormSubmit,
   } = useTambahData();
 
   return (
     <div>
-      <form action="http://localhost:5000/TambahDataPaket"  onSubmit={handleFormSubmit} method="post" autoComplete="off">
+      <form
+        action="http://localhost:5000/TambahDataPaket"
+        onSubmit={handleFormSubmit}
+        method="post"
+        autoComplete="off"
+      >
         <label htmlFor="opd">OPD</label>
-        <select name="opd" id="opd ">
+        <select name="opd" id="opd">
           <option value="">Pilih OPD</option>
           {opd.map((opd) => (
             <option key={opd._id} value={opd.namaOpd}>
@@ -59,7 +65,12 @@ export default function TambahData() {
         />
 
         <label htmlFor="jangkaWaktu">Jangka Waktu (Hari)</label>
-        <textarea name="jangkaWaktu" id="" value={jangkaWaktu}></textarea>
+        <textarea
+          name="jangkaWaktu"
+          id="jangkaWaktu"
+          value={jangkaWaktu}
+          readOnly
+        ></textarea>
 
         <label htmlFor="nomorKontrak">Nomor Kontrak</label>
         <input type="text" name="nomorKontrak" id="nomorKontrak" required />
@@ -74,7 +85,9 @@ export default function TambahData() {
           placeholder="Tanpa tanda titik[.] dan tanda strip[-]"
           required
         />
-        <button onClick={cekNpwp}>Cek</button>
+        <button onClick={cekNpwp} type="button">
+          Cek
+        </button>
 
         <label htmlFor="namaPenyedia">Nama Penyedia</label>
         <input
@@ -95,15 +108,19 @@ export default function TambahData() {
         />
 
         <label htmlFor="skp">Sisa Kemampuan Paket</label>
-        <input type="number" name="skp" id="skp" required/>
+        <input
+          type="number"
+          name="skp"
+          id="skp"
+          value={dataPenyedia.skp || ""}
+          readOnly
+        />
 
         <label htmlFor="jenis">Kategori Pekerjaan</label>
-        <select name="jenis" id="">
+        <select name="jenis" id="jenis">
           <option value="Kecil">Kecil</option>
           <option value="Non Kecil">Non Kecil</option>
         </select>
-
-        <label htmlFor="jenis">Kategori Pekerjaan</label>
 
         <label htmlFor="nilaiKontrak">Nilai Kontrak</label>
         <input
@@ -113,7 +130,8 @@ export default function TambahData() {
           onChange={handleNilaiKontrak}
         />
 
-        {nilaiKontrak ? (
+        {/* Input Tenaga Ahli hanya muncul jika nilai kontrak >= 200 juta */}
+        {nilaiKontrak >= 200000000 && (
           <>
             <label htmlFor="tenagaAhli">Tenaga Ahli</label>
             <input
@@ -121,12 +139,14 @@ export default function TambahData() {
               name="namaTenagaAhli"
               id="namaTenagaAhli"
               placeholder="NPWP atau Nama"
-              onChange={handleInputTenagaAhli}
+              onChange={(e) => handleInputTenagaAhli(e.target.value)}
               value={inputTenagaAhli}
             />
-            <button onClick={cekTenagaAhli}>Cek</button>
+            <button onClick={cekTenagaAhli} type="button">
+              Cek
+            </button>
           </>
-        ) : null}
+        )}
 
         <button type="reset" onClick={handleResetState}>
           Reset

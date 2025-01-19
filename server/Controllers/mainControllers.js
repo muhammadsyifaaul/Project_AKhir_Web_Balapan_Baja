@@ -102,3 +102,9 @@ exports.cekTenagaAhli = async (req, res) => {
         res.status(500).json({ message: "Error while inserting data" });
     }
 };
+
+exports.getAllPaket = async (req,res) => {
+    const paket = await Paket.find();
+    console.log(paket);
+    res.json(paket);
+}

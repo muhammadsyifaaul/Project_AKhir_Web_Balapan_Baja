@@ -7,7 +7,7 @@ export const useTambahData = () => {
   const [jangkaWaktu, setJangkaWaktu] = useState("");
   const [npwpPenyedia, setNpwpPenyedia] = useState("");
   const [opd, setOpd] = useState([]);
-  const [nilaiKontrak, setNilaiKontrak] = useState(false);
+  const [nilaiKontrak, setNilaiKontrak] = useState(0);
   const [dataPenyedia, setDataPenyedia] = useState({});
   const [inputTenagaAhli, setInputTenagaAhli] = useState("");
 
@@ -57,9 +57,11 @@ export const useTambahData = () => {
     }
   };
 
-  const handleNilaiKontrak = (value) => {
-    setNilaiKontrak(value >= 200000000);
+  const handleNilaiKontrak = (e) => {
+    const nilai = e.target.value;
+    setNilaiKontrak(nilai);
   };
+  
 
   const handleInputTenagaAhli = (value) => {
     setInputTenagaAhli(value);
@@ -75,12 +77,12 @@ export const useTambahData = () => {
       console.error("Error fetching data:", error);
     }
   };
+
   const handleFormSubmit = (event) => {
-    event.preventDefault(); 
+    event.preventDefault();
     const form = event.target;
-    form.reset(); 
+    form.reset();
   };
-  
 
   const handleResetState = () => {
     setMulaiKontrak("");
@@ -109,6 +111,6 @@ export const useTambahData = () => {
     handleInputTenagaAhli,
     cekTenagaAhli,
     handleResetState,
-    handleFormSubmit
+    handleFormSubmit,
   };
 };
