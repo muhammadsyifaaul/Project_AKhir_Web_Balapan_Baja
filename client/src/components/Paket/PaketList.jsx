@@ -12,7 +12,7 @@ export default function PaketList({
   
     return (
       <div style={{ marginBottom: "20px", border: "1px solid #ccc", padding: "10px" }}>
-        <h2>Paket {no}</h2>
+        <h2>{no}</h2>
         <p>
           <strong>Nama Pekerjaan:</strong> {namaPekerjaan || "Nama pekerjaan tidak tersedia"}
         </p>

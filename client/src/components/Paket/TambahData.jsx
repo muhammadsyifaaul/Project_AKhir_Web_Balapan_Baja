@@ -12,7 +12,6 @@ export default function TambahData() {
     setNpwpPenyedia,
     opd,
     nilaiKontrak,
-    setNilaiKontrak,
     dataPenyedia, 
     inputTenagaAhli,
     handleNilaiKontrak,
@@ -20,7 +19,6 @@ export default function TambahData() {
     cekNpwp,
     cekTenagaAhli,
     handleResetState,
-    handleFormSubmit,
   } = useTambahData();
 
   return (

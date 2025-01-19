@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config();
 const authController = require('../Controllers/authControllers');
-const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket } = require('../Controllers/mainControllers');
+const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket, tambahPenyedia } = require('../Controllers/mainControllers');
 
 router.get('/Home', authController.protectedRoute, (req, res) => {
     res.redirect('/Home');
@@ -32,6 +32,7 @@ router.get('/KelolaUser', authController.protectedRoute, (req, res) => {
 });
 
 router.post('/TambahDataPaket',tambahDataPaket);
+router.post('/TambahPenyedia',tambahPenyedia);
 
 
 

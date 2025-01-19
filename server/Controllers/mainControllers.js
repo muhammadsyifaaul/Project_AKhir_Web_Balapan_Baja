@@ -108,3 +108,6 @@ exports.getAllPaket = async (req,res) => {
     console.log(paket);
     res.json(paket);
 }
+exports.tambahPenyedia = async (req, res) => {
+    console.log(req.body);
+}

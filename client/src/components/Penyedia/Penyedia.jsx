@@ -1,3 +1,4 @@
+
 export default function Penyedia({ no,npwp, nama, alamat, skp, jenis }) {
   return (
     <div>
@@ -7,6 +8,7 @@ export default function Penyedia({ no,npwp, nama, alamat, skp, jenis }) {
       <h1>{alamat}</h1>
       <h1>{skp}</h1>
       <h1>{jenis}</h1>
+
     </div>
   );
 }
