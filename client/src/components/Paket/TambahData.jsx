@@ -27,7 +27,6 @@ export default function TambahData() {
     <div>
       <form
         action="http://localhost:5000/TambahDataPaket"
-        onSubmit={handleFormSubmit}
         method="post"
         autoComplete="off"
       >
@@ -112,8 +111,6 @@ export default function TambahData() {
           type="number"
           name="skp"
           id="skp"
-          value={dataPenyedia.skp || ""}
-          readOnly
         />
 
         <label htmlFor="jenis">Kategori Pekerjaan</label>
