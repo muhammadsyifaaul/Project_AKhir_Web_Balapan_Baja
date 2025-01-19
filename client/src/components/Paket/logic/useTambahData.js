@@ -75,6 +75,12 @@ export const useTambahData = () => {
       console.error("Error fetching data:", error);
     }
   };
+  const handleFormSubmit = (event) => {
+    event.preventDefault(); 
+    const form = event.target;
+    form.reset(); 
+  };
+  
 
   const handleResetState = () => {
     setMulaiKontrak("");
@@ -103,5 +109,6 @@ export const useTambahData = () => {
     handleInputTenagaAhli,
     cekTenagaAhli,
     handleResetState,
+    handleFormSubmit
   };
 };

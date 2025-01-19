@@ -19,11 +19,12 @@ export default function TambahData() {
     handleInputTenagaAhli,
     cekTenagaAhli,
     handleResetState,
+    handleFormSubmit
   } = useTambahData();
 
   return (
     <div>
-      <form action="http://localhost:5000/TambahDataPaket" method="post">
+      <form action="http://localhost:5000/TambahDataPaket"  onSubmit={handleFormSubmit} method="post" autoComplete="off">
         <label htmlFor="opd">OPD</label>
         <select name="opd" id="opd ">
           <option value="">Pilih OPD</option>
