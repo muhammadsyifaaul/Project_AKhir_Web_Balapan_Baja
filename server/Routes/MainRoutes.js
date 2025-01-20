@@ -21,7 +21,7 @@ router.get('/cekNpwp/:npwp',cekNpwp);
 router.get('/getAllPaket',getAllPaket);
 router.get('/getPenyedia/:npwp',getPaketWithNpwp);
 router.get('/getPaketById/:id',getPaketById)
-router.get('/getAllPaketTenagaAhli/:nama',getAllPaketTenagaAhli);
+router.get('/getAllPaketTenagaAhli/:id',getAllPaketTenagaAhli);
 
 router.get('/Penyedia', authController.protectedRoute, (req, res) => {
     res.redirect('/Penyedia');

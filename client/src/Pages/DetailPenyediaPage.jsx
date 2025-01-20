@@ -28,6 +28,7 @@ export default function DetailPenyediaPage() {
             <PaketList
               key={index}
               no={index + 1}
+              idPaket={penyedia._id}
               opd={penyedia.opd}
               namaPekerjaan={penyedia.namaPekerjaan}
               mulaiKontrak={penyedia.mulaiKontrak}

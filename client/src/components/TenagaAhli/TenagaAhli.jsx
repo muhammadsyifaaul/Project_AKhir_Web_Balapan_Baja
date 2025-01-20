@@ -1,4 +1,4 @@
-export default function ({_id, no, npwp, nama, alamat }) {
+export default function TenagaAhli({_id, no, npwp, nama, alamat }) {
   return (
     <div>
       <h1>{no}</h1>

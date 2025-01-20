@@ -1,51 +1,70 @@
-
-import { useEffect,useState } from "react";
-import DetailPaketGlobal from "../Paket/DetailPaketGlobal";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import PaketList from "../Paket/PaketList";
 
-export default function DetailTenagaAhli({_id}) {
+export default function DetailTenagaAhli({ _id }) {
+    // const { _id } = useParams(); 
     const [allPaket, setAllPaket] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
     function formatTanggal(tanggalString) {
         const tanggal = new Date(tanggalString); 
         return tanggal.toLocaleDateString("id-ID", {
-          day: "2-digit",
-          month: "long",
-          year: "numeric",
+            day: "2-digit",
+            month: "long",
+            year: "numeric",
         });
-      }
+    }
+
     useEffect(() => {
         const fetchTenagaAhli = async () => {
             try {
                 const response = await fetch(`http://localhost:5000/getAllPaketTenagaAhli/${_id}`);
                 const data = await response.json();
-                console.log(data);
-                setAllPaket(data);
+                if (response.status === 404) {
+                    setError(data.message);
+                } else {
+                    setAllPaket(data);
+                }
             } catch (error) {
+                setError("Error fetching data");
                 console.error("Error fetching data:", error);
+            } finally {
+                setLoading(false);
             }
-        }
+        };
         fetchTenagaAhli();
-    },[])
+    }, [_id]);
+
+    if (loading) {
+        return <p>Loading...</p>;
+    }
+
+    if (error) {
+        return <p>{error}</p>;
+    }
+
     return (
         <div>
             <h1>Detail Tenaga Ahli Page</h1>
-            {allPaket ? (
-                allPaket.map((paket,index) => (
+            {allPaket.length > 0 ? (
+                allPaket.map((paket, index) => (
                     <div key={paket._id}>
-                        {/* <DetailPaketGlobal {...paket} no={index + 1} mulaiKontrak={formatTanggal(paket.mulaiKontrak)} selesaiKontrak={formatTanggal(paket.selesaiKontrak)} /> */}
-                        <PaketList no={index + 1} 
-                        idPaket={paket._id}
-                        opd={paket.opd}
-                        namaPekerjaan={paket.namaPekerjaan} 
-                        mulaiKontrak={paket.mulaiKontrak}
-                        selesaiKontrak={paket.selesaiKontrak}
-                        jangkaWaktu={paket.jangkaWaktu}
-                        nilaiKontrak={paket.nilaiKontrak}
+                        <PaketList 
+                            no={index + 1} 
+                            idPaket={paket._id}
+                            opd={paket.opd}
+                            namaPekerjaan={paket.namaPekerjaan} 
+                            mulaiKontrak={paket.mulaiKontrak}
+                            selesaiKontrak={paket.selesaiKontrak}
+                            jangkaWaktu={paket.jangkaWaktu}
+                            nilaiKontrak={paket.nilaiKontrak}
                         />
-                    </div>)
-                )
+                    </div>
+                ))
             ) : (
-                <p>Loading...</p>
+                <p>Belum ada data paket</p>
             )}
         </div>
     );

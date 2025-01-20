@@ -144,8 +144,12 @@ exports.tambahTenagaAhli = async (req, res) => {
 
 exports.getAllPaketTenagaAhli = async (req, res) => {
     const id = req.params.id;
+    console.log(`idnya adalah ${id}`);
     try {
         const paket = await Paket.find({ idTenagaAhli: id });
+        if (paket.length === 0) {
+            return res.status(404).json({ message: "Belum ada data paket" });
+        }
         console.log(paket);
         res.json(paket);
     } catch (error) {
@@ -153,3 +157,4 @@ exports.getAllPaketTenagaAhli = async (req, res) => {
         res.status(500).send("Server Error");
     }
 };
+

@@ -72,7 +72,7 @@ const App = () => {
         />
 
         <Route
-          path="/DetailTenagaAhli/:_id"
+          path="/DetailTenagaAhli/:id"
           element={
             <ProtectedRoute>
               <DetailTenagaAhliPage />
