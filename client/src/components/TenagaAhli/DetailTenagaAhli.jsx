@@ -1,8 +1,18 @@
 
 import { useEffect,useState } from "react";
+import DetailPaketGlobal from "../Paket/DetailPaketGlobal";
+import PaketList from "../Paket/PaketList";
 
 export default function DetailTenagaAhli({_id}) {
     const [allPaket, setAllPaket] = useState([]);
+    function formatTanggal(tanggalString) {
+        const tanggal = new Date(tanggalString); 
+        return tanggal.toLocaleDateString("id-ID", {
+          day: "2-digit",
+          month: "long",
+          year: "numeric",
+        });
+      }
     useEffect(() => {
         const fetchTenagaAhli = async () => {
             try {
@@ -22,18 +32,16 @@ export default function DetailTenagaAhli({_id}) {
             {allPaket ? (
                 allPaket.map((paket,index) => (
                     <div key={paket._id}>
-                        <h1>{index + 1}</h1>
-                        <h1>{paket.opd}</h1>
-                        <h1>{paket.namaPekerjaan}</h1>
-                        <h1>{paket.mulaiKontrak}</h1>
-                        <h1>{paket.selesaiKontrak}</h1>
-                        <h1>{paket.jangkaWaktu}</h1>
-                        <h1>{paket.npwpPenyedia}</h1>
-                        <h1>{paket.namaPenyedia}</h1>
-                        <h1>{paket.alamatPenyedia}</h1>
-                        <h1>{paket.jenis}</h1>
-                        <h1>{paket.nilaiKontrak}</h1>
-                        <h1>{paket.tenagaAhli}</h1>
+                        {/* <DetailPaketGlobal {...paket} no={index + 1} mulaiKontrak={formatTanggal(paket.mulaiKontrak)} selesaiKontrak={formatTanggal(paket.selesaiKontrak)} /> */}
+                        <PaketList no={index + 1} 
+                        idPaket={paket._id}
+                        opd={paket.opd}
+                        namaPekerjaan={paket.namaPekerjaan} 
+                        mulaiKontrak={paket.mulaiKontrak}
+                        selesaiKontrak={paket.selesaiKontrak}
+                        jangkaWaktu={paket.jangkaWaktu}
+                        nilaiKontrak={paket.nilaiKontrak}
+                        />
                     </div>)
                 )
             ) : (

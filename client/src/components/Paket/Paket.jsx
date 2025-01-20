@@ -34,6 +34,7 @@ export default function Paket() {
         paket.map((paket, index) => (
           <PaketList
             key={paket._id}
+            idPaket={paket._id}
             no={index + 1}
             namaPekerjaan={paket.namaPekerjaan}
             mulaiKontrak={paket.mulaiKontrak}

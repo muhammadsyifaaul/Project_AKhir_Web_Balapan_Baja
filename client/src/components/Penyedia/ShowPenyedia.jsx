@@ -2,7 +2,7 @@ import Penyedia from "./Penyedia";
 import { useState, useEffect } from "react";
 import FormTambahPenyedia from "./FormTambahPenyedia";
 import "./Penyedia.css";
-import ListPaket from "./ListPaket";
+
 
 export default function ShowPenyedia() {
   const [penyedias, setPenyedias] = useState([]);

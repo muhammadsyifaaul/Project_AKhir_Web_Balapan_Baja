@@ -1,6 +1,7 @@
 import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
-import ListPaket from "../components/Penyedia/ListPaket";
+
+import PaketList from "../components/Paket/PaketList";
 
 export default function DetailPenyediaPage() {
     const { npwp } = useParams();
@@ -22,19 +23,21 @@ export default function DetailPenyediaPage() {
     return (
       <div>
         <h1>List Paket</h1>
-        {penyedias.map((penyedia, index) => (
-          <ListPaket
-            key={penyedia._id}
-            no={index + 1}
-            opd={penyedia.opd}
-            idPaket={penyedia._id}
-            namaPekerjaan={penyedia.namaPekerjaan}
-            mulaiKontrak={penyedia.mulaiKontrak}
-            selesaiKontrak={penyedia.selesaiKontrak}
-            jangkaWaktu={penyedia.jangkaWaktu}
-            nilaiKontrak={penyedia.nilaiKontrak}
-          />
-        ))}
+        {penyedias.length > 0 ? (
+          penyedias.map((penyedia, index) => (
+            <PaketList
+              key={index}
+              no={index + 1}
+              opd={penyedia.opd}
+              namaPekerjaan={penyedia.namaPekerjaan}
+              mulaiKontrak={penyedia.mulaiKontrak}
+              selesaiKontrak={penyedia.selesaiKontrak}
+              jangkaWaktu={penyedia.jangkaWaktu}
+            />
+          ))
+        ) : (
+          <p>No Data Avaible</p>
+        )}
       </div>
     );
   }
