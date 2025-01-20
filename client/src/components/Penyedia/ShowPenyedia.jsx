@@ -12,20 +12,22 @@ export default function ShowPenyedia() {
     setIsFormOpen(true);
   };
   const handleCloseForm = () => {
+    console.log("Closing form");
     setIsFormOpen(false);
   };
-  useEffect(() => {
-    const fetchPenyedia = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/getPenyedia");
-        const data = await response.json();
-        setPenyedias(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
 
-    fetchPenyedia();
+  const handlePenyediaAdded = async () => {
+    try {
+      const response = await fetch("http://localhost:5000/getPenyedia");
+      const data = await response.json();
+      setPenyedias(data);
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+  useEffect(() => {
+    handlePenyediaAdded();
   }, []);
 
   return (
@@ -35,7 +37,12 @@ export default function ShowPenyedia() {
         <Penyedia key={penyedia._id} {...penyedia} />
       ))}
 
-      {isFormOpen && <FormTambahPenyedia onClose={handleCloseForm} />}
+      {isFormOpen && (
+        <FormTambahPenyedia
+          onClose={handleCloseForm}
+          onPenyediaAdded={handlePenyediaAdded}
+        />
+      )}
     </div>
   );
 }

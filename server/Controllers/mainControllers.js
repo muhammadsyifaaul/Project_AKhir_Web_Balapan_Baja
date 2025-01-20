@@ -109,5 +109,11 @@ exports.getAllPaket = async (req,res) => {
     res.json(paket);
 }
 exports.tambahPenyedia = async (req, res) => {
-    console.log(req.body);
+    const {
+        npwp, nama, alamat, skp, jenis} = req.body;
+    const penyedia = new Penyedia({ npwp, nama, alamat, skp, jenis });
+    await penyedia.save();
+    console.log("Data inserted successfully");
+    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    res.redirect(`${frontendUrl}/Penyedia`);
 }

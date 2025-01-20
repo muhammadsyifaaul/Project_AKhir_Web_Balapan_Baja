@@ -6,11 +6,10 @@ export default function FormTambahPenyedia({ onClose, onPenyediaAdded }) {
     npwp: 0,
     nama: "",
     alamat: "",
-    skp: "",
+    skp: 0,
     jenis: "",
   });
 
-  // Update form state
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
@@ -19,11 +18,23 @@ export default function FormTambahPenyedia({ onClose, onPenyediaAdded }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Kirim data ke backend
-      const response = await axios.post("/api/tambahPenyedia", formData);
+      const response = await axios.post("http://localhost:5000/TambahPenyedia", formData);
       console.log("Data berhasil dikirim:", response.data);
-      onPenyediaAdded(); 
-      onClose(); 
+      
+      // Reset form data
+      setFormData({
+        npwp: 0,
+        nama: "",
+        alamat: "",
+        skp: 0,
+        jenis: "",
+      });
+      
+      // Notify parent component and close the form
+      console.log("Calling onPenyediaAdded");
+      onPenyediaAdded();
+      console.log("Calling onClose");
+      onClose();
     } catch (error) {
       console.error("Terjadi error saat mengirim data:", error.message);
     }
