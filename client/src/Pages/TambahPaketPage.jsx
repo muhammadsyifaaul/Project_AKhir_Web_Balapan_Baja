@@ -1,7 +1,11 @@
+import MainLayout from "../components/MainLayout"
+import TambahData from "../components/Paket/TambahData"
 export default function TambahPaketPage() {
     return (
         <div>
-            <h1>Tambah Paket</h1>
+            <MainLayout>
+                <TambahData />
+            </MainLayout>
         </div>
     )
 }

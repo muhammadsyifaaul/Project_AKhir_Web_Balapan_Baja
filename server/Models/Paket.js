@@ -5,10 +5,17 @@ const paketSchema = new mongoose.Schema({
     namaPekerjaan: String,
     mulaiKontrak: Date,
     selesaiKontrak: Date,
+    jangkaWaktu: Number,
     nomorKontrak: Number,
     npwpPenyedia: Number,
     namaPenyedia: String,
+    jenis: String,
     alamatPenyedia: String,
     nilaiKontrak: Number,
-    namaTenagaAhli: String,
+    tenagaAhli: String,
+    idTenagaAhli: String
 })
+
+const Paket = mongoose.model("Paket", paketSchema);
+
+module.exports = Paket;

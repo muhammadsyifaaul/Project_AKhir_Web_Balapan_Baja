@@ -28,7 +28,6 @@ exports.login = [
                 role: user.role,
                 isLoggedIn: true,
             };
-            console.log(req.session.user);
 
             res.redirect(`${process.env.CLIENT_URL}/Home`);
         } catch (error) {
@@ -56,6 +55,5 @@ exports.protectedRoute = (req, res, next) => {
 exports.getUser = async (req, res) => {
     // console.log(req.session.user);
     const user = req.session.user;
-    console.log(user);
     res.json(req.session.user);
 }
