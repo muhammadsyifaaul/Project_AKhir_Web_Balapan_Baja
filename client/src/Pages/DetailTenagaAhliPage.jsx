@@ -1,8 +1,11 @@
+import { useParams } from "react-router-dom";
+import DetailTenagaAhli from "../components/TenagaAhli/DetailTenagaAhli";
+
 export default function DetailTenagaAhliPage() {
+    const { _id } = useParams(); 
     return (
         <div>
-            <h1>Detail Tenaga Ahli Page</h1>
-            {/* Add your page content here */}
+            <DetailTenagaAhli _id={_id} />
         </div>
     );
 }

@@ -42,7 +42,7 @@ export default function DetailPaket({idPaket}) {
                     <h1>{paket.alamatPenyedia}</h1>
                     <h1>{paket.jenis}</h1>
                     <h1>{paket.nilaiKontrak.toLocaleString('id-ID', { style: 'currency', currency: 'IDR' })}</h1>
-                    {paket.namaTenagaAhli && <h1>{paket.namaTenagaAhli}</h1>}
+                    {paket.tenagaAhli && <h1>{paket.tenagaAhli}</h1>}
                 </>
             ) : (
                 <h2>Loading...</h2>

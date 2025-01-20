@@ -12,7 +12,8 @@ const paketSchema = new mongoose.Schema({
     jenis: String,
     alamatPenyedia: String,
     nilaiKontrak: Number,
-    namaTenagaAhli: String,
+    tenagaAhli: String,
+    idTenagaAhli: String
 })
 
 const Paket = mongoose.model("Paket", paketSchema);

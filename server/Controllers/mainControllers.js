@@ -51,7 +51,8 @@ exports.cekTenagaAhli = async (req, res) => {
   exports.tambahDataPaket = async (req, res) => {
     const {
         opd, namaPekerjaan, mulaiKontrak, selesaiKontrak, jangkaWaktu,
-        nomorKontrak, nilaiKontrak, namaTenagaAhli,
+        nomorKontrak, nilaiKontrak, tenagaAhli,
+        idTenagaAhli,
         npwpPenyedia, namaPenyedia, alamatPenyedia,
         skp, jenis
     } = req.body;
@@ -83,7 +84,8 @@ exports.cekTenagaAhli = async (req, res) => {
         };
 
         if (nilaiKontrak >= 200000000) {
-            paketData.namaTenagaAhli = namaTenagaAhli;
+            paketData.tenagaAhli = tenagaAhli;
+            paketData.idTenagaAhli = idTenagaAhli;
         }
         const paket = new Paket(paketData);
 
@@ -129,3 +131,25 @@ exports.getPaketById = async (req, res) => {
     console.log(paket);
     res.json(paket);
 }
+
+exports.tambahTenagaAhli = async (req, res) => {
+    const {
+        npwp, nama, alamat} = req.body;
+    const tenagaAhli = new TenagaAhli({ npwp, nama, alamat });
+    await tenagaAhli.save();
+    console.log("Data inserted successfully");
+    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    res.redirect(`${frontendUrl}/TenagaAhli`);
+}
+
+exports.getAllPaketTenagaAhli = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const paket = await Paket.find({ idTenagaAhli: id });
+        console.log(paket);
+        res.json(paket);
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        res.status(500).send("Server Error");
+    }
+};

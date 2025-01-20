@@ -14,6 +14,7 @@ export default function TambahData() {
     nilaiKontrak,
     dataPenyedia, 
     inputTenagaAhli,
+    idTenagaAhli,
     handleNilaiKontrak,
     handleInputTenagaAhli,
     cekNpwp,
@@ -131,12 +132,13 @@ export default function TambahData() {
             <label htmlFor="tenagaAhli">Tenaga Ahli</label>
             <input
               type="text"
-              name="namaTenagaAhli"
-              id="namaTenagaAhli"
+              name="tenagaAhli"
+              id="tenagaAhli"
               placeholder="NPWP atau Nama"
               onChange={(e) => handleInputTenagaAhli(e.target.value)}
               value={inputTenagaAhli}
             />
+            <input type="hidden" name="idTenagaAhli" id="idTenagaAhli" value={idTenagaAhli} />
             <button onClick={cekTenagaAhli} type="button">
               Cek
             </button>

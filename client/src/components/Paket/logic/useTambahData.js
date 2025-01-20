@@ -10,6 +10,7 @@ export const useTambahData = () => {
   const [nilaiKontrak, setNilaiKontrak] = useState(0);
   const [dataPenyedia, setDataPenyedia] = useState({});
   const [inputTenagaAhli, setInputTenagaAhli] = useState("");
+  const [idTenagaAhli, setIdTenagaAhli] = useState("");
 
   useEffect(() => {
     const fetchOpd = async () => {
@@ -73,6 +74,7 @@ export const useTambahData = () => {
         `http://localhost:5000/cekTenagaAhli?tenagaAhli=${inputTenagaAhli}`
       );
       setInputTenagaAhli(`${response.data.npwp} ${response.data.nama}`);
+      setIdTenagaAhli(response.data._id);
     } catch (error) {
       console.error("Error fetching data:", error);
     }
@@ -92,6 +94,7 @@ export const useTambahData = () => {
     setDataPenyedia({});
     setNilaiKontrak(false);
     setInputTenagaAhli("");
+    setIdTenagaAhli("");
   };
 
   return {
@@ -108,6 +111,7 @@ export const useTambahData = () => {
     dataPenyedia,
     cekNpwp,
     inputTenagaAhli,
+    idTenagaAhli,
     handleInputTenagaAhli,
     cekTenagaAhli,
     handleResetState,

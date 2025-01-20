@@ -3,8 +3,7 @@ const mongoose = require("mongoose");
 const tenagaAhliSchema = new mongoose.Schema({
     npwp: Number,
     nama: String,
-    alamat: String,
-    skp: Number
+    alamat: String
 })
 
 const TenagaAhli = mongoose.model("TenagaAhli", tenagaAhliSchema);
