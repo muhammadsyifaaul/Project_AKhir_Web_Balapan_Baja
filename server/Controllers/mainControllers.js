@@ -64,9 +64,9 @@ exports.cekTenagaAhli = async (req, res) => {
         if (!penyedia) {
             return res.status(404).json({ message: "Penyedia not found" });
         }
-        if (penyedia.skp - skp < 0) {
-            return res.status(400).json({ message: "Insufficient SKP for the provider" });
-        }
+        // if (penyedia.skp - skp < 0) {
+        //     return res.status(400).json({ message: "Insufficient SKP for the provider" });
+        // }
         const paketData = {
             opd: opd,
             namaPekerjaan: namaPekerjaan,
@@ -116,4 +116,16 @@ exports.tambahPenyedia = async (req, res) => {
     console.log("Data inserted successfully");
     const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
     res.redirect(`${frontendUrl}/Penyedia`);
+}
+exports.getPaketWithNpwp = async (req, res) => {
+    const npwp = req.params.npwp;
+    const paket = await Paket.find({ npwpPenyedia: npwp });
+    console.log(paket);
+    res.json(paket);
+}
+exports.getPaketById = async (req, res) => {
+    const id = req.params.id;
+    const paket = await Paket.findById(id);
+    console.log(paket);
+    res.json(paket);
 }

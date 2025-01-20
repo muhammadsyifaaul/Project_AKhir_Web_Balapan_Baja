@@ -30,7 +30,6 @@ export default function PaketList({
     );
   }
   
-  // Fungsi Format Tanggal
   function formatTanggal(tanggalString) {
     const tanggal = new Date(tanggalString); 
     return tanggal.toLocaleDateString("id-ID", {

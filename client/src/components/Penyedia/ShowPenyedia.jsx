@@ -2,10 +2,12 @@ import Penyedia from "./Penyedia";
 import { useState, useEffect } from "react";
 import FormTambahPenyedia from "./FormTambahPenyedia";
 import "./Penyedia.css";
+import ListPaket from "./ListPaket";
 
 export default function ShowPenyedia() {
   const [penyedias, setPenyedias] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [paket, setPaket] = useState([]);
 
   const handleOpenForm = (e) => {
     e.preventDefault();
@@ -29,6 +31,27 @@ export default function ShowPenyedia() {
   useEffect(() => {
     handlePenyediaAdded();
   }, []);
+  function formatTanggal(tanggalString) {
+    const tanggal = new Date(tanggalString); 
+    return tanggal.toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+  }
+  useEffect(() => {
+    const fetchPaket = async () => {
+      try {
+        const response = await fetch("http://localhost:5000/getAllPaket");
+        const data = await response.json();
+        setPaket(data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
+    fetchPaket();
+  }, []);
+
 
   return (
     <div className="penyedia-container">
@@ -43,6 +66,7 @@ export default function ShowPenyedia() {
           onPenyediaAdded={handlePenyediaAdded}
         />
       )}
+      
     </div>
   );
 }

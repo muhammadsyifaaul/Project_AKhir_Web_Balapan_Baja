@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config();
 const authController = require('../Controllers/authControllers');
-const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket, tambahPenyedia } = require('../Controllers/mainControllers');
+const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket, tambahPenyedia, getPaketWithNpwp, getPaketById } = require('../Controllers/mainControllers');
 
 router.get('/Home', authController.protectedRoute, (req, res) => {
     res.redirect('/Home');
@@ -18,7 +18,9 @@ router.get('/DataPaket', authController.protectedRoute, (req, res) => {
 });
 router.get('/getAllOpd',getAllOpd);
 router.get('/cekNpwp/:npwp',cekNpwp);
-router.get('/getAllPaket',getAllPaket)
+router.get('/getAllPaket',getAllPaket);
+router.get('/getPenyedia/:npwp',getPaketWithNpwp);
+router.get('/getPaketById/:id',getPaketById)
 
 router.get('/Penyedia', authController.protectedRoute, (req, res) => {
     res.redirect('/Penyedia');

@@ -9,6 +9,7 @@ const paketSchema = new mongoose.Schema({
     nomorKontrak: Number,
     npwpPenyedia: Number,
     namaPenyedia: String,
+    jenis: String,
     alamatPenyedia: String,
     nilaiKontrak: Number,
     namaTenagaAhli: String,

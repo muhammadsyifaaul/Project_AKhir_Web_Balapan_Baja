@@ -55,6 +55,14 @@ const App = () => {
           }
         />
         <Route
+          path="/Penyedia/:npwp"
+          element={
+            <ProtectedRoute>
+              <DetailPenyediaPage />
+            </ProtectedRoute>
+          }
+        />
+        <Route
           path="/TenagaAhli"
           element={
             <ProtectedRoute>
@@ -62,14 +70,7 @@ const App = () => {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/DetailPenyedia"
-          element={
-            <ProtectedRoute>
-              <DetailPenyediaPage />
-            </ProtectedRoute>
-          }
-        />
+
         <Route
           path="/DetailTenagaAhli"
           element={
@@ -79,7 +80,7 @@ const App = () => {
           }
         />
         <Route
-          path="/DetailPaket"
+          path="/DetailPaket/:id"
           element={
             <ProtectedRoute>
               <DetailPaketPage />
