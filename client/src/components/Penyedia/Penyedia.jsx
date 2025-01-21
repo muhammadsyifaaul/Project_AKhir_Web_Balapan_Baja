@@ -13,7 +13,6 @@ export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEd
       <button onClick={onEdit}>Edit</button>
       <button onClick={() => onDelete(_id)}>Hapus</button> 
       <a href={`/Penyedia/${npwp}`}>Details</a>
-      {console.log(`ini id nya ${_id}`)}
     </div>
   );
 }
