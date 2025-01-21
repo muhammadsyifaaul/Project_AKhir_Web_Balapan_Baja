@@ -1,24 +1,25 @@
+import React, { useState, useEffect } from "react";
 import Penyedia from "./Penyedia";
-import { useState, useEffect } from "react";
-import FormTambahPenyedia from "./FormTambahPenyedia";
+import FormPenyedia from "./FormPenyedia";
 import "./Penyedia.css";
-
+import axios from "axios";
 
 export default function ShowPenyedia() {
   const [penyedias, setPenyedias] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [paket, setPaket] = useState([]);
+  const [selectedPenyedia, setSelectedPenyedia] = useState(null);
 
-  const handleOpenForm = (e) => {
-    e.preventDefault();
+  const handleOpenForm = (penyedia = null) => {
+    setSelectedPenyedia(penyedia);
     setIsFormOpen(true);
   };
+
   const handleCloseForm = () => {
-    console.log("Closing form");
     setIsFormOpen(false);
+    setSelectedPenyedia(null);
   };
 
-  const handlePenyediaAdded = async () => {
+  const handlePenyediaAddedOrUpdated = async () => {
     try {
       const response = await fetch("http://localhost:5000/getPenyedia");
       const data = await response.json();
@@ -28,45 +29,42 @@ export default function ShowPenyedia() {
     }
   };
 
-  useEffect(() => {
-    handlePenyediaAdded();
-  }, []);
-  function formatTanggal(tanggalString) {
-    const tanggal = new Date(tanggalString); 
-    return tanggal.toLocaleDateString("id-ID", {
-      day: "2-digit",
-      month: "long",
-      year: "numeric",
-    });
-  }
-  useEffect(() => {
-    const fetchPaket = async () => {
-      try {
-        const response = await fetch("http://localhost:5000/getAllPaket");
-        const data = await response.json();
-        setPaket(data);
-      } catch (error) {
-        console.error("Error fetching data:", error);
+  const handleDeletePenyedia = async (id) => {
+    try {
+      if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+        await axios.delete(`http://localhost:5000/deletePenyedia/${id}`);
+        setPenyedias((prev) => prev.filter((penyedia) => penyedia._id !== id)); 
+        alert("Data berhasil dihapus");
       }
-    };
-    fetchPaket();
-  }, []);
+    } catch (error) {
+      console.error("Error deleting penyedia:", error);
+      alert("Gagal menghapus data");
+    }
+  };
 
+  useEffect(() => {
+    handlePenyediaAddedOrUpdated();
+  }, []);
 
   return (
     <div className="penyedia-container">
-      <button onClick={handleOpenForm}>Tambah Penyedia</button>
+      <button onClick={() => handleOpenForm()}>Tambah Penyedia</button>
       {penyedias.map((penyedia) => (
-        <Penyedia key={penyedia._id} {...penyedia} />
+        <Penyedia
+          key={penyedia._id}
+          {...penyedia}
+          onEdit={() => handleOpenForm(penyedia)}
+          onDelete={handleDeletePenyedia}
+        />
       ))}
 
       {isFormOpen && (
-        <FormTambahPenyedia
+        <FormPenyedia
           onClose={handleCloseForm}
-          onPenyediaAdded={handlePenyediaAdded}
+          onPenyediaAddedOrUpdated={handlePenyediaAddedOrUpdated}
+          initialData={selectedPenyedia}
         />
       )}
-      
     </div>
   );
 }

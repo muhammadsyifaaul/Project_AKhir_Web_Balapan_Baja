@@ -11,25 +11,39 @@ input[type="number"] {
 .penyedia-container {
     position: relative;
 }
-
 .form-tambah-penyedia-overlay {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
     display: flex;
-    align-items: center;
     justify-content: center;
-    z-index: 1000; 
+    align-items: center;
   }
   
   .form-tambah-penyedia {
-    background-color: white;
+    background: white;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    min-width: 300px;
+    width: 400px;
+  }
+  
+  .form-tambah-penyedia form {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .form-tambah-penyedia input,
+  .form-tambah-penyedia select {
+    margin-bottom: 10px;
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  button {
+    padding: 10px;
+    font-size: 16px;
   }
   

@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config();
 const authController = require('../Controllers/authControllers');
-const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket, tambahPenyedia, getPaketWithNpwp, getPaketById, tambahTenagaAhli, getAllPaketTenagaAhli } = require('../Controllers/mainControllers');
+const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket, tambahPenyedia, getPaketWithNpwp, getPaketById, tambahTenagaAhli, getAllPaketTenagaAhli, addUser, deleteUser, updateUser, editPenyedia, deletePenyedia } = require('../Controllers/mainControllers');
 
 router.get('/Home', authController.protectedRoute, (req, res) => {
     res.redirect('/Home');
@@ -37,6 +37,12 @@ router.get('/KelolaUser', authController.protectedRoute, (req, res) => {
 router.post('/TambahDataPaket',tambahDataPaket);
 router.post('/TambahPenyedia',tambahPenyedia);
 router.post('/TambahTenagaAhli',tambahTenagaAhli);
+router.post('/addUser',addUser)
+router.delete('/deleteUser/:id',deleteUser)
+router.put('/updateUser/:id',updateUser)
+router.put('/editPenyedia/:id',editPenyedia)
+router.delete('/deletePenyedia/:id', deletePenyedia);
+
 
 
 

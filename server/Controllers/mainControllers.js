@@ -3,6 +3,8 @@ const TenagaAhli = require("../Models/TenagaAhli");
 const User = require("../Models/User");
 const Opd = require("../Models/Opd");
 const Paket = require("../Models/Paket");
+
+const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
 exports.getPenyedia = async (req, res) => {
     const penyedia = await Penyedia.find();
     console.log(penyedia);
@@ -97,7 +99,7 @@ exports.cekTenagaAhli = async (req, res) => {
             ),
         ]);
         console.log("Data inserted successfully");
-        const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+        // const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
         res.redirect(`${frontendUrl}/DataPaket`);
     } catch (error) {
         console.error("Error while inserting data:", error);
@@ -116,7 +118,7 @@ exports.tambahPenyedia = async (req, res) => {
     const penyedia = new Penyedia({ npwp, nama, alamat, skp, jenis });
     await penyedia.save();
     console.log("Data inserted successfully");
-    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+    // const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
     res.redirect(`${frontendUrl}/Penyedia`);
 }
 exports.getPaketWithNpwp = async (req, res) => {
@@ -138,7 +140,7 @@ exports.tambahTenagaAhli = async (req, res) => {
     const tenagaAhli = new TenagaAhli({ npwp, nama, alamat });
     await tenagaAhli.save();
     console.log("Data inserted successfully");
-    const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
+
     res.redirect(`${frontendUrl}/TenagaAhli`);
 }
 
@@ -158,3 +160,93 @@ exports.getAllPaketTenagaAhli = async (req, res) => {
     }
 };
 
+exports.addUser = async (req, res) => {
+    const { username, name, password, role } = req.body;
+
+    try {
+        const checkUser = await User.findOne({ username });
+        if (checkUser) {
+            return res.status(400).json({ message: "User already exists" });
+        }
+
+        const user = new User({ username, name, password, role });
+        await user.save();
+        res.status(200).json({ message: "User added successfully" });
+    } catch (error) {
+        console.error("Error adding user:", error);
+        res.status(500).json({ message: "Error adding user" });
+    }
+};
+
+exports.deleteUser = async (req, res) => {
+    const id = req.params.id;
+    try {
+        const deletedUser = await User.findByIdAndDelete(id);
+        if (!deletedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json({ message: "User deleted successfully" });
+    } catch (error) {
+        console.error("Error deleting user:", error);
+        res.status(500).json({ message: "Error deleting user" });
+    }
+}
+
+exports.updateUser = async (req, res) => {
+    const id = req.params.id;
+    const { username, name, password, role } = req.body;
+
+    try {
+        const updatedUser = await User.findByIdAndUpdate(id, { username, name, password, role }, { new: true });
+        if (!updatedUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
+        res.status(200).json({ message: "User updated successfully" });
+    } catch (error) {
+        console.error("Error updating user:", error);
+        res.status(500).json({ message: "Error updating user" });
+    }
+}
+
+exports.editPenyedia = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const updatedData = req.body;
+        console.log(updatedData);
+        console.log(id);
+        if (!id || !updatedData) {
+            return res.status(400).send("ID atau data penyedia tidak valid.");
+        }
+
+        const penyedia = await Penyedia.findByIdAndUpdate(
+            id,
+            { $set: updatedData },
+            { new: true, runValidators: true } 
+        );
+
+        if (!penyedia) {
+            return res.status(404).send("Penyedia tidak ditemukan.");
+        }
+
+        res.status(200).send({ message: "Penyedia berhasil diperbarui", penyedia });
+    } catch (error) {
+        res.status(500).send({ error: "Error updating penyedia", details: error.message });
+    }
+};
+
+exports.deletePenyedia = async (req, res) => {
+    try {
+        const id = req.params.id;
+        if (!id) {
+            return res.status(400).send("ID tidak valid.");
+        }
+        const penyedia = await Penyedia.findByIdAndDelete(id);
+
+        if (!penyedia) {
+            return res.status(404).send("Penyedia tidak ditemukan.");
+        }
+        res.status(200).send({ message: "Penyedia berhasil dihapus" });
+    } catch (error) {
+        res.status(500).send({ error: "Gagal menghapus penyedia", details: error.message });
+    }
+};
