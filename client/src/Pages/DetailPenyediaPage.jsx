@@ -2,6 +2,7 @@ import { useEffect,useState } from "react";
 import { useParams } from "react-router-dom";
 
 import PaketList from "../components/Paket/PaketList";
+import MainContainer from "../components/MainLayout";
 
 export default function DetailPenyediaPage() {
     const { npwp } = useParams();
@@ -22,6 +23,7 @@ export default function DetailPenyediaPage() {
   
     return (
       <div>
+        <MainContainer>
         <h1>List Paket</h1>
         {penyedias.length > 0 ? (
           penyedias.map((penyedia, index) => (
@@ -39,6 +41,7 @@ export default function DetailPenyediaPage() {
         ) : (
           <p>No Data Avaible</p>
         )}
+        </MainContainer>
       </div>
     );
   }
