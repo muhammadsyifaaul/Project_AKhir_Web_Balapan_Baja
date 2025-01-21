@@ -7,6 +7,7 @@ import "./TenagaAhli.css";
 export default function ShowTenagaAhli() {
   const [tenagaAhli, setTenagaAhli] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
+  const [selectedTenagaAhli, setSelectedTenagaAhli] = useState(null);
 
   const fetchTenagaAhli = async () => {
     try {
@@ -17,23 +18,55 @@ export default function ShowTenagaAhli() {
     }
   };
 
+  const handleOpenFormForEdit = (tenagaAhli = null) => {
+    setSelectedTenagaAhli(tenagaAhli);
+    setIsFormOpen(true);
+  };
+
+  const handleCloseForm = () => {
+    setIsFormOpen(false);
+    setSelectedTenagaAhli(null);
+  };
+
+  const handleDeleteTenagaAhli = async (id) => {
+
+      try {
+        if(window.confirm("Apakah Anda yakin ingin menghapus data ini?")){
+          await axios.delete(`http://localhost:5000/deleteTenagaAhli/${id}`);
+          fetchTenagaAhli();
+          alert("Data berhasil dihapus");
+        }
+      } catch (error) {
+        console.error("Error deleting tenaga ahli:", error);
+      }
+
+    
+  };
+
   useEffect(() => {
     fetchTenagaAhli();
   }, []);
 
   return (
     <div>
-      <button onClick={() => setIsFormOpen(true)}>Tambah Tenaga Ahli</button>
+      <button onClick={() => handleOpenFormForEdit()}>Tambah Tenaga Ahli</button>
 
       {isFormOpen && (
         <FormTambahTenagaAhli
-          onClose={() => setIsFormOpen(false)}
-          onPenyediaAdded={fetchTenagaAhli}
+          onClose={handleCloseForm}
+          onTenagaAhliUpdated={fetchTenagaAhli}
+          initialData={selectedTenagaAhli}
         />
       )}
 
-      {tenagaAhli.map((tenagaAhli, index) => (
-        <TenagaAhli key={tenagaAhli._id} no={index + 1} {...tenagaAhli} />
+      {tenagaAhli.map((tenaga, index) => (
+        <TenagaAhli
+          key={tenaga._id}
+          no={index + 1}
+          {...tenaga}
+          onEdit={() => handleOpenFormForEdit(tenaga)}
+          onDelete={() => handleDeleteTenagaAhli(tenaga._id)}
+        />
       ))}
     </div>
   );
