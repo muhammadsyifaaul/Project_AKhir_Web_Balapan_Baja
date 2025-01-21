@@ -23,6 +23,7 @@
   "dependencies": {
     "bourbon": "^7.3.0",
     "dotenv": "^16.4.7",
+    "project_akhir_web_balapan_baja": "file:",
     "sass": "^1.83.3"
   },
   "devDependencies": {

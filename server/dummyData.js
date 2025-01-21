@@ -42,7 +42,7 @@ const seedUsers = async () => {
     }
 };
 
-seedUsers();
+// seedUsers();
 const Penyedia = require("./Models/Penyedia");
 const Opd = require("./Models/Opd");
 const TenagaAhli = require("./Models/TenagaAhli");
@@ -78,9 +78,9 @@ const dummyTenagaAhli = [
 ]
 const seedData = async () => {
     try {
-        await TenagaAhli.deleteMany();
-        for (const tenagaAhli of dummyTenagaAhli) {
-            await TenagaAhli.create(tenagaAhli);
+        await Penyedia.deleteMany();
+        for (const penyedia of dummyPenyedia) {
+            await Opd.create(penyedia);
         }
 
         console.log("Data inserted successfully");
@@ -113,4 +113,4 @@ const dummyPaket = [
 ];
 
 
-// seedData();
+seedData();
