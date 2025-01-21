@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 require('dotenv').config();
 const authController = require('../Controllers/authControllers');
-const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket, tambahPenyedia, getPaketWithNpwp, getPaketById, tambahTenagaAhli, getAllPaketTenagaAhli, addUser, deleteUser, updateUser, editPenyedia, deletePenyedia, updateTenagaAhli, deleteTenagaAhli } = require('../Controllers/mainControllers');
+const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket, tambahPenyedia, getPaketWithNpwp, getPaketById, tambahTenagaAhli, getAllPaketTenagaAhli, addUser, deleteUser, updateUser, editPenyedia, deletePenyedia, updateTenagaAhli, deleteTenagaAhli, deletePaket } = require('../Controllers/mainControllers');
 
 router.get('/Home', authController.protectedRoute, (req, res) => {
     res.redirect('/Home');
@@ -44,6 +44,7 @@ router.put('/editPenyedia/:id',editPenyedia)
 router.delete('/deletePenyedia/:id', deletePenyedia);
 router.put("/updateTenagaAhli/:id", updateTenagaAhli);
 router.delete("/deleteTenagaAhli/:id",deleteTenagaAhli);
+router.delete("/deletePaket/:id",deletePaket);
 
 
 

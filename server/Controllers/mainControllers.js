@@ -7,18 +7,15 @@ const Paket = require("../Models/Paket");
 const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
 exports.getPenyedia = async (req, res) => {
   const penyedia = await Penyedia.find();
-  console.log(penyedia);
   res.json(penyedia);
 };
 
 exports.getTenagaAhli = async (req, res) => {
   const tenagaAhli = await TenagaAhli.find();
-  console.log(tenagaAhli);
   res.json(tenagaAhli);
 };
 exports.getAllUser = async (req, res) => {
   const user = await User.find();
-  console.log(user);
   res.json(user);
 };
 
@@ -29,7 +26,6 @@ exports.getAllOpd = async (req, res) => {
 exports.cekNpwp = async (req, res) => {
   const npwp = req.params.npwp;
   const penyedia = await Penyedia.findOne({ npwp: npwp });
-  console.log(penyedia);
   res.json(penyedia);
 };
 
@@ -38,11 +34,9 @@ exports.cekTenagaAhli = async (req, res) => {
   const filter = {};
   if (npwp) filter.npwp = npwp;
   if (nama) filter.nama = nama;
-  console.log(filter);
 
   try {
     const tenagaAhli = await TenagaAhli.findOne(filter);
-    console.log(tenagaAhli);
     res.json(tenagaAhli);
   } catch (error) {
     console.error("Error fetching tenaga ahli data:", error);
@@ -118,7 +112,6 @@ exports.tambahDataPaket = async (req, res) => {
 
 exports.getAllPaket = async (req, res) => {
   const paket = await Paket.find();
-  console.log(paket);
   res.json(paket);
 };
 exports.tambahPenyedia = async (req, res) => {
@@ -132,13 +125,11 @@ exports.tambahPenyedia = async (req, res) => {
 exports.getPaketWithNpwp = async (req, res) => {
   const npwp = req.params.npwp;
   const paket = await Paket.find({ npwpPenyedia: npwp });
-  console.log(paket);
   res.json(paket);
 };
 exports.getPaketById = async (req, res) => {
   const id = req.params.id;
   const paket = await Paket.findById(id);
-  console.log(paket);
   res.json(paket);
 };
 
@@ -153,13 +144,11 @@ exports.tambahTenagaAhli = async (req, res) => {
 
 exports.getAllPaketTenagaAhli = async (req, res) => {
   const id = req.params.id;
-  console.log(`idnya adalah ${id}`);
   try {
     const paket = await Paket.find({ idTenagaAhli: id });
     if (paket.length === 0) {
       return res.status(404).json({ message: "Belum ada data paket" });
     }
-    console.log(paket);
     res.json(paket);
   } catch (error) {
     console.error("Error fetching data:", error);
@@ -223,8 +212,6 @@ exports.editPenyedia = async (req, res) => {
   try {
     const id = req.params.id;
     const updatedData = req.body;
-    console.log(updatedData);
-    console.log(id);
     if (!id || !updatedData) {
       return res.status(400).send("ID atau data penyedia tidak valid.");
     }
@@ -291,3 +278,12 @@ exports.deleteTenagaAhli = async (req, res) => {
     res.status(500).send({ error: error.message });
   }
 };
+exports.deletePaket = async (req, res) => {
+  try {
+    const id = req.params.id;
+    await Paket.findByIdAndDelete(id);
+    res.status(200).send({ message: "Data berhasil dihapus" });
+  } catch (error) {
+    res.status(500).send({ error: error.message });
+  }
+}

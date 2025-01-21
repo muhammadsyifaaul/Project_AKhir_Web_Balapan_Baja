@@ -5,7 +5,6 @@ export default function Header() {
   const [currentTime, setCurrentTime] = useState("");
 
   useEffect(() => {
-    // Mendapatkan waktu saat ini ketika komponen dimuat
     const now = new Date();
     const formattedTime = now.toLocaleTimeString("id-ID", {
       hour: "2-digit",
