@@ -1,11 +1,11 @@
 /* General Reset and Base Styles */
-* {
+#Paket-form {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  body {
+  #Paket-form body {
     font-family: 'Arial', sans-serif;
     background-color: #f4f7fc;
     color: #333;
@@ -13,14 +13,14 @@
     padding: 20px;
   }
   
-  h1 {
+  #Paket-form h1 {
     font-size: 2rem;
     color: #333;
     margin-bottom: 20px;
   }
   
   /* Button Styles */
-  button {
+  #Paket-form button {
     font-size: 1rem;
     background-color: #007bff;
     padding: 10px 15px;
@@ -31,52 +31,49 @@
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
   
-  button:hover {
+  #Paket-form button:hover {
     transform: scale(1.05);
   }
   
-  button:focus {
+  #Paket-form button:focus {
     outline: none;
   }
   
-  button.detail {
-    background-color: #28a745;
+  /* Detail and Delete Buttons */
+  #Paket-form button.detail {
+    background-color: #007bff; /* Warna biru */
     color: white;
-    display: flex;
-    align-items: center;
   }
   
-  button.detail:hover {
-    background-color: #218838;
+  #Paket-form button.detail:hover {
+    background-color: #0056b3; /* Biru lebih gelap saat hover */
   }
   
-  button.delete {
-    background-color: #dc3545;
+  #Paket-form button.delete {
+    background-color: #007bff; /* Warna biru */
     color: white;
-    display: flex;
-    align-items: center;
   }
   
-  button.delete:hover {
-    background-color: #c82333;
+  #Paket-form button.delete:hover {
+    background-color: #0056b3; /* Biru lebih gelap saat hover */
   }
   
-  button i {
+  #Paket-form button i {
     margin-right: 5px;
   }
   
   /* Filter and Search Styles */
-  div {
+  #Paket-form div {
     margin-bottom: 20px;
   }
   
-  label {
+  #Paket-form label {
     font-size: 1rem;
     margin-right: 10px;
   }
   
-  select,
-  input[type="text"] {
+  #Paket-form select,
+  #Paket-form input[type="text"] {
     padding: 8px;
     font-size: 1rem;
     border-radius: 4px;
@@ -84,17 +81,17 @@
     width: 200px;
   }
   
-  input[type="text"] {
+  #Paket-form input[type="text"] {
     width: 250px;
   }
   
-  select:focus,
-  input[type="text"]:focus {
+  #Paket-form select:focus,
+  #Paket-form input[type="text"]:focus {
     border-color: #007bff;
   }
   
   /* Table Styles */
-  table {
+  #Paket-form table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
@@ -103,60 +100,97 @@
     overflow: hidden;
   }
   
-  table td {
+  #Paket-form table th {
+    background-color: #ea0707; /* Warna header */
+    color: white;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  #Paket-form table td {
     padding: 12px;
     text-align: center;
     border-bottom: 1px solid #ddd;
-  }
-  
-  table th {
-    background-color: #ea0707; /* Darker Header Color */
-    color: rgb(6, 3, 3);
-    font-weight: bold;
-  }
-  
-  table tr:nth-child(even) {
-    background-color: #f1f1f1; /* Light Gray for Even Rows */
-  }
-  
-  table tr:nth-child(odd) {
-    background-color: #f9f9f9; /* White for Odd Rows */
-  }
-  
-  table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  table td {
     color: #555;
   }
   
+  #Paket-form table tr:nth-child(even) {
+    background-color: #f1f1f1; /* Warna abu-abu muda untuk baris genap */
+  }
+  
+  #Paket-form table tr:nth-child(odd) {
+    background-color: #ffffff; /* Warna putih untuk baris ganjil */
+  }
+  
+  #Paket-form table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
   /* Pagination Styles */
-  div.pagination {
+  #Paket-form div.pagination {
     margin-top: 20px;
     display: flex;
     gap: 10px;
     justify-content: center;
   }
   
-  button.pagination-btn {
+  #Paket-form button.pagination-btn {
     padding: 5px 10px;
     background-color: #007bff;
     color: white;
     border: none;
     border-radius: 4px;
+    cursor: pointer;
   }
   
-  button.pagination-btn:hover {
+  #Paket-form button.pagination-btn:hover {
     background-color: #0056b3;
   }
   
-  button.pagination-btn:focus {
+  #Paket-form button.pagination-btn:focus {
     outline: none;
   }
   
-  button.pagination-btn.active {
+  #Paket-form button.pagination-btn.active {
     background-color: #0056b3;
     font-weight: bold;
+  }
+  #Paket-form .btn-tambah {
+    padding: 8px 16px;
+    font-size: 14px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  #Paket-form .btn-tambah:hover {
+    background-color: #0056b3;
+  }
+  #Paket-form .pagination {
+    margin-top: 20px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+  
+  #Paket-form .pagination-btn {
+    padding: 6px 12px; /* Ukuran lebih kecil */
+    font-size: 12px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  #Paket-form .pagination-btn.active {
+    background-color: #0056b3;
+    font-weight: bold;
+  }
+  
+  #Paket-form .pagination-btn:hover {
+    background-color: #0056b3;
   }
   
