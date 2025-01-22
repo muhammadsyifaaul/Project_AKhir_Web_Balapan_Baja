@@ -26,7 +26,11 @@ exports.getAllOpd = async (req, res) => {
 exports.cekNpwp = async (req, res) => {
   const npwp = req.params.npwp;
   const penyedia = await Penyedia.findOne({ npwp: npwp });
-  res.json(penyedia);
+  if (penyedia) {
+    res.json(penyedia);
+  } else {
+    res.status(404).json({ message: "Penyedia tidak ditemukan" });
+  }
 };
 
 exports.cekTenagaAhli = async (req, res) => {

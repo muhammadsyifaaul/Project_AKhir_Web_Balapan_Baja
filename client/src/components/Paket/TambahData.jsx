@@ -1,6 +1,6 @@
 import React from "react";
 import { useTambahData } from "./logic/useTambahData";
-import './TambahData.css';
+import "./TambahData.css";
 
 export default function TambahData() {
   const {
@@ -11,6 +11,7 @@ export default function TambahData() {
     jangkaWaktu,
     npwpPenyedia,
     setNpwpPenyedia,
+    errorNpwp,
     opd,
     nilaiKontrak,
     dataPenyedia,
@@ -44,17 +45,18 @@ export default function TambahData() {
 
         <div className="form-group">
           <label htmlFor="namaPekerjaan">Nama Pekerjaan</label>
-          <textarea 
-            name="namaPekerjaan" 
+          <textarea
+            name="namaPekerjaan"
             id="namaPekerjaan"
-            placeholder="Masukkan nama pekerjaan" rows="1"
+            placeholder="Masukkan nama pekerjaan"
+            rows="1"
           ></textarea>
         </div>
 
         <div className="form-group">
           <div className="date-inputs">
             <div className="date-group">
-            <label>Mulai Kontrak</label>
+              <label>Mulai Kontrak</label>
               <input
                 type="date"
                 name="mulaiKontrak"
@@ -65,9 +67,9 @@ export default function TambahData() {
                 placeholder="Tanggal Mulai Kontrak"
               />
             </div>
-            
+
             <div className="date-group">
-            <label>Selesai Kontrak</label>
+              <label>Selesai Kontrak</label>
               <input
                 type="date"
                 name="selesaiKontrak"
@@ -94,18 +96,18 @@ export default function TambahData() {
 
         <div className="form-group">
           <label htmlFor="nomorKontrak">Nomor Kontrak</label>
-          <input 
-            type="text" 
-            name="nomorKontrak" 
-            id="nomorKontrak" 
+          <input
+            type="text"
+            name="nomorKontrak"
+            id="nomorKontrak"
             placeholder="Masukkan nomor kontrak"
-            required 
+            required
           />
         </div>
 
         <div className="form-group">
           <label htmlFor="npwpPenyedia">NPWP Penyedia</label>
-          <div style={{ display: 'flex', flex: 1 }}>
+          <div style={{ display: "flex", flex: 1 }}>
             <input
               type="text"
               name="npwpPenyedia"
@@ -119,7 +121,11 @@ export default function TambahData() {
               Cek
             </button>
           </div>
+          
         </div>
+        {errorNpwp && (
+            <p className="errMsg">{errorNpwp}</p>
+          )}
 
         <div className="form-group">
           <label htmlFor="namaPenyedia">Nama Penyedia</label>
@@ -175,7 +181,7 @@ export default function TambahData() {
         {nilaiKontrak >= 200000000 && (
           <div className="form-group">
             <label htmlFor="tenagaAhli">Tenaga Ahli</label>
-            <div style={{ display: 'flex', flex: 1 }}>
+            <div style={{ display: "flex", flex: 1 }}>
               <input
                 type="text"
                 name="tenagaAhli"
@@ -184,11 +190,11 @@ export default function TambahData() {
                 onChange={(e) => handleInputTenagaAhli(e.target.value)}
                 value={inputTenagaAhli}
               />
-              <input 
-                type="hidden" 
-                name="idTenagaAhli" 
-                id="idTenagaAhli" 
-                value={idTenagaAhli} 
+              <input
+                type="hidden"
+                name="idTenagaAhli"
+                id="idTenagaAhli"
+                value={idTenagaAhli}
               />
               <button onClick={cekTenagaAhli} type="button">
                 Cek
