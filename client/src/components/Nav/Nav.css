@@ -17,64 +17,68 @@
 } */
 /* General nav styles */
 .nav {
-    display: flex;
-    flex-direction: column;
-    /* width: 250px; */
-    /* height: 100vh; */
-    width: 20%;
-    height: 100%;
-    background-color: #242c9c;
-    padding-top: 20px;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
-  }
-  
-  /* Logo and title section */
-  .nav-logo {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 30px;
-  }
-  
-  .nav-logo img {
-    height: 80px;
-    width: 80px;
-    margin-bottom: 10px;
-    border-radius: 50%;
-    background: #fff;
-    padding: 5px;
-  }
-  
-  .nav-logo h1 {
-    font-size: 1em;
-    color: #ffffff;
-    font-weight: bold;
-    text-align: center;
-  }
-  
-  /* Menu section */
-  .nav-menu ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .nav-menu ul li {
-    margin-bottom: 20px;
-  }
-  
-  .nav-menu ul li a {
-    text-decoration: none;
-    font-size: 1em;
-    color: rgb(255, 255, 255);
-    display: block;
-    padding: 10px;
-    transition: all 0.3s ease;
-    border-radius: 5px;
-  }
-  
-  .nav-menu ul li a:hover {
-    background-color: #ff5733;
-    color: white;
-  }
-  
+  display: flex;
+  flex-direction: column;
+  /* width: 250px; */
+  /* height: 100vh; */
+  width: 20%;
+  height: 100%;
+  background-color: #242c9c;
+  padding-top: 20px;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Logo and title section */
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.nav-logo img {
+  height: 80px;
+  width: 80px;
+  margin-bottom: 10px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 5px;
+}
+
+.nav-logo h1 {
+  font-size: 1em;
+  color: #ffffff;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Menu section */
+.nav-menu ul {
+  list-style: none;
+  padding: 0;
+}
+
+.nav-menu ul li {
+  margin-bottom: 20px;
+}
+
+.nav-menu ul li a {
+  text-decoration: none;
+  font-size: 1em;
+  color: rgb(255, 255, 255);
+  display: block;
+  padding: 10px;
+  transition: all 0.3s ease;
+  border-radius: 5px;
+}
+
+.nav-menu ul li a img {
+  width: 1.6rem;
+  margin-right: 0.5rem;
+}
+
+.nav-menu ul li a:hover {
+  background-color: #ff5733;
+  color: white;
+}
