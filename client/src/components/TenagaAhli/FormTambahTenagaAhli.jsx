@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../Penyedia/FormPenyedia.css";
 
 export default function FormTambahTenagaAhli({
   onClose,
@@ -43,6 +44,7 @@ export default function FormTambahTenagaAhli({
       <div className="form-box">
         <h1>{initialData ? "Edit Tenaga Ahli" : "Tambah Tenaga Ahli"}</h1>
         <form onSubmit={handleSubmit}>
+          <div className="form-bundle">
           <label htmlFor="npwp">NPWP</label>
           <input
             type="text"
@@ -52,6 +54,8 @@ export default function FormTambahTenagaAhli({
             placeholder="NPWP"
             required
           />
+          </div>
+          <div className="form-bundle">
           <label htmlFor="nama">Nama</label>
           <input
             type="text"
@@ -61,6 +65,8 @@ export default function FormTambahTenagaAhli({
             placeholder="Nama"
             required
           />
+          </div>
+          <div className="form-bundle">
           <label htmlFor="alamat">Alamat</label>
           <input
             type="text"
@@ -70,10 +76,13 @@ export default function FormTambahTenagaAhli({
             placeholder="Alamat"
             required
           />
+          </div>
+          <div className="button">
           <button type="submit">Simpan</button>
           <button type="button" onClick={onClose}>
             Kembali
           </button>
+          </div>
         </form>
       </div>
     </div>
