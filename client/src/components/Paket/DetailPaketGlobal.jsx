@@ -24,7 +24,7 @@ export default function DetailPaketGlobal({no,opd,namaPekerjaan,mulaiKontrak,sel
                         <h1>{jenis}</h1>
                         <h1>{nilaiKontrak}</h1>
                         {tenagaAhli ? <h1>{tenagaAhli}</h1> : null} */}
-                        <MainContainer>
+
                         <TambahData 
                         opdFromDetail={opd}
                         namaPekerjaanFromDetail={namaPekerjaan}
@@ -40,7 +40,7 @@ export default function DetailPaketGlobal({no,opd,namaPekerjaan,mulaiKontrak,sel
                         tenagaAhliFromDetail={tenagaAhli}
                         isFromDetail={true}
                         />
-                        </MainContainer>
+
         </div>
     )
 }
