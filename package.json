@@ -23,6 +23,7 @@
   "dependencies": {
     "bourbon": "^7.3.0",
     "dotenv": "^16.4.7",
+    "react-icons": "^5.4.0",
     "sass": "^1.83.3"
   },
   "devDependencies": {
