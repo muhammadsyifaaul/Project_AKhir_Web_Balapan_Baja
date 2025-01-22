@@ -28,7 +28,7 @@ export default function Header() {
       </div>
       <div className="access-date">
         <p>Akses Terakhir: {currentTime}</p>
-        <img src="icon.png" alt="Icon" />
+        <img src="/images/exit.png" alt="Icon exit" />
       </div>
     </div>
   );

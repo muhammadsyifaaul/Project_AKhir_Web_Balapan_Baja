@@ -27,9 +27,10 @@ export default function DetailPaket({idPaket}) {
     
     return (
         <div>
-            <h1>Detail Paket</h1>
+   
             {paket.opd ? (
                 <>
+          
                     <DetailPaketGlobal {...paket} />
                 </>
             ) : (

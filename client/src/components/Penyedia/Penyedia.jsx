@@ -3,17 +3,24 @@ import "./Penyedia.css";
 
 export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEdit, onDelete }) {
   return (
-    <div className="penyedia-card">
-      <h2>No: {no}</h2>
-      <h2>Nama: {nama}</h2>
-      <p>NPWP: {npwp}</p>
-      <p>Alamat: {alamat}</p>
-      <p>SKP: {skp}</p>
-      <p>Jenis: {jenis}</p>
-      <button onClick={onEdit}>Edit</button>
-      <button onClick={() => onDelete(_id)}>Hapus</button> 
-      <a href={`/Penyedia/${npwp}`}>Details</a>
-    </div>
+    <tr className="penyedia-row">
+      <td>{no}</td>
+      <td>{nama}</td>
+      <td>{npwp}</td>
+      <td>{alamat}</td>
+      <td>{skp}</td>
+      <td>{jenis}</td>
+      <td>
+        <button onClick={onEdit} title="Edit">
+          <i className="fas fa-edit"></i> {/* Ikon Edit */}
+        </button>
+        <button onClick={() => onDelete(_id)} title="Hapus">
+          <i className="fas fa-trash-alt"></i> {/* Ikon Hapus */}
+        </button>
+        <a href={`/Penyedia/${npwp}`} title="Details">
+          <i className="fas fa-info-circle"></i> {/* Ikon Details */}
+        </a>
+      </td>
+    </tr>
   );
 }
-

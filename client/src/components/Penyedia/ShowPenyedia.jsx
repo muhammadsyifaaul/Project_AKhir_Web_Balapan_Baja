@@ -74,6 +74,10 @@ export default function ShowPenyedia() {
 
   return (
     <div className="penyedia-container">
+      {/* Tambahkan teks "Penyedia" di sini */}
+      <div className="penyedia-title">Penyedia</div>
+      
+
       <div style={{ marginBottom: "20px" }}>
         <button onClick={() => handleOpenForm()}>Tambah Penyedia</button>
         <input
@@ -82,26 +86,43 @@ export default function ShowPenyedia() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           style={{
-            marginLeft: "10px",
+            marginLeft: "20px",
             padding: "5px",
             border: "1px solid #ccc",
             borderRadius: "4px",
           }}
         />
       </div>
+
       {currentItems.length > 0 ? (
-        currentItems.map((penyedia, index) => (
-          <Penyedia
-            key={penyedia._id}
-            {...penyedia}
-            no={index + 1 + (currentPage - 1) * itemsPerPage}
-            onEdit={() => handleOpenForm(penyedia)}
-            onDelete={handleDeletePenyedia}
-          />
-        ))
+        <table className="penyedia-table">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>Nama</th>
+              <th>NPWP</th>
+              <th>Alamat</th>
+              <th>SKP</th>
+              <th>Jenis</th>
+              <th>Aksi</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentItems.map((penyedia, index) => (
+              <Penyedia
+                key={penyedia._id}
+                {...penyedia}
+                no={index + 1 + (currentPage - 1) * itemsPerPage}
+                onEdit={() => handleOpenForm(penyedia)}
+                onDelete={handleDeletePenyedia}
+              />
+            ))}
+          </tbody>
+        </table>
       ) : (
         <p>Data penyedia tidak ditemukan.</p>
       )}
+
       <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
         {Array.from({ length: totalPages }, (_, index) => (
           <button

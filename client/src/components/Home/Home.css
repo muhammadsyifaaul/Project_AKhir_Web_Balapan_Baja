@@ -22,11 +22,7 @@
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
-    border-radius: 50%;
-    border: 5px solid #34495e; /* Garis abu gelap di sekitar logo */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Efek bayangan */
+    width: 15rem;
     z-index: 2;
     position: relative;
 }
@@ -36,8 +32,9 @@
     width: 200px;
     height: 200px;
     border-radius: 50%;
+    border: 10px solid rgba(32, 41, 51, 0.2); /* Lingkaran transparan abu-abu */
     background: rgba(52, 73, 94, 0.1); /* Lingkaran transparan abu-abu */
-    top: 50%;
+    top: 43%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1;
