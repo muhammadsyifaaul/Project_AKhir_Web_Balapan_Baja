@@ -1,3 +1,4 @@
+/* Reset untuk input number */
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -8,9 +9,15 @@ input[type="number"] {
     -moz-appearance: textfield;
 }
 
+/* Container utama */
 .penyedia-container {
     position: relative;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
+
+/* Overlay untuk form tambah/edit penyedia */
 .form-tambah-penyedia-overlay {
     position: fixed;
     top: 0;
@@ -21,29 +28,198 @@ input[type="number"] {
     display: flex;
     justify-content: center;
     align-items: center;
-  }
-  
-  .form-tambah-penyedia {
+    z-index: 1000;
+}
+
+/* Form tambah/edit penyedia */
+.form-tambah-penyedia {
     background: white;
     padding: 20px;
     border-radius: 8px;
     width: 400px;
-  }
-  
-  .form-tambah-penyedia form {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.form-tambah-penyedia h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    color: #333;
+}
+
+.form-tambah-penyedia form {
     display: flex;
     flex-direction: column;
-  }
-  
-  .form-tambah-penyedia input,
-  .form-tambah-penyedia select {
-    margin-bottom: 10px;
+}
+
+.form-tambah-penyedia .form-bundle {
+    margin-bottom: 15px;
+}
+
+.form-tambah-penyedia label {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.form-tambah-penyedia input,
+.form-tambah-penyedia select {
+    width: 100%;
     padding: 8px;
-    font-size: 16px;
-  }
-  
-  button {
-    padding: 10px;
-    font-size: 16px;
-  }
- 
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.form-tambah-penyedia input:focus,
+.form-tambah-penyedia select:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+.form-tambah-penyedia .button {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.form-tambah-penyedia button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    flex: 1;
+}
+
+.form-tambah-penyedia button[type="submit"] {
+    background-color: #007bff;
+    color: white;
+}
+
+.form-tambah-penyedia button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+.form-tambah-penyedia button[type="button"] {
+    background-color: #6c757d;
+    color: white;
+}
+
+.form-tambah-penyedia button[type="button"]:hover {
+    background-color: #5a6268;
+}
+
+/* Tabel penyedia */
+.penyedia-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.penyedia-table th,
+.penyedia-table td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.penyedia-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+    color: #333;
+}
+
+.penyedia-table tr:hover {
+    background-color: #f1f1f1;
+}
+
+.penyedia-table button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+}
+
+.penyedia-table button:hover {
+    opacity: 0.8;
+}
+
+.penyedia-table .edit-btn {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.penyedia-table .delete-btn {
+    background-color: #dc3545;
+    color: #fff;
+}
+
+.penyedia-table .details-btn {
+    background-color: #28a745;
+    color: #fff;
+}
+
+/* Tombol tambah penyedia dan search */
+.penyedia-container > div {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.penyedia-container button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
+
+.penyedia-container button:hover {
+    background-color: #0056b3;
+}
+
+.penyedia-container input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+}
+
+/* Pagination */
+.pagination {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.pagination button {
+    padding: 5px 10px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+}
+
+.pagination button:hover {
+    background-color: #0056b3;
+}
+
+.pagination button.active {
+    background-color: #0056b3;
+}
+.penyedia-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 20px;
+  font-weight: bold;
+  text-align: left;
+}
