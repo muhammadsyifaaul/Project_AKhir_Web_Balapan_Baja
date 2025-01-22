@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import PaketList from "./PaketList";
+import "./Paket.css";
 
 export default function Paket() {
   const navigate = useNavigate();
@@ -66,6 +67,10 @@ export default function Paket() {
     setFilteredPaket(filteredPaket.filter((item) => item._id !== id));
   };
 
+  const handleDetail = (id) => {
+    navigate(`/DetailPaket/${id}`); // Arahkan ke halaman detail dengan ID
+  };
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = filteredPaket.slice(indexOfFirstItem, indexOfLastItem);
@@ -111,23 +116,41 @@ export default function Paket() {
         </div>
       </div>
       {currentItems.length > 0 ? (
-        currentItems.map((paket, index) => (
-          <PaketList
-            key={paket._id}
-            idPaket={paket._id}
-            no={index + 1 + indexOfFirstItem}
-            opd={paket.opd}
-            namaPekerjaan={paket.namaPekerjaan}
-            mulaiKontrak={paket.mulaiKontrak}
-            selesaiKontrak={paket.selesaiKontrak}
-            jangkaWaktu={paket.jangkaWaktu}
-            npwpPenyedia={paket.npwpPenyedia}
-            namaPenyedia={paket.namaPenyedia}
-            handleDelete={handleDelete}
-          />
-        ))
+        <table>
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>OPD</th>
+            <th>Nama Pekerjaan</th>
+            <th>Mulai Kontrak</th>
+            <th>Selesai Kontrak</th>
+            <th>Jangka Waktu</th>
+            <th>NPWP Penyedia</th>
+            <th>Nama Penyedia</th>
+            <th>Aksi</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentItems.map((paket, index) => (
+            <tr key={paket._id}>
+              <td>{index + 1 + indexOfFirstItem}</td>
+              <td>{paket.opd}</td>
+              <td>{paket.namaPekerjaan}</td>
+              <td>{paket.mulaiKontrak}</td>
+              <td>{paket.selesaiKontrak}</td>
+              <td>{paket.jangkaWaktu}</td>
+              <td>{paket.npwpPenyedia}</td>
+              <td>{paket.namaPenyedia}</td>
+              <td>
+                <button className="detail" onClick={() => handleDetail(paket._id)}>Detail</button>
+                <button className="delete" onClick={() => handleDelete(paket._id)}>Delete</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       ) : (
-        <p>Data paket tidak ditemukan.</p>
+        <p>Data tidak ditemukan.</p>
       )}
       <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
         {Array.from({ length: totalPages }, (_, index) => (
