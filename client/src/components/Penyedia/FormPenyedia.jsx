@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "./FormPenyedia.css";
 
-export default function FormhPenyedia({ onClose, onPenyediaAddedOrUpdated, initialData }) {
+export default function FormPenyedia({ onClose, onPenyediaAddedOrUpdated, initialData }) {
   const [formData, setFormData] = useState({
     npwp: "",
     nama: "",
@@ -59,55 +60,67 @@ export default function FormhPenyedia({ onClose, onPenyediaAddedOrUpdated, initi
         {error && <p className="error">{error}</p>}
         {success && <p className="success">{success}</p>}
         <form onSubmit={handleSubmit}>
-          <label>NPWP</label>
-          <input
-            type="text"
-            name="npwp"
-            value={formData.npwp}
-            onChange={handleChange}
-            required
-          />
-          <label>Nama</label>
-          <input
-            type="text"
-            name="nama"
-            value={formData.nama}
-            onChange={handleChange}
-            required
-          />
-          <label>Alamat</label>
-          <input
-            type="text"
-            name="alamat"
-            value={formData.alamat}
-            onChange={handleChange}
-            required
-          />
-          <label>SKP</label>
-          <input
-            type="number"
-            name="skp"
-            value={formData.skp}
-            onChange={handleChange}
-            required
-          />
-          <label>Jenis</label>
-          <select
-            name="jenis"
-            value={formData.jenis}
-            onChange={handleChange}
-            required
-          >
-            <option value="">Pilih Jenis</option>
-            <option value="Kecil">Kecil</option>
-            <option value="Non Kecil">Non Kecil</option>
-          </select>
-          <button type="submit" disabled={loading}>
-            {loading ? "Menyimpan..." : initialData ? "Update" : "Simpan"}
-          </button>
-          <button type="button" onClick={onClose} disabled={loading}>
-            Batal
-          </button>
+          <div className="form-bundle">
+            <label>NPWP</label>
+            <input
+              type="text"
+              name="npwp"
+              value={formData.npwp}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-bundle">
+            <label>Nama</label>
+            <input
+              type="text"
+              name="nama"
+              value={formData.nama}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-bundle">
+            <label>Alamat</label>
+            <input
+              type="text"
+              name="alamat"
+              value={formData.alamat}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-bundle">
+            <label>SKP</label>
+            <input
+              type="number"
+              name="skp"
+              value={formData.skp}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div className="form-bundle">
+            <label>Jenis</label>
+            <select
+              name="jenis"
+              value={formData.jenis}
+              onChange={handleChange}
+              required
+            >
+              <option value="">Pilih Jenis</option>
+              <option value="Kecil">Kecil</option>
+              <option value="Non Kecil">Non Kecil</option>
+            </select>
+          </div>
+          <div className="button">
+            <button type="submit" disabled={loading}>
+              {loading ? "Menyimpan..." : initialData ? "Update" : "Simpan"}
+            </button>
+            <button type="button" onClick={onClose} disabled={loading}>
+              Batal
+            </button>
+          </div>
         </form>
       </div>
     </div>
