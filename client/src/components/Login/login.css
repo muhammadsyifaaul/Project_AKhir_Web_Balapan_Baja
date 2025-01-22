@@ -1,7 +1,7 @@
 .login-logo {
-  width: 180px; 
+  width: 180px;
   height: auto;
-  margin-bottom: 1rem; 
+  margin-bottom: 1rem;
 }
 
 .login-container {
@@ -9,18 +9,21 @@
   justify-content: center;
   align-items: center;
   width: 100%;
-  animation: backgroundAnimation 4s infinite alternate;
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: linear-gradient(to bottom right, #f9cb71, #34495e);
-  display: flex;
+  background: url('../../assets/balaikota.jpg');
+  background-position: right 2%;  /* Move background to the right */
+  background-size: cover;
+  background-repeat: no-repeat;
   height: 100vh;
   color: #333;
-  overflow: hidden;   
+  overflow: hidden;
 }
 
 .login-card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
   border-radius: 16px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
   padding: 3rem;
@@ -30,16 +33,17 @@
   animation: fadeIn 1.5s ease-out;
 }
 
-.login-card h1 {
-  font-size: 2rem; 
-  margin-bottom: 1rem;
+.login-card h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+  padding: 0.4rem;
   font-weight: bold;
   text-align: center;
-  color: transparent; 
-  background: linear-gradient(135deg, #0a0a0a, #00020a); 
-  -webkit-background-clip: text; 
+  color: transparent;
+  background: linear-gradient(135deg, #0a0a0a, #00020a);
+  -webkit-background-clip: text;
   background-clip: text;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .login-card p {
@@ -62,71 +66,41 @@
 
 input[type="text"],
 input[type="password"] {
+  width: 100%;
+  box-sizing: border-box;
   border: 2px solid #ddd;
-  border-radius: 12px;
-  padding: 0.8rem;
+  border-radius: 7px;
+  padding: 12px 15px;
+  height: 45px;
   font-size: 1rem;
   margin-bottom: 1rem;
-  width: 100%;
-  transition: all 0.3s ease;
 }
 
 input[type="text"]:focus,
 input[type="password"]:focus {
-  border-color: #f9cb71;
+  border-color: #ff6e31;
   box-shadow: 0 0 8px rgba(116, 235, 213, 0.5);
   outline: none;
 }
 
 button {
-  background: linear-gradient(135deg, #f9cb71, #acb6e5);
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #ff6e31;
   border: none;
   color: white;
-  font-size: 1.2rem;
-  font-weight: bold;
-  padding: 0.8rem;
-  border-radius: 12px;
+  padding: 12px 15px;
+  height: 45px;
+  border-radius: 7px;
+  font-size: 1rem;
   cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  animation: backgroundAnimation 4s infinite alternate;
-
 }
 
 button:hover {
-  background: linear-gradient(135deg, #acb6e5, #f9cb71);
+  background-color: #ff5331;
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
 }
+
 button:active {
   transform: scale(0.98);
 }
-
-
-
-/* Animations */
-@keyframes backgroundAnimation {
-  0% {
-      background: linear-gradient(135deg, #f9cb71, #acb6e5);
-  }
-  100% {
-      background: linear-gradient(135deg, #34495e, #fad0c4);
-  }
-}
-@keyframes fadeIn {
-  from {
-      opacity: 0;
-      transform: translateY(-20px);
-  }
-  to {
-      opacity: 1;
-      transform: translateY(0);
-  }
-}
-
-
-
-
-
-

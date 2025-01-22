@@ -17,8 +17,7 @@ export default function Login() {
         <div className="login-container">
             <div className="login-card">
                 <img src="/images/logo_smg.webp" alt="Logo" className="login-logo"/>
-                <h1> Account Login </h1>
-                <p>Please enter your credentials to log in to your account</p>
+                <h2> Login </h2>
                 <form action="http://localhost:5000/Login" method="post">
                     <input type="text" name="username" placeholder="Username" />
                     <input type="password" name="password" placeholder="Password" />
