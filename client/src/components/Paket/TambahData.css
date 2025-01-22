@@ -112,3 +112,10 @@
 .button-group button:hover {
     opacity: 0.9;
 }
+
+form .errMsg {
+    color: rgb(189, 39, 39);
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    text-align: center;
+}

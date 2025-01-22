@@ -11,6 +11,7 @@ export const useTambahData = () => {
   const [dataPenyedia, setDataPenyedia] = useState({});
   const [inputTenagaAhli, setInputTenagaAhli] = useState("");
   const [idTenagaAhli, setIdTenagaAhli] = useState("");
+  const [errorNpwp, setErrorNpwp] = useState("");
 
   useEffect(() => {
     const fetchOpd = async () => {
@@ -43,18 +44,22 @@ export const useTambahData = () => {
 
   const cekNpwp = async () => {
     try {
-      const response = await axios.get(
+      const response = await fetch(
         `http://localhost:5000/cekNpwp/${npwpPenyedia}`
       );
-      if (response.data.skp <= 0) {
-        alert("Insufficient SKP for the provider. Form will be cleared.");
-        handleResetState();
-        return;
+      if (!response.ok) {
+        throw new Error("Penyedia tidak ditemukan");
       }
-      setDataPenyedia(response.data);
+      const data = await response.json();
+      setDataPenyedia(data);
+      setErrorNpwp("");
     } catch (error) {
-      console.error("Error fetching NPWP data:", error);
-      alert("Failed to fetch NPWP data. Please try again.");
+      setErrorNpwp(error.message);
+      setDataPenyedia({});
+
+      setTimeout(() => {
+        setErrorNpwp("");
+      }, 3000);
     }
   };
 
@@ -62,7 +67,6 @@ export const useTambahData = () => {
     const nilai = e.target.value;
     setNilaiKontrak(nilai);
   };
-  
 
   const handleInputTenagaAhli = (value) => {
     setInputTenagaAhli(value);
@@ -109,6 +113,7 @@ export const useTambahData = () => {
     nilaiKontrak,
     handleNilaiKontrak,
     dataPenyedia,
+    errorNpwp,
     cekNpwp,
     inputTenagaAhli,
     idTenagaAhli,
