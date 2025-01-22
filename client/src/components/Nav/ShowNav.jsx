@@ -11,7 +11,6 @@ export default function ShowNav() {
   withCredentials: true 
 });
             setUser(response.data.username);
-            console.log(response);
         };
         fetchUser();
     }, []);

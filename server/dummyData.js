@@ -78,9 +78,9 @@ const dummyTenagaAhli = [
 ]
 const seedData = async () => {
     try {
-        await TenagaAhli.deleteMany();
-        for (const tenagaAhli of dummyTenagaAhli) {
-            await TenagaAhli.create(tenagaAhli);
+        await Penyedia.deleteMany();
+        for (const penyedia of dummyPenyedia) {
+            await Opd.create(penyedia);
         }
 
         console.log("Data inserted successfully");

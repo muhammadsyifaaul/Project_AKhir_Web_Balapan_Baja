@@ -16,7 +16,6 @@ export default function DetailPaket({idPaket}) {
                     throw new Error("Gagal mendapatkan data paket");
                 }
                 const data = await response.json();
-                console.log("Data paket:", data);
                 setPaket(data);
                 
             } catch (error) {

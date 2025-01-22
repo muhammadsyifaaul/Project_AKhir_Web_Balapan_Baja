@@ -22,10 +22,10 @@
     /* width: 250px; */
     /* height: 100vh; */
     width: 20%;
-    height: 100vh;
+    height: 100%;
     background-color: #242c9c;
+    padding-top: 20px;
     box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-    padding: 15px;
     font-family: Arial, sans-serif;
   }
   
@@ -39,7 +39,7 @@
   
   .nav-logo img {
     height: 80px;
-    width: auto;
+    width: 80px;
     margin-bottom: 10px;
     border-radius: 50%;
     background: #fff;

@@ -1,0 +1,78 @@
+.form-tambah-penyedia {
+    width: 90%;
+    max-width: 500px;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-tambah-penyedia h2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 0;
+}
+
+.form-bundle {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+.form-bundle label {
+    width: 20%;
+    font-weight: bold;
+}
+
+.form-bundle input,
+.form-bundle select {
+    width: 80%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.form-bundle select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('https://placehold.co/15x15') no-repeat right center;
+    background-size: 15px;
+}
+
+.button {
+    margin-top: 5px;
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.button button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 40px;
+    background-color: #242c9c;
+    color: white;
+    cursor: pointer;
+}
+
+.button button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+.error {
+    color: #dc3545;
+    background-color: #f8d7da;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.success {
+    color: #28a745;
+    background-color: #d4edda;
+    padding: 0.75rem;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
