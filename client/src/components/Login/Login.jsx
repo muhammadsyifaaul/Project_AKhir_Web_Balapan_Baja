@@ -15,7 +15,7 @@ export default function Login() {
         };
 
         try {
-            const response = await axios.post('http://localhost:5000/login', data);
+            const response = await axios.post('http://localhost:5000/Login', data);
             console.log('Response Status:', response.status);
             console.log('Response Data:', response.data);
 
@@ -31,31 +31,31 @@ export default function Login() {
         }
     };
 
-    useEffect(() => {
-        if (errorMessage) {
-            const timer = setTimeout(() => {
-                setErrorMessage('');
-            }, 2000);
+    // useEffect(() => {
+    //     if (errorMessage) {
+    //         const timer = setTimeout(() => {
+    //             setErrorMessage('');
+    //         }, 2000);
 
-            return () => clearTimeout(timer);
-        }
-    }, [errorMessage]);
+    //         return () => clearTimeout(timer);
+    //     }
+    // }, [errorMessage]);
 
     return (
         <div className="login-container">
             <div className="login-card">
                 <img src="/images/logo_smg.webp" alt="Logo" className="login-logo"/>
                 <h2>Login</h2>
-                <form onSubmit={handleSubmit}>
+                <form action='http://localhost:5000/Login' method='post'>
                     <input type="text" name="username" placeholder="Username" required />
                     <input type="password" name="password" placeholder="Password" required />
                     <button type="submit">Login</button>
                 </form>
-                {errorMessage && (
+                {/* {errorMessage && (
                     <div className="error-popup">
                         {errorMessage}
                     </div>
-                )}
+                )} */}
             </div>
         </div>
     );

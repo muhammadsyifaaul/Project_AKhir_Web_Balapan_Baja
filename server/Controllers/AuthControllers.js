@@ -32,6 +32,8 @@ exports.login = [
                 isLoggedIn: true,
             };
 
+            // res.status(200).json({ message: 'Login successful' });
+
             res.redirect(`${process.env.CLIENT_URL}/Home`);
         } catch (error) {
             next(error);
