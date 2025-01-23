@@ -26,15 +26,15 @@ exports.login = [
                 return res.status(401).json({ message: 'Password is incorrect' });
             }
 
-            req.session.user = {
-                username: user.username,
-                role: user.role,
-                isLoggedIn: true,
-            };
-
-            // res.status(200).json({ message: 'Login successful' });
-
-            res.redirect(`${process.env.CLIENT_URL}/Home`);
+            if (isPasswordValid) {
+                req.session.user = {
+                    username: user.username,
+                    role: user.role,
+                    isLoggedIn: true,
+                };
+                console.log('Session created:', req.session);
+                res.redirect(`${process.env.CLIENT_URL}/Home`);
+            }
         } catch (error) {
             next(error);
         }

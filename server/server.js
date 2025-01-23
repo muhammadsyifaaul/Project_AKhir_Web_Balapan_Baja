@@ -18,25 +18,28 @@ const mainRoutes = require("./Routes/mainRoutes");
 //       },
 //     })
 //   );
-
+const MongoStore = require('connect-mongo');
 
 app.use(session({
-    secret: 'ABOGOBOGAYEAMPLOWWNALDSHHSDTHTORHROT',
-    resave: false,
-    saveUninitialized: false,
-    cookie: { maxAge: 86400000, httpOnly: false } // 1 day
+  secret: 'your_secret_key',
+  resave: false,
+  saveUninitialized: true,
+  store: MongoStore.create({ mongoUrl: 'mongodb://localhost/balapan_baja' }),
+  cookie: { secure: false, httpOnly: false, maxAge: 86400000, sameSite: 'None' }
 }));
+
+
 
   
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   
-  app.use(
-    cors({
-      origin: "http://localhost:5173",
-      credentials: true,
-    })
-  );
+  const corsOptions = {
+    origin: 'http://localhost:5173',
+    credentials: true
+};
+
+app.use(cors(corsOptions));
 connectDb();
 const authRoutes = require("./Routes/authRoutes");
 
