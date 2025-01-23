@@ -14,6 +14,7 @@ export default function PaketList(props) {
     namaPenyedia,
     nilaiKontrak,
     handleDelete,
+    notSuper
   } = props;
 
   const handleDeleteClick = async () => {
@@ -53,18 +54,7 @@ export default function PaketList(props) {
       <a href={`/DetailPaket/${idPaket}`} style={{ marginRight: "10px" }}>
         Details
       </a>
-      <button
-        onClick={handleDeleteClick}
-        style={{
-          backgroundColor: "red",
-          color: "white",
-          border: "none",
-          padding: "5px 10px",
-          cursor: "pointer",
-        }}
-      >
-        Hapus
-      </button>
+      {!notSuper && <button onClick={handleDeleteClick}>Delete</button>}
     </div>
   );
 }

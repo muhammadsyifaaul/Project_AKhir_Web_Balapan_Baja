@@ -4,7 +4,7 @@ import FormPenyedia from "./FormPenyedia";
 import "./Penyedia.css";
 import axios from "axios";
 
-export default function ShowPenyedia() {
+export default function ShowPenyedia({ notSuper }) {
   const [penyedias, setPenyedias] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedPenyedia, setSelectedPenyedia] = useState(null);
@@ -74,10 +74,6 @@ export default function ShowPenyedia() {
 
   return (
     <div className="penyedia-container">
-      {/* Tambahkan teks "Penyedia" di sini */}
-      <div className="penyedia-title">Penyedia</div>
-      
-
       <div style={{ marginBottom: "20px" }}>
         <button onClick={() => handleOpenForm()}>Tambah Penyedia</button>
         <input
@@ -86,43 +82,28 @@ export default function ShowPenyedia() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           style={{
-            marginLeft: "20px",
+            marginLeft: "10px",
             padding: "5px",
             border: "1px solid #ccc",
             borderRadius: "4px",
+            width: "200px",
           }}
         />
       </div>
-
       {currentItems.length > 0 ? (
-        <table className="penyedia-table">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>NPWP</th>
-              <th>Alamat</th>
-              <th>SKP</th>
-              <th>Jenis</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.map((penyedia, index) => (
-              <Penyedia
-                key={penyedia._id}
-                {...penyedia}
-                no={index + 1 + (currentPage - 1) * itemsPerPage}
-                onEdit={() => handleOpenForm(penyedia)}
-                onDelete={handleDeletePenyedia}
-              />
-            ))}
-          </tbody>
-        </table>
+        currentItems.map((penyedia, index) => (
+          <Penyedia
+            key={penyedia._id}
+            {...penyedia}
+            no={index + 1 + (currentPage - 1) * itemsPerPage}
+            onEdit={() => handleOpenForm(penyedia)}
+            onDelete={handleDeletePenyedia}
+            notSuper={notSuper}
+          />
+        ))
       ) : (
         <p>Data penyedia tidak ditemukan.</p>
       )}
-
       <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
         {Array.from({ length: totalPages }, (_, index) => (
           <button

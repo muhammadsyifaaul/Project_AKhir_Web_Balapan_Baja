@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import PaketList from "../Paket/PaketList";
 
-export default function DetailTenagaAhli({ _id }) {
+export default function DetailTenagaAhli({ _id,notSuper }) {
   const [allPaket, setAllPaket] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -68,7 +68,7 @@ export default function DetailTenagaAhli({ _id }) {
             <th>Nama Pekerjaan</th>
             <th>Awal dan Akhir Kontrak / Jangka Waktu</th>
             <th>Nilai Kontrak (Rp)</th>
-            <th>Aksi</th>
+           {!notSuper && <th>Aksi</th>}
           </tr>
         </thead>
         <tbody>
@@ -84,6 +84,7 @@ export default function DetailTenagaAhli({ _id }) {
                 selesaiKontrak={paket.selesaiKontrak}
                 jangkaWaktu={paket.jangkaWaktu}
                 nilaiKontrak={paket.nilaiKontrak}
+                notSuper={notSuper}
               />
             ))
           ) : (

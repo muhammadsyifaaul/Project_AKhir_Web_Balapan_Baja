@@ -13,12 +13,15 @@ exports.login = [
 
         try {
             const { username, password } = req.body;
+            console.log(username, password);
             const user = await User.findOne({ username });
+            console.log(user);
             if (!user) {
                 return res.status(401).json({ message: 'Invalid credentials' });
             }
 
             const isPasswordValid = await argon2.verify(user.password, password);
+            console.log(isPasswordValid);
             if (!isPasswordValid) {
                 return res.status(401).json({ message: 'Invalid credentials' });
             }

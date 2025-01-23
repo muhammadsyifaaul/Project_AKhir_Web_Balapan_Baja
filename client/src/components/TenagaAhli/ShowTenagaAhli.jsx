@@ -4,7 +4,7 @@ import FormTambahTenagaAhli from "./FormTambahTenagaAhli";
 import axios from "axios";
 import "./TenagaAhli.css";
 
-export default function ShowTenagaAhli() {
+export default function ShowTenagaAhli({notSuper}) {
   const [tenagaAhli, setTenagaAhli] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedTenagaAhli, setSelectedTenagaAhli] = useState(null);
@@ -72,16 +72,23 @@ export default function ShowTenagaAhli() {
 
   return (
     <div>
-      <button onClick={() => handleOpenFormForEdit()}>Tambah Tenaga Ahli</button>
-
-      {isFormOpen && (
-        <FormTambahTenagaAhli
-          onClose={handleCloseForm}
-          onTenagaAhliUpdated={fetchTenagaAhli}
-          initialData={selectedTenagaAhli}
-        />
+      {!notSuper && (
+        <>
+        <button
+          className="btn btn-primary"
+          onClick={() => handleOpenFormForEdit()}
+        >
+          Tambah Tenaga Ahli
+        </button>
+        {isFormOpen && (
+          <FormTambahTenagaAhli
+            onClose={handleCloseForm}
+            onTenagaAhliUpdated={fetchTenagaAhli}
+            initialData={selectedTenagaAhli}
+          />
+        )}
+        </>
       )}
-
       <input
         type="text"
         placeholder="Cari tenaga ahli..."
@@ -97,6 +104,7 @@ export default function ShowTenagaAhli() {
           {...tenaga}
           onEdit={() => handleOpenFormForEdit(tenaga)}
           onDelete={() => handleDeleteTenagaAhli(tenaga._id)}
+          notSuper={notSuper}
         />
       ))}
 
