@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import "./Paket.css";
 
 export default function PaketList(props) {
   const {
