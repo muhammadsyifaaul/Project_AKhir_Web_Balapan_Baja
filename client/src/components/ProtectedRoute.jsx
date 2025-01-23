@@ -9,9 +9,15 @@ const ProtectedRoute = ({ children }) => {
   useEffect(() => {
     const checkSession = async () => {
       try {
+        console.log('ini check session');
         const response = await axios.get("/api/check-session");
+        console.log(`ini data session ${JSON.stringify(response.data)}`);
         setIsLoggedIn(response.data.isLoggedIn);
-        setUserRole('ini set user',response.data.user.role);
+        if (response.data.user) {
+          setUserRole(response.data.user.role);
+        } else {
+          console.log('User data is undefined');
+        }
       } catch (error) {
         console.error("Error checking session:", error.message);
         setIsLoggedIn(false);

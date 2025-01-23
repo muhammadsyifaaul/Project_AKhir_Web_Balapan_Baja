@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import './KelolaUser.css';
 
 export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
   const [username, setUsername] = useState("");
@@ -58,9 +59,9 @@ export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
   };
 
   return (
-    <div>
+    <div className="form-overlay">
       <h1>{userData ? "Update User" : "Tambah User"}</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="form-box">
         <label htmlFor="username">Username</label>
         <input
           type="text"

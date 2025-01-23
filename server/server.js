@@ -7,13 +7,26 @@ require("dotenv").config();
 const port = process.env.PORT;
 const mainRoutes = require("./Routes/mainRoutes");
 
-app.use(
-    session({
-      secret: "ABOGOBOGAYEAMPLOWWNALDSHHSDTHTORHROT",
-      resave: false,
-      saveUninitialized: true,
-    })
-  );
+// app.use(
+//     session({
+//       secret: "ABOGOBOGAYEAMPLOWWNALDSHHSDTHTORHROT",
+//       resave: false,
+//       saveUninitialized: true,
+//       cookie: {
+//         maxAge: 1000 * 60 * 60 * 24,
+//         httpOnly: false,
+//       },
+//     })
+//   );
+
+
+app.use(session({
+    secret: 'ABOGOBOGAYEAMPLOWWNALDSHHSDTHTORHROT',
+    resave: false,
+    saveUninitialized: false,
+    cookie: { maxAge: 86400000, httpOnly: false } // 1 day
+}));
+
   
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
