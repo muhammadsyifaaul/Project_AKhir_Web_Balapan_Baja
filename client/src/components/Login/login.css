@@ -80,36 +80,6 @@
   animation: backgroundAnimation 4s infinite alternate; 
 }
 
-<<<<<<< HEAD
-#login-form button:hover { 
-  background: linear-gradient(135deg, #acb6e5, #f9cb71); 
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3); 
-}
-
-#login-form button:active { 
-  transform: scale(0.98); 
-}
-
-/* Animations */
-@keyframes backgroundAnimation { 
-  0% { 
-    background: linear-gradient(135deg, #f9cb71, #acb6e5); 
-  } 
-  100% { 
-    background: linear-gradient(135deg, #34495e, #fad0c4); 
-  } 
-}
-
-@keyframes fadeIn { 
-  from { 
-    opacity: 0; 
-    transform: translateY(-20px); 
-  } 
-  to { 
-    opacity: 1; 
-    transform: translateY(0); 
-  } 
-=======
 input[type="text"],
 input[type="password"] {
   width: 100%;
@@ -149,5 +119,4 @@ button:hover {
 
 button:active {
   transform: scale(0.98);
->>>>>>> 7cfc7cd9891225ed27e096579c194fe3aaea31e9
 }
