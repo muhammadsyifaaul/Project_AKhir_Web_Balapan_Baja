@@ -14,7 +14,7 @@ export default function Login() {
         };
 
         try {
-            const response = await axios.post(`http://localhost:5000/Login`, data,{ withCredentials: true });
+            const response = await axios.post(`http://localhost:5000/Login`, data,{ withCredentials: 'true' });
             // console.log('Response Status:', response.status);
             // console.log('Response Data:', response.data.user);
 

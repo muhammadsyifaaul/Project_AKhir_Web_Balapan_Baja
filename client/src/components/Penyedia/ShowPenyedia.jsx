@@ -75,7 +75,9 @@ export default function ShowPenyedia({ notSuper }) {
   return (
     <div className="penyedia-container">
       <div style={{ marginBottom: "20px" }}>
-        <button onClick={() => handleOpenForm()}>Tambah Penyedia</button>
+        {!notSuper && (
+          <button onClick={() => handleOpenForm()}>Tambah Penyedia</button>
+        )}
         <input
           type="text"
           placeholder="Cari nama penyedia..."

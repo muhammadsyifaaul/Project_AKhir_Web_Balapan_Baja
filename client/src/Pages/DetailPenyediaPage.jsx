@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import PaketList from "../components/Paket/PaketList";
 import MainContainer from "../components/MainLayout";
 
-export default function DetailPenyediaPage() {
+export default function DetailPenyediaPage({notSuper}) {
     const { npwp } = useParams();
     const [penyedias, setPenyedias] = useState([]);
     useEffect(() => {
@@ -35,6 +35,7 @@ export default function DetailPenyediaPage() {
               mulaiKontrak={penyedia.mulaiKontrak}
               selesaiKontrak={penyedia.selesaiKontrak}
               jangkaWaktu={penyedia.jangkaWaktu}
+              notSuper={notSuper}
             />
           ))
         ) : (

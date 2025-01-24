@@ -6,40 +6,43 @@ exports.login = [
     body('username').notEmpty().withMessage('Username is required'),
     body('password').notEmpty().withMessage('Password is required'),
     async (req, res, next) => {
-        const errors = validationResult(req);
-        if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() });
+      const errors = validationResult(req);
+      if (!errors.isEmpty()) {
+        return res.status(400).json({ errors: errors.array() });
+      }
+  
+      try {
+        const { username, password } = req.body;
+        const user = await User.findOne({ username });
+        if (!user) {
+          return res.status(401).json({ message: 'User Not Found' });
         }
-
-        try {
-            const { username, password } = req.body;
-            console.log(username, password);
-            const user = await User.findOne({ username });
-            console.log(user);
-            if (!user) {
-                return res.status(401).json({ message: 'User Not Found' });
-            }
-
-            const isPasswordValid = await argon2.verify(user.password, password);
-            console.log(isPasswordValid);
-            if (!isPasswordValid) {
-                return res.status(401).json({ message: 'Password is incorrect' });
-            }
-
-            if (isPasswordValid) {
-                req.session.user = {
-                    username: user.username,
-                    role: user.role,
-                    isLoggedIn: true,
-                };
-                console.log('Session created:', req.session);
-                res.redirect(`${process.env.CLIENT_URL}/Home`);
-            }
-        } catch (error) {
-            next(error);
+  
+        const isPasswordValid = await argon2.verify(user.password, password);
+        if (!isPasswordValid) {
+          return res.status(401).json({ message: 'Password is incorrect' });
         }
-    }
-];
+  
+        // Simpan sesi
+        req.session.user = {
+          username: user.username,
+          role: user.role,
+          isLoggedIn: true,
+        };
+  
+        console.log('Session created:', req.session);
+  
+        // Kirim respons JSON ke frontend
+        return res.status(200).json({
+          message: 'Login successful',
+          user: req.session.user,
+        });
+      } catch (error) {
+        next(error);
+      }
+    },
+  ];
+  
 
 
 
@@ -72,3 +75,15 @@ exports.getUser = async (req, res) => {
     const user = req.session.user;
     res.json(req.session.user);
 }
+
+exports.logout = (req, res) => {
+    req.session.destroy((err) => {
+      if (err) {
+        console.error("Gagal menghapus sesi:", err);
+        return res.status(500).json({ message: "Gagal logout" });
+      }
+      res.clearCookie("connect.sid", { path: "/" }); // Hapus cookie session
+      return res.status(200).json({ message: "Logout berhasil" });
+    });
+  };
+  

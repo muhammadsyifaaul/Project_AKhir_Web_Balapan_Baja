@@ -20,13 +20,39 @@ const mainRoutes = require("./Routes/mainRoutes");
 //   );
 const MongoStore = require('connect-mongo');
 
-app.use(session({
-  secret: 'your_secret_key',
-  resave: false,
-  saveUninitialized: true,
-  store: MongoStore.create({ mongoUrl: 'mongodb://localhost/balapan_baja' }),
-  cookie: { secure: false, httpOnly: false, maxAge: 86400000, sameSite: 'None' }
-}));
+const corsOptions = {
+  origin: ['http://localhost:5173'], // Tambahkan domain frontend
+  credentials: true, // Izinkan pengiriman cookie
+};
+
+app.use(cors(corsOptions));
+
+// Pastikan middleware ini dipasang sebelum router lain
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  next();
+});
+
+app.use(
+  session({
+    secret: "your_secret_key",
+    resave: false,
+    saveUninitialized: false,
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Hanya true di production
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Gunakan "None" hanya di production
+    },
+  })
+);
+
+
 
 
 
@@ -34,15 +60,23 @@ app.use(session({
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   
-  const corsOptions = {
-    origin: 'http://localhost:5173',
-    credentials: true
-};
-
-app.use(cors(corsOptions));
-connectDb();
+  
+  app.use(cors(corsOptions));
+  
+  app.use(cors(corsOptions));
+  app.use((req, res, next) => {
+    console.log("Request Headers:", req.headers);
+    next();
+  });
+  app.use((req, res, next) => {
+    console.log("CORS Headers:", res.getHeaders());
+    next();
+  });
+    
+  
 const authRoutes = require("./Routes/authRoutes");
 
+connectDb();
 app.use("/", authRoutes);
 app.use(mainRoutes);
 

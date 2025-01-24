@@ -12,6 +12,7 @@ export const useTambahData = () => {
   const [inputTenagaAhli, setInputTenagaAhli] = useState("");
   const [idTenagaAhli, setIdTenagaAhli] = useState("");
   const [errorNpwp, setErrorNpwp] = useState("");
+  const [errorSkpZero, setErrorSkpZero] = useState(false);
 
   useEffect(() => {
     const fetchOpd = async () => {
@@ -52,6 +53,13 @@ export const useTambahData = () => {
       }
       const data = await response.json();
       setDataPenyedia(data);
+
+      if (data.skp === 0) {
+        setErrorSkpZero(true);
+      } else {
+        setErrorSkpZero(false);
+      }
+
       setErrorNpwp("");
     } catch (error) {
       setErrorNpwp(error.message);
@@ -99,6 +107,7 @@ export const useTambahData = () => {
     setNilaiKontrak(false);
     setInputTenagaAhli("");
     setIdTenagaAhli("");
+    setErrorNpwp("");
   };
 
   return {
@@ -121,5 +130,7 @@ export const useTambahData = () => {
     cekTenagaAhli,
     handleResetState,
     handleFormSubmit,
+    errorSkpZero,
+    setErrorSkpZero,
   };
 };

@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 import PaketList from "../Paket/PaketList";
 
 export default function DetailTenagaAhli({ _id,notSuper }) {
+  const navigate = useNavigate();
   const [allPaket, setAllPaket] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -96,6 +99,7 @@ export default function DetailTenagaAhli({ _id,notSuper }) {
           )}
         </tbody>
       </table>
+      <button onClick={() => navigate(-1)}>Kembali</button>
     </div>
   );
 }
