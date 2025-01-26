@@ -52,16 +52,19 @@ export default function Paket() {
     setSearchQuery(query);
     setSelectedOpd("");
     setCurrentPage(1);
-
+  
     if (query === "") {
       setFilteredPaket(paket);
     } else {
       const searched = paket.filter((item) =>
-        item.namaPekerjaan.toLowerCase().includes(query)
+        Object.values(item).some((value) =>
+          value.toString().toLowerCase().includes(query)
+        )
       );
       setFilteredPaket(searched);
     }
   };
+  
 
   const handleDelete = (id) => {
     setFilteredPaket(filteredPaket.filter((item) => item._id !== id));
@@ -79,6 +82,14 @@ export default function Paket() {
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
+  };
+  const formatTanggal = (tanggalString) => {
+    const tanggal = new Date(tanggalString);
+    return tanggal.toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
   };
 
   return (
@@ -155,8 +166,8 @@ export default function Paket() {
                 <td>{index + 1 + indexOfFirstItem}</td>
                 <td>{paket.opd}</td>
                 <td>{paket.namaPekerjaan}</td>
-                <td>{paket.mulaiKontrak}</td>
-                <td>{paket.selesaiKontrak}</td>
+                <td>{formatTanggal(paket.mulaiKontrak)}</td>
+                <td>{formatTanggal(paket.selesaiKontrak)}</td>
                 <td>{paket.jangkaWaktu}</td>
                 <td>{paket.npwpPenyedia}</td>
                 <td>{paket.namaPenyedia}</td>

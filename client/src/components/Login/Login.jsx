@@ -14,15 +14,12 @@ export default function Login() {
         };
 
         try {
-            const response = await axios.post(`http://localhost:5000/Login`, data,{ withCredentials: 'true' });
-            // console.log('Response Status:', response.status);
-            // console.log('Response Data:', response.data.user);
-
+            const response = await axios.post(`http://localhost:5000/Login`, data,{ withCredentials: 'true' })
             if (response.status !== 200) {
                 setErrorMessage(response.data.message || 'An error occurred');
             } else {
                 console.log('Redirecting to Home...');
-                window.location.href = '/Home'; // Uncomment this line for redirection
+                window.location.href = '/Home'; 
             }
         } catch (error) {
             console.error('Error during login:', error);
