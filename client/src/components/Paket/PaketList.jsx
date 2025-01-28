@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import "./Paket.css";
 
@@ -14,19 +14,24 @@ export default function PaketList(props) {
     npwpPenyedia,
     namaPenyedia,
     nilaiKontrak,
-    handleDelete,
-    notSuper
+    handleDelete, // ✅ Pastikan handleDelete diterima
+    notSuper,
   } = props;
+
+  const [isDeleting, setIsDeleting] = useState(false);
 
   const handleDeleteClick = async () => {
     if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+      setIsDeleting(true); // ✅ Set tombol menjadi loading
       try {
         await axios.delete(`http://localhost:5000/deletePaket/${idPaket}`);
         alert("Data berhasil dihapus.");
-        handleDelete(idPaket); // Memperbarui data di komponen utama
+        handleDelete(idPaket); // ✅ Hapus dari state di parent
       } catch (error) {
         console.error("Error deleting data:", error);
         alert("Gagal menghapus data.");
+      } finally {
+        setIsDeleting(false); // ✅ Reset tombol setelah proses selesai
       }
     }
   };
@@ -55,7 +60,18 @@ export default function PaketList(props) {
       <a href={`/DetailPaket/${idPaket}`} style={{ marginRight: "10px" }}>
         Details
       </a>
-      {!notSuper && <button onClick={handleDeleteClick}>Delete</button>}
+      {!notSuper && (
+        <button 
+          onClick={handleDeleteClick} 
+          disabled={isDeleting} 
+          style={{
+            backgroundColor: isDeleting ? "#ccc" : "#e74c3c",
+            cursor: isDeleting ? "not-allowed" : "pointer",
+          }}
+        >
+          {isDeleting ? "Deleting..." : "Delete"}
+        </button>
+      )}
     </div>
   );
 }

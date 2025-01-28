@@ -65,11 +65,6 @@ app.use(
   
   app.use(cors(corsOptions));
   app.use((req, res, next) => {
-    console.log("Request Headers:", req.headers);
-    next();
-  });
-  app.use((req, res, next) => {
-    console.log("CORS Headers:", res.getHeaders());
     next();
   });
     
