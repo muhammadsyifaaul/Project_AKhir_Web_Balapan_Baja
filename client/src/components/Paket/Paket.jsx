@@ -56,7 +56,9 @@ export default function Paket() {
       setFilteredPaket(paket);
     } else {
       const searched = paket.filter((item) =>
-        item.namaPekerjaan.toLowerCase().includes(query)
+        Object.values(item).some((value) =>
+          value.toString().toLowerCase().includes(query)
+        )
       );
       setFilteredPaket(searched);
     }
@@ -80,8 +82,20 @@ export default function Paket() {
     setCurrentPage(pageNumber);
   };
 
+  const formatTanggal = (tanggalString) => {
+    const tanggal = new Date(tanggalString);
+    return tanggal.toLocaleDateString("id-ID", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    });
+  };
+
   return (
-    <div className="container" style={{ marginLeft: "10px" , marginTop: "0px" , marginBottom: "50px"}}> {/* Tambah style untuk geser ke kiri */}
+    <div
+      className="container"
+      style={{ marginLeft: "10px", marginTop: "0px", marginBottom: "50px" }}
+    >
       <div id="Paket-form">
         <h2>Daftar Paket</h2>
         <button
@@ -97,7 +111,7 @@ export default function Paket() {
             borderRadius: "5px",
             cursor: "pointer",
             fontSize: "14px",
-            marginTop: "10px"
+            marginTop: "10px",
           }}
         >
           Tambah Paket
@@ -128,17 +142,12 @@ export default function Paket() {
               </select>
             </div>
             <div>
-              <label htmlFor="searchQuery">Pencarian: </label>
+              <label htmlFor="searchQuery">Cari: </label>
               <input
                 id="searchQuery"
                 type="text"
-                placeholder="Cari nama pekerjaan..."
                 value={searchQuery}
                 onChange={handleSearchChange}
-                style={{
-                  padding: "5px",
-                  width: "250px",
-                }}
               />
             </div>
           </div>
@@ -146,7 +155,7 @@ export default function Paket() {
         {currentItems.length > 0 ? (
           <table>
             <thead>
-              <tr style={{ backgroundColor: "#ffcc00", color: "black" }}>
+              <tr>
                 <th>No</th>
                 <th>OPD</th>
                 <th>Nama Pekerjaan</th>
@@ -169,8 +178,8 @@ export default function Paket() {
                   <td>{index + 1 + indexOfFirstItem}</td>
                   <td>{paket.opd}</td>
                   <td>{paket.namaPekerjaan}</td>
-                  <td>{paket.mulaiKontrak}</td>
-                  <td>{paket.selesaiKontrak}</td>
+                  <td>{formatTanggal(paket.mulaiKontrak)}</td>
+                  <td>{formatTanggal(paket.selesaiKontrak)}</td>
                   <td>{paket.jangkaWaktu}</td>
                   <td>{paket.npwpPenyedia}</td>
                   <td>{paket.namaPenyedia}</td>
@@ -195,16 +204,18 @@ export default function Paket() {
         ) : (
           <p>Data tidak ditemukan.</p>
         )}
-        <div className="pagination">
-          {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              className={`pagination-btn ${currentPage === index + 1 ? "active" : ""}`}
-              onClick={() => setCurrentPage(index + 1)}
-            >
-              {index + 1}
-            </button>
-          ))}
+        <div style={{ padding: "8px 12px",display: "flex", justifyContent: "center", marginTop: "20px", marginLeft: "500px" }}>
+          <div className="pagination">
+            {Array.from({ length: totalPages }, (_, index) => (
+              <button
+                key={index}
+                className={`pagination-btn ${currentPage === index + 1 ? "active" : ""}`}
+                onClick={() => handlePageChange(index + 1)}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
     </div>

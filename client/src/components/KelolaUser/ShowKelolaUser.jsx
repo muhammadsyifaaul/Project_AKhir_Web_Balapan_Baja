@@ -64,6 +64,15 @@ export default function ShowKelolaUser() {
         >
           Tambah User
         </button>
+        <div
+          style={{
+            marginBottom: "20px",
+            marginTop: "10px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+          }}
+        ></div>
 
         <input
           type="text"
@@ -81,7 +90,6 @@ export default function ShowKelolaUser() {
           userData={editingUser}
         />
       )}
-
       <table>
         <thead>
           <tr>

@@ -107,7 +107,7 @@
 }
 
 #Paket-form table th {
-  background-color: #ea0707;
+  background-color: #ff6e31;
   /* Warna header */
   color: white;
   font-weight: bold;
@@ -183,20 +183,31 @@
   }
 }
 
-#Paket-form  .btn-pagination {
+.pagination {
+  display: flex;
+  justify-content: center;
+  /* Memusatkan pagination */
+  align-items: center;
+  margin-top: 20px;
+  gap: 10px;
+  /* Jarak antar tombol */
+}
+
+.pagination-btn {
   background-color: #007bff;
   color: white;
   border: none;
-  padding: 8px 12px;  
+  padding: 8px 12px;
   margin: 0 5px;
   border-radius: 5px;
   cursor: pointer;
-  justify-content: center;
+  transition: background-color 0.3s ease;
 }
 
 .pagination-btn.active {
   background-color: #0056b3;
   font-weight: bold;
+  width: 100px;
 }
 
 .pagination-btn:hover {

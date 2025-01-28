@@ -33,3 +33,6 @@
     margin-right: 10px;
     width: 1.8rem;
   }
+  .logout-icon {
+    cursor: pointer;
+  }
