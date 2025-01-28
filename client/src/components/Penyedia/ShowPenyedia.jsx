@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from "react";
-import Penyedia from "./Penyedia";
+import PenyediaRow from "./Penyedia";
 import FormPenyedia from "./FormPenyedia";
 import "./Penyedia.css";
 import axios from "axios";
 
-export default function ShowPenyedia() {
+export default function ShowPenyedia({ notSuper }) {
   const [penyedias, setPenyedias] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedPenyedia, setSelectedPenyedia] = useState(null);
@@ -12,7 +12,6 @@ export default function ShowPenyedia() {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
 
-  // Fetch data
   const handlePenyediaAddedOrUpdated = async () => {
     try {
       const response = await fetch("http://localhost:5000/getPenyedia");
@@ -23,7 +22,6 @@ export default function ShowPenyedia() {
     }
   };
 
-  // Open/close form
   const handleOpenForm = (penyedia = null) => {
     setSelectedPenyedia(penyedia);
     setIsFormOpen(true);
@@ -34,7 +32,6 @@ export default function ShowPenyedia() {
     setSelectedPenyedia(null);
   };
 
-  // Delete penyedia
   const handleDeletePenyedia = async (id) => {
     try {
       if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
@@ -48,7 +45,6 @@ export default function ShowPenyedia() {
     }
   };
 
-  // Optimasi pencarian, memeriksa setiap field agar tidak menyebabkan error
   const filteredPenyedias = penyedias.filter((penyedia) => {
     const searchQueryLower = searchQuery.toLowerCase();
     return (
@@ -74,10 +70,7 @@ export default function ShowPenyedia() {
 
   return (
     <div className="penyedia-container">
-      {/* Tambahkan teks "Penyedia" di sini */}
       <div className="penyedia-title">Penyedia</div>
-      
-
       <div style={{ marginBottom: "20px" }}>
         <button onClick={() => handleOpenForm()}>Tambah Penyedia</button>
         <input
@@ -86,43 +79,46 @@ export default function ShowPenyedia() {
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
           style={{
-            marginLeft: "20px",
+            marginLeft: "10px",
             padding: "5px",
             border: "1px solid #ccc",
             borderRadius: "4px",
+            width: "200px",
           }}
         />
       </div>
-
-      {currentItems.length > 0 ? (
-        <table className="penyedia-table">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>NPWP</th>
-              <th>Alamat</th>
-              <th>SKP</th>
-              <th>Jenis</th>
-              <th>Aksi</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentItems.map((penyedia, index) => (
-              <Penyedia
+      <table className="penyedia-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>Nama</th>
+            <th>NPWP</th>
+            <th>Alamat</th>
+            <th>SKP</th>
+            <th>Jenis</th>
+            {!notSuper && <th>Aksi</th>}
+            <th>Details</th>
+          </tr>
+        </thead>
+        <tbody>
+          {currentItems.length > 0 ? (
+            currentItems.map((penyedia, index) => (
+              <PenyediaRow
                 key={penyedia._id}
                 {...penyedia}
                 no={index + 1 + (currentPage - 1) * itemsPerPage}
                 onEdit={() => handleOpenForm(penyedia)}
-                onDelete={handleDeletePenyedia}
+                onDelete={() => handleDeletePenyedia(penyedia._id)}
+                notSuper={notSuper}
               />
-            ))}
-          </tbody>
-        </table>
-      ) : (
-        <p>Data penyedia tidak ditemukan.</p>
-      )}
-
+            ))
+          ) : (
+            <tr>
+              <td colSpan={7}>Data penyedia tidak ditemukan.</td>
+            </tr>
+          )}
+        </tbody>
+      </table>
       <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
         {Array.from({ length: totalPages }, (_, index) => (
           <button

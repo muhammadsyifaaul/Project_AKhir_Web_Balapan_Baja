@@ -10,7 +10,6 @@ export default function TambahData({
   nilaiKontrakFromDetail,
   jangkaWaktuFromDetail,
   npwpPenyediaFromDetail,
-  skpFromDetail,
   namaPenyediaFromDetail,
   alamatPenyediaFromDetail,
   jenisFromDetail,
@@ -96,7 +95,7 @@ export default function TambahData({
         <div className="form-group">
           <div className="date-inputs">
             <div className="date-group">
-              <label>Mulai Kontrak</label>
+              <label htmlFor="mulaiKontrak">Mulai Kontrak</label>
               {isFromDetail ? (
                 <input
                   type="text"
@@ -119,7 +118,7 @@ export default function TambahData({
             </div>
 
             <div className="date-group">
-              <label>Selesai Kontrak</label>
+              <label htmlFor="selesaiKontrak">Selesai Kontrak</label>
               {isFromDetail ? (
                 <input
                   type="text"

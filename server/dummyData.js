@@ -42,7 +42,7 @@ const seedUsers = async () => {
     }
 };
 
-// seedUsers();
+seedUsers();
 const Penyedia = require("./Models/Penyedia");
 const Opd = require("./Models/Opd");
 const TenagaAhli = require("./Models/TenagaAhli");
@@ -113,4 +113,4 @@ const dummyPaket = [
 ];
 
 
-seedData();
+// seedData();

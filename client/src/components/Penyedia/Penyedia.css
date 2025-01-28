@@ -16,7 +16,15 @@ input[type="number"] {
     max-width: 1200px;
     margin: 0 auto;
 }
-
+.penyedia-title {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    font-weight: bold;
+    text-align: left;
+    border-bottom: 2px solid #333; /* Tambahkan garis bawah */
+    padding-bottom: 10px; /* Beri jarak antara teks dan garis */
+  }
 /* Overlay untuk form tambah/edit penyedia */
 .form-tambah-penyedia-overlay {
     position: fixed;

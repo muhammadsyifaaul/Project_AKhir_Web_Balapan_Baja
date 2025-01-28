@@ -13,14 +13,17 @@ exports.login = [
 
         try {
             const { username, password } = req.body;
+            console.log(username, password);
             const user = await User.findOne({ username });
+            console.log(user);
             if (!user) {
-                return res.status(401).json({ message: 'Invalid credentials' });
+                return res.status(401).json({ message: 'User Not Found' });
             }
 
             const isPasswordValid = await argon2.verify(user.password, password);
+            console.log(isPasswordValid);
             if (!isPasswordValid) {
-                return res.status(401).json({ message: 'Invalid credentials' });
+                return res.status(401).json({ message: 'Password is incorrect' });
             }
 
             req.session.user = {
@@ -28,6 +31,8 @@ exports.login = [
                 role: user.role,
                 isLoggedIn: true,
             };
+
+            // res.status(200).json({ message: 'Login successful' });
 
             res.redirect(`${process.env.CLIENT_URL}/Home`);
         } catch (error) {
@@ -37,11 +42,21 @@ exports.login = [
 ];
 
 
+
+
 exports.checkSession = (req, res) => {
-    if (req.session.user) {
-        res.status(200).json({ isLoggedIn: true, user: req.session.user });
+    console.log('Checking session...');
+    console.log('Session:', req.session);
+    console.log('User:', req.session.user);
+    if (req.session && req.session.user) {
+        res.json({
+            isLoggedIn: true,
+            user: req.session.user
+        });
     } else {
-        res.status(200).json({ isLoggedIn: false });
+        res.json({
+            isLoggedIn: false
+        });
     }
 };
 

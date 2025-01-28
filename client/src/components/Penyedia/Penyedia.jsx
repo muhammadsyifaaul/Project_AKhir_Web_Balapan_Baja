@@ -1,25 +1,22 @@
 import React from "react";
-import "./Penyedia.css";
 
-export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEdit, onDelete }) {
+export default function PenyediaRow({ _id, no, npwp, nama, alamat, skp, jenis, onEdit, onDelete, notSuper }) {
   return (
-    <tr className="penyedia-row">
+    <tr>
       <td>{no}</td>
       <td>{nama}</td>
       <td>{npwp}</td>
       <td>{alamat}</td>
       <td>{skp}</td>
       <td>{jenis}</td>
+      {!notSuper && (
+        <td>
+          <button onClick={onEdit}>Edit</button>
+          <button onClick={onDelete}>Hapus</button>
+        </td>
+      )}
       <td>
-        <button onClick={onEdit} title="Edit">
-          <i className="fas fa-edit"></i> {/* Ikon Edit */}
-        </button>
-        <button onClick={() => onDelete(_id)} title="Hapus">
-          <i className="fas fa-trash-alt"></i> {/* Ikon Hapus */}
-        </button>
-        <a href={`/Penyedia/${npwp}`} title="Details">
-          <i className="fas fa-info-circle"></i> {/* Ikon Details */}
-        </a>
+        <a href={`/Penyedia/${npwp}`}>Details</a>
       </td>
     </tr>
   );
