@@ -67,6 +67,15 @@ export default function Paket() {
   
 
   const handleDelete = (id) => {
+    if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
+      try {
+        axios.delete(`http://localhost:5000/deletePaket/${id}`);
+        alert("Data berhasil dihapus.");
+      } catch (error) {
+        console.error("Error deleting data:", error);
+        alert("Gagal menghapus data.");
+      }
+    }
     setFilteredPaket(filteredPaket.filter((item) => item._id !== id));
   };
 
