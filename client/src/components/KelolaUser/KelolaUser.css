@@ -1,65 +1,142 @@
+/* Membuat container full width */
 .kelola-user-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
 }
-.form-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .form-box {
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-    width: 400px;
-    max-width: 90%;
-    position: relative;
-  }
-  
-  .popup {
-    position: fixed;
-    top: 20%;
-    left: 100%;
-    transform: translate(-50%, -50%);
-    background-color: #fff;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    text-align: center;
-  }
-  .pagination {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0;
-  }
-  
-  .pagination button {
-    padding: 5px 10px;
-    margin: 0 5px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #fff;
-  }
-  
-  .pagination button:disabled {
-    cursor: not-allowed;
-    opacity: 0.5;
-  }
-  .form-container {
-    width: 200px;
-    height: 200px;
-    position: absolute;
-  }
+
+/* Heading lebih besar dan rata tengah */
+.kelola-user-container h1 {
+  font-size: 24px;
+  text-align: left;
+  margin-bottom: 10px;
+  color: #000000;
+}
+
+/* Styling tombol tambah user */
+.Kelola-User .action-bar button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* Membuat teks di tengah */
+  font-size: 1rem;
+  background-color: #007bff;
+  padding: 10px 20px;
+  margin: 5px;
+  text-align: center;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.Kelola-User action-bar button:hover {
+  transform: scale(1.05);
+}
+
+.Kelola-User button:focus {
+  outline: none;
+}
+
+/* Input pencarian */
+.kelola-user-container input[type="text"] {
+  /* Pindahkan search bar ke kiri */
+  display: block;
+  width: 30%;
+  margin: 10px 0;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-left: 0;
+  /* Pastikan di kiri */
+}
+
+
+.Kelola-User table {
+  width: 180%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+}
+
+th {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+
+table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+
+table tr:nth-child(even) {
+  background-color: #f1f1f1;
+  /* Warna abu-abu muda untuk baris genap */
+}
+
+table tr:nth-child(odd) {
+  background-color: #ffffff;
+  /* Warna putih untuk baris ganjil */
+}
+
+/* Tombol Aksi */
+.kelola-user-container .pagination {
+  text-align: center;
+  margin-top: 20px;
+
+}
+
+.pagination-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  margin: 0 5px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination-btn.active {
+  background-color: #0056b3;
+  font-weight: bold;
+}
+
+.pagination-btn:hover {
+  background-color: #0056b3;
+}
+
+/* Tombol detail dan delete */
+.kelola-user-container button {
+  font-size: 14px;
+  border-radius: 5px;
+  border-align;
+  width: 100px;
+  text-align: center;
+}
+
+button.info {
+  background-color: #007bff;
+  color: white;
+}
+
+button.delete {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.info:hover {
+  background-color: #007bff;
+}
+
+button.delete:hover {
+  background-color: #c82333;
+}

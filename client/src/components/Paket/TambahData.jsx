@@ -1,4 +1,6 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
+
 import { useTambahData } from "./logic/useTambahData";
 import "./TambahData.css";
 
@@ -16,6 +18,7 @@ export default function TambahData({
   tenagaAhliFromDetail,
   isFromDetail,
 }) {
+  const navigate = useNavigate();
   const {
     mulaiKontrak,
     setMulaiKontrak,
@@ -35,7 +38,13 @@ export default function TambahData({
     cekNpwp,
     cekTenagaAhli,
     handleResetState,
+    errorSkpZero,
+    setErrorSkpZero
   } = useTambahData();
+  const handleClose = (e) => {
+    e.preventDefault();
+    setErrorSkpZero(false);
+  }
 
   return (
     <div className="container">
@@ -219,6 +228,10 @@ export default function TambahData({
           </div>
         </div>
         {errorNpwp && <p className="errMsg">{errorNpwp}</p>}
+        {errorSkpZero && <div className="errSkp0">
+          <p>Skp Penyedia 0</p>
+          <button onClick={handleClose}>Close</button>
+          </div>}
 
         <div className="form-group">
           <label htmlFor="namaPenyedia">Nama Penyedia</label>
@@ -265,18 +278,15 @@ export default function TambahData({
         </div>
 
         <div className="form-group">
-
-          {isFromDetail ? (
-            null
-          ) : (
+          {isFromDetail ? null : (
             <>
-            <label htmlFor="skp">Sisa Kemampuan Paket</label>
-            <input
-              type="number"
-              name="skp"
-              id="skp"
-              placeholder="Masukkan sisa kemampuan paket"
-            />
+              <label htmlFor="skp">Sisa Kemampuan Paket</label>
+              <input
+                type="number"
+                name="skp"
+                id="skp"
+                placeholder="Masukkan sisa kemampuan paket"
+              />
             </>
           )}
         </div>
@@ -387,7 +397,9 @@ export default function TambahData({
 
         <div className="button-group">
           {isFromDetail ? (
-            <button type="button">Kembali</button>
+            <button type="button" onClick={() => navigate(-1)}>
+              Kembali
+            </button>
           ) : (
             <>
               <button type="reset" onClick={handleResetState}>

@@ -1,4 +1,5 @@
 import React from "react";
+import "./KelolaUser.css";
 
 export default function KelolaUser({ _id, no, username, name, role, onUserDeleted, onEdit }) {
   const handleDelete = async () => {
@@ -8,11 +9,11 @@ export default function KelolaUser({ _id, no, username, name, role, onUserDelete
           method: "DELETE",
         });
 
-        const data = await response.json();
-
         if (response.ok) {
           alert("User deleted successfully");
           onUserDeleted();
+        } else {
+          alert("Gagal menghapus user");
         }
       } catch (error) {
         console.error("Error deleting user:", error);
@@ -26,12 +27,12 @@ export default function KelolaUser({ _id, no, username, name, role, onUserDelete
       <td>{username}</td>
       <td>{name}</td>
       <td>{role}</td>
-      <td>
-        <button onClick={onEdit} style={{ marginRight: "5px" }}>
-          Edit
+      <td className="aksi-buttons">
+        <button className="info" onClick={onEdit}>
+          <i className="fas fa-info-circle"></i> Detail
         </button>
-        <button onClick={handleDelete} style={{ color: "red" }}>
-          Hapus
+        <button className="delete" onClick={handleDelete}>
+          <i className="fas fa-trash-alt"></i> Delete
         </button>
       </td>
     </tr>

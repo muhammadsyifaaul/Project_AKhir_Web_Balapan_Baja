@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
     const checkSession = async () => {
       try {
         console.log('ini check session');
-        const response = await axios.get("/api/check-session");
+        const response = await axios.get("/api/check-session", { withCredentials: true });
         console.log(`ini data session ${JSON.stringify(response.data)}`);
         setIsLoggedIn(response.data.isLoggedIn);
         if (response.data.user) {

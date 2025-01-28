@@ -1,11 +1,12 @@
 import { useEffect,useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 import PaketList from "../components/Paket/PaketList";
 import MainContainer from "../components/MainLayout";
 
-export default function DetailPenyediaPage() {
+export default function DetailPenyediaPage({notSuper}) {
     const { npwp } = useParams();
+    const navigate = useNavigate();
     const [penyedias, setPenyedias] = useState([]);
     useEffect(() => {
         const fetchPenyedias = async () => {
@@ -23,7 +24,6 @@ export default function DetailPenyediaPage() {
     return (
       <div>
         <MainContainer>
-        <h1>List Paket</h1>
         {penyedias.length > 0 ? (
           penyedias.map((penyedia, index) => (
             <PaketList
@@ -35,11 +35,13 @@ export default function DetailPenyediaPage() {
               mulaiKontrak={penyedia.mulaiKontrak}
               selesaiKontrak={penyedia.selesaiKontrak}
               jangkaWaktu={penyedia.jangkaWaktu}
+              notSuper={notSuper}
             />
           ))
         ) : (
           <p>No Data Avaible</p>
         )}
+        <button onClick={() => navigate(-1)}>Kembali</button>
         </MainContainer>
       </div>
     );

@@ -11,6 +11,7 @@ const loginLimiter = rateLimit({
 
 router.post('/Login', loginLimiter, authController.login);
 router.get('/api/check-session', authController.checkSession);
+router.get('/logout',authController.logout);
 
 
 

@@ -18,28 +18,65 @@ const mainRoutes = require("./Routes/mainRoutes");
 //       },
 //     })
 //   );
+const MongoStore = require('connect-mongo');
 
+const corsOptions = {
+  origin: ['http://localhost:5173'], // Tambahkan domain frontend
+  credentials: true, // Izinkan pengiriman cookie
+};
 
-app.use(session({
-    secret: 'ABOGOBOGAYEAMPLOWWNALDSHHSDTHTORHROT',
+app.use(cors(corsOptions));
+
+// Pastikan middleware ini dipasang sebelum router lain
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', req.headers.origin);
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept, Authorization'
+  );
+  next();
+});
+
+app.use(
+  session({
+    secret: "your_secret_key",
     resave: false,
     saveUninitialized: false,
-    cookie: { maxAge: 86400000, httpOnly: false } // 1 day
-}));
+    cookie: {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production", // Hanya true di production
+      sameSite: process.env.NODE_ENV === "production" ? "None" : "Lax", // Gunakan "None" hanya di production
+    },
+  })
+);
+
+
+
+
 
   
   app.use(express.urlencoded({ extended: true }));
   app.use(express.json());
   
-  app.use(
-    cors({
-      origin: "http://localhost:5173",
-      credentials: true,
-    })
-  );
-connectDb();
+  
+  app.use(cors(corsOptions));
+  
+  app.use(cors(corsOptions));
+  app.use((req, res, next) => {
+    console.log("Request Headers:", req.headers);
+    next();
+  });
+  app.use((req, res, next) => {
+    console.log("CORS Headers:", res.getHeaders());
+    next();
+  });
+    
+  
 const authRoutes = require("./Routes/authRoutes");
 
+connectDb();
 app.use("/", authRoutes);
 app.use(mainRoutes);
 
