@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useTambahData } from "./logic/useTambahData";
@@ -39,12 +39,19 @@ export default function TambahData({
     cekTenagaAhli,
     handleResetState,
     errorSkpZero,
-    setErrorSkpZero
+    setErrorSkpZero,
   } = useTambahData();
   const handleClose = (e) => {
     e.preventDefault();
     setErrorSkpZero(false);
-  }
+  };
+
+  // Reset form secara otomatis jika errorSkpZero aktif
+  useEffect(() => {
+    if (errorSkpZero) {
+      handleResetState();
+    }
+  }, [errorSkpZero, handleResetState]);
 
   return (
     <div className="container">
@@ -231,7 +238,8 @@ export default function TambahData({
         {errorSkpZero && <div className="errSkp0">
           <p>Skp Penyedia 0</p>
           <button onClick={handleClose}>Close</button>
-          </div>}
+          </div>
+          }
 
         <div className="form-group">
           <label htmlFor="namaPenyedia">Nama Penyedia</label>
@@ -331,31 +339,6 @@ export default function TambahData({
             />
           )}
         </div>
-
-        {/* {nilaiKontrak >= 200000000 && (
-          <div className="form-group">
-            <label htmlFor="tenagaAhli">Tenaga Ahli</label>
-            <div style={{ display: "flex", flex: 1 }}>
-              <input
-                type="text"
-                name="tenagaAhli"
-                id="tenagaAhli"
-                placeholder="NPWP atau Nama"
-                onChange={(e) => handleInputTenagaAhli(e.target.value)}
-                value={inputTenagaAhli}
-              />
-              <input
-                type="hidden"
-                name="idTenagaAhli"
-                id="idTenagaAhli"
-                value={idTenagaAhli}
-              />
-              <button onClick={cekTenagaAhli} type="button">
-                Cek
-              </button>
-            </div>
-          </div>
-        )} */}
         {isFromDetail ? (
           <div className="form-group">
             <label htmlFor="tenagaAhli">Tenaga Ahli</label>

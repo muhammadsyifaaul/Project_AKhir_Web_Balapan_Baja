@@ -285,9 +285,17 @@ exports.deleteTenagaAhli = async (req, res) => {
 exports.deletePaket = async (req, res) => {
   try {
     const id = req.params.id;
-    await Paket.findByIdAndDelete(id);
-    res.status(200).send({ message: "Data berhasil dihapus" });
+    console.log("Menghapus paket dengan ID:", id); // Debugging
+
+    const deletedPaket = await Paket.findByIdAndDelete(id);
+
+    if (!deletedPaket) {
+      return res.status(404).json({ message: "Data tidak ditemukan" });
+    }
+
+    res.status(200).json({ message: "Data berhasil dihapus", deletedPaket });
   } catch (error) {
-    res.status(500).send({ error: error.message });
+    console.error("Error deleting paket:", error);
+    res.status(500).json({ error: error.message });
   }
-}
+};

@@ -1,8 +1,7 @@
 import React from "react";
 import "./Penyedia.css";
 
-export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEdit, onDelete,notSuper }) {
-  console.log(`notUser pada penyedia: ${notSuper}`);
+export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEdit, onDelete, notSuper }) {
   return (
     <div className="penyedia-card">
       <h2>No: {no}</h2>
@@ -14,11 +13,12 @@ export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEd
       {!notSuper && (
         <>
           <button onClick={onEdit}>Edit</button>
-          <button onClick={onDelete}>Hapus</button>
+          <button onClick={() => onDelete(_id)}>Hapus</button>
         </>
       )}
       <a href={`/Penyedia/${npwp}`}>Details</a>
     </div>
   );
 }
+
 
