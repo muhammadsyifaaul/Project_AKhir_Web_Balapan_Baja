@@ -1,9 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import PaketList from "./PaketList";
 import "./Paket.css";
 
-export default function Paket() {
+export default function Paket({ fromPenyedia, penyedias, notSuper}) {
   const navigate = useNavigate();
   const [paket, setPaket] = useState([]);
   const [filteredPaket, setFilteredPaket] = useState([]);
@@ -14,19 +15,24 @@ export default function Paket() {
   const [itemsPerPage] = useState(5);
 
   useEffect(() => {
-    const getPaket = async () => {
-      try {
-        const response = await axios.get("http://localhost:5000/getAllPaket");
-        setPaket(response.data);
-        setFilteredPaket(response.data);
-        const uniqueOpd = [...new Set(response.data.map((item) => item.opd))];
-        setOpdList(uniqueOpd);
-      } catch (error) {
-        console.error("Error fetching data:", error);
-      }
-    };
-    getPaket();
-  }, []);
+    if (!fromPenyedia) {
+      const fetchPaket = async () => {
+        try {
+          const response = await axios.get("http://localhost:5000/getAllPaket");
+          setPaket(response.data);
+          setFilteredPaket(response.data);
+          const uniqueOpd = [...new Set(response.data.map((item) => item.opd))];
+          setOpdList(uniqueOpd);
+        } catch (error) {
+          console.error("Error fetching data:", error);
+        }
+      };
+      fetchPaket();
+    } else {
+      setPaket(penyedias);
+      setFilteredPaket(penyedias);
+    }
+  }, [fromPenyedia, penyedias]);
 
   const handleTambahClick = () => {
     navigate("/TambahPaket");
@@ -104,7 +110,9 @@ export default function Paket() {
     <div className="paket-container">
       <div id="Paket-form">
         <h2>Daftar Paket</h2>
-        <button className="btn-tambah" onClick={handleTambahClick}>
+        {!fromPenyedia && (
+          <>
+          <button className="btn-tambah" onClick={handleTambahClick}>
           Tambah Paket
         </button>
         <div className="filter-search-container">
@@ -129,6 +137,8 @@ export default function Paket() {
             />
           </div>
         </div>
+        </>
+        )}
         {currentItems.length > 0 ? (
           <table>
             <thead>
