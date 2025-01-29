@@ -3,6 +3,7 @@ import PenyediaRow from "./Penyedia";
 import FormPenyedia from "./FormPenyedia";
 import "./Penyedia.css";
 import axios from "axios";
+import { AiOutlinePlus } from "react-icons/ai";
 
 export default function ShowPenyedia({ notSuper }) {
   const [penyedias, setPenyedias] = useState([]);
@@ -70,11 +71,16 @@ export default function ShowPenyedia({ notSuper }) {
 
   return (
     <div className="penyedia-container">
-      <div className="penyedia-title">Penyedia</div>
+      <div className="penyedia-title">
+        <img src="images/provider.png" alt="provider" className="penyedia-icon" />
+        Penyedia
+      </div>
       <div style={{ marginBottom: "20px" }}>
-        {!notSuper && (
-          <button onClick={() => handleOpenForm()}>Tambah Penyedia</button>
-        )}
+        <button className="add-btn" onClick={() => handleOpenForm()}>
+          <AiOutlinePlus />
+          Tambah Penyedia
+        </button>
+
         <input
           type="text"
           placeholder="Cari nama penyedia..."
@@ -113,6 +119,7 @@ export default function ShowPenyedia({ notSuper }) {
                 onDelete={() => handleDeletePenyedia(penyedia._id)}
                 notSuper={notSuper}
               />
+
             ))
           ) : (
             <tr>
@@ -121,25 +128,17 @@ export default function ShowPenyedia({ notSuper }) {
           )}
         </tbody>
       </table>
-      <div style={{ marginTop: "20px", display: "flex", gap: "10px" }}>
+      <div className="pagination-container">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            style={{
-              padding: "5px 10px",
-              backgroundColor: currentPage === index + 1 ? "#007bff" : "#ccc",
-              color: currentPage === index + 1 ? "#fff" : "#000",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
+            className={`pagination-btn ${currentPage === index + 1 ? "active" : ""}`}
           >
             {index + 1}
           </button>
         ))}
       </div>
-
       {isFormOpen && (
         <FormPenyedia
           onClose={handleCloseForm}

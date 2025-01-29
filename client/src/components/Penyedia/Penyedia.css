@@ -8,23 +8,39 @@ input[type="number"]::-webkit-outer-spin-button {
 input[type="number"] {
     -moz-appearance: textfield;
 }
+/* Responsive */
+@media (max-width: 768px) {
+    .penyedia-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
 
 /* Container utama */
 .penyedia-container {
+    width: 100%;
     position: relative;
     padding: 20px;
-    max-width: 1200px;
+    max-width: 800px;
     margin: 0 auto;
 }
+/* Judul */
 .penyedia-title {
     font-size: 2rem;
-    color: #333;
+    color: #242c9c; 
     margin-bottom: 20px;
     font-weight: bold;
     text-align: left;
-    border-bottom: 2px solid #333; /* Tambahkan garis bawah */
-    padding-bottom: 10px; /* Beri jarak antara teks dan garis */
-  }
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+}
+
+.penyedia-title .penyedia-icon {
+    width: 2rem; 
+    height: 2rem; 
+    margin-right: 0.3rem;
+}
 /* Overlay untuk form tambah/edit penyedia */
 .form-tambah-penyedia-overlay {
     position: fixed;
@@ -138,6 +154,41 @@ input[type="number"] {
     font-weight: bold;
     color: #333;
 }
+/* Lebar kolom */
+.penyedia-table th:nth-child(1), 
+.penyedia-table td:nth-child(1) { /* Kolom No */
+    width: 5%;
+}
+
+.penyedia-table th:nth-child(2), 
+.penyedia-table td:nth-child(2) { /* Kolom Nama */
+    width: 20%;
+}
+
+.penyedia-table th:nth-child(3), 
+.penyedia-table td:nth-child(3) { /* Kolom NPWP */
+    width: 15%;
+}
+
+.penyedia-table th:nth-child(4), 
+.penyedia-table td:nth-child(4) { /* Kolom Alamat */
+    width: 30%;
+}
+
+.penyedia-table th:nth-child(5), 
+.penyedia-table td:nth-child(5) { /* Kolom SKP */
+    width: 10%;
+}
+
+.penyedia-table th:nth-child(6), 
+.penyedia-table td:nth-child(6) { /* Kolom Jenis */
+    width: 10%;
+}
+
+.penyedia-table th:nth-child(7), 
+.penyedia-table td:nth-child(7) { /* Kolom Aksi */
+    width: 10%;
+}
 
 .penyedia-table tr:hover {
     background-color: #f1f1f1;
@@ -159,6 +210,7 @@ input[type="number"] {
 .penyedia-table .edit-btn {
     background-color: #ffc107;
     color: #000;
+
 }
 
 .penyedia-table .delete-btn {
@@ -167,29 +219,60 @@ input[type="number"] {
 }
 
 .penyedia-table .details-btn {
-    background-color: #28a745;
+    background-color: #6c757d;
     color: #fff;
 }
 
+
+.search-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
 /* Tombol tambah penyedia dan search */
-.penyedia-container > div {
+.penyedia-container>div {
     display: flex;
     gap: 10px;
     margin-bottom: 20px;
 }
 
-.penyedia-container button {
-    padding: 10px 15px;
-    font-size: 14px;
+/* Tombol tambah penyedia */
+.add-btn {
+    font-size: 15px;
+    font-weight: bold; 
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Jarak antara ikon dan teks */
+    width: 160px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #28a745; /* Hijau */
     color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efek hover lebih halus */
 }
 
-.penyedia-container button:hover {
-    background-color: #0056b3;
+.add-btn svg {
+    font-size: 30px; /* Ukuran ikon sedikit lebih besar */
+}
+
+.add-btn:hover {
+    background-color: #218838; /* Hijau gelap untuk hover */
+    transform: scale(1.05); /* Sedikit memperbesar tombol saat hover */
+}
+
+
+.search-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
 }
 
 .penyedia-container input[type="text"] {
@@ -200,34 +283,30 @@ input[type="number"] {
     flex: 1;
 }
 
-/* Pagination */
-.pagination {
+.pagination-container {
     display: flex;
-    gap: 10px;
-    margin-top: 20px;
+    justify-content: center; 
+    margin-top: 70px; 
+    gap: 10px; 
 }
 
-.pagination button {
-    padding: 5px 10px;
-    font-size: 14px;
-    border: none;
+.pagination-container .pagination-btn {
+    padding: 6px 10px 
+    font-size: 14px; 
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    color: #333;
     border-radius: 4px;
     cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination-container .pagination-btn:hover {
     background-color: #007bff;
     color: white;
 }
 
-.pagination button:hover {
-    background-color: #0056b3;
-}
-
-.pagination button.active {
-    background-color: #0056b3;
-}
-.penyedia-title {
-  font-size: 2rem;
-  color: #333;
-  margin-bottom: 20px;
-  font-weight: bold;
-  text-align: left;
+.pagination-container .pagination-btn.active {
+    background-color: #007bff; /* Biru */
+    color: white;
 }
