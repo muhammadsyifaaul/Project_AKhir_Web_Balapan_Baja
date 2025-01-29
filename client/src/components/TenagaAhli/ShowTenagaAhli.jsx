@@ -75,79 +75,87 @@ export default function ShowTenagaAhli({ notSuper }) {
 
   return (
     <div className="kelola-tenaga-ahli-container">
-  <h1 className="page-title">
-    <img src="images/rating.png" alt="rating" className="title-icon" />
-    Tenaga Ahli
-  </h1>
-  <div className="actions-container">
-    {!notSuper && (
-      <button className="btn btn-primary" onClick={() => handleOpenFormForEdit()}>
-        <AiOutlinePlus /> Tambah Tenaga Ahli
-      </button>
-    )}
-    <input
-      type="text"
-      placeholder="Cari tenaga ahli..."
-      value={searchTerm}
-      onChange={handleSearchChange}
-      className="search-bar"
-    />
-  </div>
+      <h1 className="page-title">
+        <img src="images/rating.png" alt="rating" className="title-icon" />
+        Tenaga Ahli
+      </h1>
+      <div className="actions-container">
+        {!notSuper && (
+          <button
+            className="btn btn-primary"
+            onClick={() => handleOpenFormForEdit()}
+          >
+            <AiOutlinePlus />
+            Tambah Tenaga Ahli
+          </button>
+        )}
+        <input
+          type="text"
+          placeholder="Cari tenaga ahli..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="search-bar"
+        />
+      </div>
+      {isFormOpen && (
+        <FormTambahTenagaAhli
+          onClose={handleCloseForm}
+          onTenagaAhliUpdated={fetchTenagaAhli}
+          initialData={selectedTenagaAhli}
+        />
+      )}
 
-  {isFormOpen && (
-    <FormTambahTenagaAhli
-      onClose={handleCloseForm}
-      onTenagaAhliUpdated={fetchTenagaAhli}
-      initialData={selectedTenagaAhli}
-    />
-  )}
-
-  <div className="table-container">
-    <table className="tenaga-ahli-table">
-      <thead>
-        <tr>
-          <th>No</th>
-          <th>NPWP</th>
-          <th>Nama</th>
-          <th>Alamat</th>
-          {!notSuper && <th>Aksi</th>}
-        </tr>
-      </thead>
-      <tbody>
-        {currentItems.map((tenaga, index) => (
-          <tr key={tenaga._id}>
-            <td>{indexOfFirstItem + index + 1}</td>
-            <td>{tenaga.npwp}</td>
-            <td>{tenaga.nama}</td>
-            <td>{tenaga.alamat}</td>
-            {!notSuper && (
-              <td>
-                <button className="btn-edit" onClick={() => handleOpenFormForEdit(tenaga)}>
-                  <AiOutlineEdit /> Edit
-                </button>
-                <button className="btn-delete" onClick={() => handleDeleteTenagaAhli(tenaga._id)}>
-                  <AiOutlineDelete /> Hapus
-                </button>
-              </td>
-            )}
+      <table className="tenaga-ahli-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>NPWP</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            {!notSuper && <th>Aksi</th>}
           </tr>
+        </thead>
+        <tbody>
+          {currentItems.map((tenaga, index) => (
+            <tr key={tenaga._id}>
+              <td>{indexOfFirstItem + index + 1}</td>
+              <td>{tenaga.npwp}</td>
+              <td>{tenaga.nama}</td>
+              <td>{tenaga.alamat}</td>
+              {!notSuper && (
+                <td>
+                  <button
+                    className="btn-edit"
+                    onClick={() => handleOpenFormForEdit(tenaga)}
+                  >
+                    <AiOutlineEdit />
+                    Edit
+                  </button>
+                  <button
+                    className="btn-delete"
+                    onClick={() => handleDeleteTenagaAhli(tenaga._id)}
+                  >
+                    <AiOutlineDelete />
+                    Hapus
+                  </button>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div className="pagination">
+        {Array.from({ length: totalPages }, (_, i) => (
+          <button
+            key={i}
+            onClick={() => handlePageChange(i + 1)}
+            className={`pagination-button ${currentPage === i + 1 ? "active" : ""}`}
+          >
+            {i + 1}
+          </button>
         ))}
-      </tbody>
-    </table>
-  </div>
-
-  <div className="pagination">
-    {Array.from({ length: totalPages }, (_, i) => (
-      <button
-        key={i}
-        onClick={() => handlePageChange(i + 1)}
-        className={`pagination-button ${currentPage === i + 1 ? "active" : ""}`}
-      >
-        {i + 1}
-      </button>
-    ))}
-  </div>
-</div>
-
+      </div>
+    </div>
   );
 }

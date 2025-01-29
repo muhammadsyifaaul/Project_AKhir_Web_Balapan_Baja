@@ -132,5 +132,6 @@ export const useTambahData = () => {
     handleFormSubmit,
     errorSkpZero,
     setErrorSkpZero,
+    handleResetState
   };
 };

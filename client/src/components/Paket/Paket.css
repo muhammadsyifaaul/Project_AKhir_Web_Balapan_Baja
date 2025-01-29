@@ -5,100 +5,93 @@
   box-sizing: border-box;
 }
 
-#Paket-form body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f7fc;
-  color: #333;
-  line-height: 1.6;
-  padding: 0px;
+.paket-container {
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0px;
 }
 
-#Paket-form h1 {
-  font-size: 2rem;
-  color: #333;
+/* Header Styles */
+#Paket-form h2 {
+  font-size: 32px;
+  color: #000000 !important; /* Pastikan teks berwarna hitam */
   margin-bottom: 20px;
+  text-align: left;
+  position: relative;
+}
 
+#Paket-form h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  color: #a29f9f !important; /* Pastikan garis berwarna abu */
+  margin-top: 10px;
 }
 
 /* Button Styles */
-#Paket-form button {
-
-  background-color: #007bff;
+#Paket-form .btn-tambah {
+  padding: 10px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #ff6e31;
   color: white;
   border: none;
-  padding: 8px 12px;
-  margin: 0 5px;
   border-radius: 5px;
   cursor: pointer;
-
+  width: 100px;
+  margin-bottom: 15px;
+  margin-top: 0px;
 }
 
-#Paket-form button:hover {
-  transform: scale(1.05);
-}
-
-#Paket-form button:focus {
-  outline: none;
-}
-
-/* Detail and Delete Buttons */
-#Paket-form button.detail {
-  background-color: #007bff;
-  /* Warna biru */
-  color: white;
-}
-
-#Paket-form button.detail:hover {
+#Paket-form .btn-tambah:hover {
   background-color: #0056b3;
-  /* Biru lebih gelap saat hover */
-}
-
-#Paket-form button.delete {
-  background-color: #ff0004;
-  /* Warna biru */
-  color: white;
-}
-
-#Paket-form button.delete:hover {
-  background-color: #0056b3;
-  /* Biru lebih gelap saat hover */
-}
-
-#Paket-form button i {
-  margin-right: 5px;
 }
 
 /* Filter and Search Styles */
-#Paket-form div {
-  margin-bottom: 0px;
+.filter-search-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: 20px;
+  margin-top: 15px
 }
 
-#Paket-form label {
-  font-size: 1rem;
-  margin-right: 10px;
+.filter-opd {
+  display: flex;
+  flex-direction: column;
 }
 
-#Paket-form select,
-#Paket-form input[type="text"] {
+.search-bar {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+}
+
+#Paket-form input[type="text"],
+#Paket-form select {
   padding: 8px;
   font-size: 1rem;
   border-radius: 4px;
   border: 1px solid #ccc;
-  width: 200px;
-}
-
-#Paket-form input[type="text"] {
   width: 250px;
+  margin-top: 0.2rem;
 }
 
-#Paket-form select:focus,
-#Paket-form input[type="text"]:focus {
+#Paket-form input[type="text"]:focus,
+#Paket-form select:focus {
   border-color: #007bff;
 }
 
 /* Table Styles */
 #Paket-form table {
-  width: 180%;
+  width: 100%;
   border-collapse: collapse;
   margin-top: 20px;
   background-color: #fff;
@@ -108,10 +101,10 @@
 
 #Paket-form table th {
   background-color: #ff6e31;
-  /* Warna header */
   color: white;
   font-weight: bold;
   text-align: center;
+  padding: 12px;
 }
 
 #Paket-form table td {
@@ -121,76 +114,187 @@
   color: #555;
 }
 
-#Paket-form table tr:nth-child(even) {
-  background-color: #f1f1f1;
-  /* Warna abu-abu muda untuk baris genap */
+/* General Reset and Base Styles */
+#Paket-form {
+  margin-bottom: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-#Paket-form table tr:nth-child(odd) {
-  background-color: #ffffff;
-  /* Warna putih untuk baris ganjil */
+.paket-container {
+  margin: 40px auto;
+  padding: 20px;
+  max-width: 1200px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-top: 0px;
 }
 
-#Paket-form table tr:hover {
-  background-color: #f1f1f1;
+/* Header Styles */
+#Paket-form h2 {
+  font-size: 32px;
+  color: #333;
+  margin-bottom: 20px;
+  text-align: left;
+  position: relative;
 }
 
+#Paket-form h2::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: #807c7c;
+  margin-top: 10px;
+}
 
+/* Button Styles */
 #Paket-form .btn-tambah {
-  padding: 8px 16px;
-  font-size: 14px;
-  background-color: #007bff;
+  padding: 10px 8px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: #ff6e31;
   color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  width: 100px;
+  margin-bottom: 10px;
 }
 
 #Paket-form .btn-tambah:hover {
   background-color: #0056b3;
 }
 
-#Paket-form .filter-search-container {
+/* Filter and Search Styles */
+.filter-search-container {
   display: flex;
-  justify-content: space-between;
-  /* Membuat jarak antara filter dan search */
   flex-wrap: wrap;
-  /* Responsif untuk layar kecil */
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 10px;
   margin-bottom: 20px;
 }
 
-#Paket-form .filter-search-container>div:first-child {
+.filter-opd {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar {
+  display: flex;
   flex-grow: 1;
-  /* Membuat filter mengambil ruang lebih besar ke kiri */
-}
-
-#Paket-form .filter-search-container>div:last-child {
   justify-content: flex-end;
-  /* Menempatkan search di paling kanan */
-  text-align: right;
-  position: absolute;
-  /* Menempatkan pencarian di posisi tetap */
-  right: 20px;
-  /* Jarak dari kanan halaman */
 }
 
-/* Ensure responsiveness */
+#Paket-form input[type="text"],
+#Paket-form select {
+  padding: 8px;
+  font-size: 1rem;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  width: 250px;
+}
+
+#Paket-form input[type="text"]:focus,
+#Paket-form select:focus {
+  border-color: #007bff;
+}
+
+/* Table Styles */
+#Paket-form table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+#Paket-form table th {
+  background-color: #ff6e31;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px;
+}
+
+#Paket-form table td {
+  padding: 12px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+  color: #555;
+}
+
+/* Responsive Layout */
 @media (max-width: 768px) {
-  #Paket-form .filter-search-container {
+  .filter-search-container {
     flex-direction: column;
-    gap: 15px;
-    /* Adjust spacing for small screens */
+    align-items: flex-start;
+  }
+
+  .search-bar {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  #Paket-form table {
+    font-size: 14px;
   }
 }
 
+/* Responsive Layout */
+@media (max-width: 768px) {
+  .filter-search-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .search-bar {
+    width: 100%;
+    justify-content: flex-start;
+  }
+
+  .search-bar input {
+    width: 100%;
+  }
+
+  #Paket-form table {
+    font-size: 14px;
+  }
+}
+
+#Paket-form button.detail {
+  background-color: #007bff;
+  color: white;
+}
+
+#Paket-form button.detail:hover {
+  background-color: #0056b3;
+}
+
+#Paket-form button.delete {
+  background-color: #ff0004;
+  color: white;
+}
+
+#Paket-form button.delete:hover {
+  background-color: #cc0000;
+}
+
+#Paket-form button i {
+  margin-right: 5px;
+}
+
 .pagination {
-  display: flex;
-  justify-content: center;
-  /* Memusatkan pagination */
   align-items: center;
-  margin-top: 20px;
-  gap: 10px;
-  /* Jarak antar tombol */
+  margin: 20px 100px;
+  width: 50px;
 }
 
 .pagination-btn {
@@ -207,7 +311,6 @@
 .pagination-btn.active {
   background-color: #0056b3;
   font-weight: bold;
-  width: 100px;
 }
 
 .pagination-btn:hover {

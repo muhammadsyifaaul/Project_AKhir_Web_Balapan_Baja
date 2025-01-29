@@ -2,7 +2,7 @@ import React from "react";
 import { AiOutlineEdit, AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import "./FormPenyedia.css";
 
-export default function PenyediaRow({ _id, no, npwp, nama, alamat, skp, jenis, onEdit, onDelete, notSuper }) {
+export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEdit, onDelete, notSuper }) {
   return (
     <tr>
       <td>{no}</td>
@@ -12,16 +12,10 @@ export default function PenyediaRow({ _id, no, npwp, nama, alamat, skp, jenis, o
       <td>{skp}</td>
       <td>{jenis}</td>
       {!notSuper && (
-        <td>
-          <button className="edit-btn" onClick={onEdit}>
-            <AiOutlineEdit />
-            Edit
-          </button>
-          <button className="delete-btn" onClick={onDelete}>
-            <AiOutlineDelete />
-            Hapus
-          </button>
-        </td>
+        <>
+          <button onClick={onEdit}>Edit</button>
+          <button onClick={() => onDelete(_id)}>Hapus</button>
+        </>
       )}
       <td>
         <a className="details-btn" href={`/Penyedia/${npwp}`}>
@@ -31,3 +25,5 @@ export default function PenyediaRow({ _id, no, npwp, nama, alamat, skp, jenis, o
     </tr>
   );
 }
+
+
