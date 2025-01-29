@@ -1,5 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
-import MainContainer from "../components/MainLayout";
+import MainLayout from "../components/MainLayout";
 import { useEffect, useState } from "react";
 import Paket from "../components/Paket/Paket";
 
@@ -27,9 +27,9 @@ export default function DetailPenyediaPage({ notSuper }) {
   };
 
   return (
-    <MainContainer>
+    <MainLayout>
       <Paket fromPenyedia={true} penyedias={penyedias} notSuper={notSuper} handleDelete={handleDelete} />
       <button onClick={() => navigate(-1)}>Kembali</button>
-    </MainContainer>
+    </MainLayout>
   );
 }
