@@ -1,7 +1,7 @@
-import { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import PaketList from "../components/Paket/PaketList";
 import MainContainer from "../components/MainLayout";
+import { useEffect, useState } from "react";
+import Paket from "../components/Paket/Paket";
 
 export default function DetailPenyediaPage({ notSuper }) {
   const { npwp } = useParams();
@@ -20,36 +20,15 @@ export default function DetailPenyediaPage({ notSuper }) {
     };
 
     fetchPenyedias();
-  }, [npwp]); // ✅ Tambahkan npwp agar data diperbarui jika berubah
+  }, [npwp]);
 
-  // ✅ Fungsi untuk menghapus data dari state
   const handleDelete = (idPaket) => {
     setPenyedias((prevPenyedias) => prevPenyedias.filter((paket) => paket._id !== idPaket));
   };
 
   return (
     <MainContainer>
-      {penyedias.length > 0 ? (
-        penyedias.map((penyedia, index) => (
-          <PaketList
-            key={penyedia._id}
-            no={index + 1}
-            idPaket={penyedia._id}
-            opd={penyedia.opd}
-            namaPekerjaan={penyedia.namaPekerjaan}
-            mulaiKontrak={penyedia.mulaiKontrak}
-            selesaiKontrak={penyedia.selesaiKontrak}
-            jangkaWaktu={penyedia.jangkaWaktu}
-            npwpPenyedia={penyedia.npwpPenyedia}
-            namaPenyedia={penyedia.namaPenyedia}
-            nilaiKontrak={penyedia.nilaiKontrak}
-            notSuper={notSuper}
-            handleDelete={handleDelete} // ✅ Kirim fungsi handleDelete ke PaketList
-          />
-        ))
-      ) : (
-        <p>No Data Available</p>
-      )}
+      <Paket fromPenyedia={true} penyedias={penyedias} notSuper={notSuper} handleDelete={handleDelete} />
       <button onClick={() => navigate(-1)}>Kembali</button>
     </MainContainer>
   );
