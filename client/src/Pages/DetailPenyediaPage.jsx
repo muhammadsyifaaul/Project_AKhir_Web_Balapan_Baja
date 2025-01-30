@@ -2,6 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import MainLayout from "../components/MainLayout";
 import { useEffect, useState } from "react";
 import Paket from "../components/Paket/Paket";
+import "./DetailPenyedia.css"
 
 export default function DetailPenyediaPage({ notSuper }) {
   const { npwp } = useParams();
@@ -28,8 +29,16 @@ export default function DetailPenyediaPage({ notSuper }) {
 
   return (
     <MainLayout>
-      <Paket fromPenyedia={true} penyedias={penyedias} notSuper={notSuper} handleDelete={handleDelete} />
-      <button onClick={() => navigate(-1)}>Kembali</button>
+      <div className="paket-container">
+        <Paket fromPenyedia={true} penyedias={penyedias} notSuper={notSuper} handleDelete={handleDelete} />
+      </div>
+  
+      {/* Pastikan tombol kembali ada di luar paket-container */}
+      <div className="detail-penyedia-container">
+        <button className="kembali-btn" onClick={() => navigate(-1)}>Kembali</button>
+      </div>
     </MainLayout>
   );
+  
+
 }

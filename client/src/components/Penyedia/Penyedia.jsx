@@ -13,22 +13,8 @@ export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEd
       <td>{jenis}</td>
       {!notSuper && (
         <>
-          <button onClick={onEdit}><AiOutlineEdit />Edit</button>
-          <button onClick={() => onDelete(_id)}>Hapus</button>
-          <button
-            className="btn-edit"
-            onClick={() => handleOpenFormForEdit(tenaga)}
-          >
-            <AiOutlineEdit />
-            Edit
-          </button>
-          <button
-            className="btn-delete"
-            onClick={() => handleDeleteTenagaAhli(tenaga._id)}
-          >
-            <AiOutlineDelete />
-            Hapus
-          </button>
+          <button className="edit-btn" onClick={onEdit}><AiOutlineEdit />Edit</button>
+          <button className="delete-btn" onClick={() => onDelete(_id)}><AiOutlineDelete />Hapus</button>
         </>
       )}
       <td>
