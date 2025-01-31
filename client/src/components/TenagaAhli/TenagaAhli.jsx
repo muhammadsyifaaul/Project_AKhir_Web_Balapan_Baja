@@ -12,6 +12,7 @@ export default function TenagaAhli({_id, no, npwp, nama, alamat, onEdit, onDelet
         <>
           <button onClick={onEdit}>Edit</button>
           <button onClick={onDelete}>Hapus</button>
+          <button onClick={() => window.location.href = `/DetailTenagaAhli/${_id}`}>Detail</button>
         </>
       )}
     </div>

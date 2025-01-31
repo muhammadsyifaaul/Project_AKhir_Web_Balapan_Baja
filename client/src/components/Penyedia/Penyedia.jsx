@@ -1,23 +1,28 @@
 import React from "react";
-import "./Penyedia.css";
+import { AiOutlineEdit, AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
+import "./FormPenyedia.css";
 
 export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEdit, onDelete, notSuper }) {
   return (
-    <div className="penyedia-card">
-      <h2>No: {no}</h2>
-      <h2>Nama: {nama}</h2>
-      <p>NPWP: {npwp}</p>
-      <p>Alamat: {alamat}</p>
-      <p>SKP: {skp}</p>
-      <p>Jenis: {jenis}</p>
+    <tr>
+      <td>{no}</td>
+      <td>{nama}</td>
+      <td>{npwp}</td>
+      <td>{alamat}</td>
+      <td>{skp}</td>
+      <td>{jenis}</td>
       {!notSuper && (
         <>
-          <button onClick={onEdit}>Edit</button>
-          <button onClick={() => onDelete(_id)}>Hapus</button>
+          <button className="edit-btn" onClick={onEdit}><AiOutlineEdit />Edit</button>
+          <button className="delete-btn" onClick={() => onDelete(_id)}><AiOutlineDelete />Hapus</button>
         </>
       )}
-      <a href={`/Penyedia/${npwp}`}>Details</a>
-    </div>
+      <td>
+        <a className="details-btn" href={`/Penyedia/${npwp}`}>
+          <AiOutlineEye />
+          Details
+        </a>      </td>
+    </tr>
   );
 }
 

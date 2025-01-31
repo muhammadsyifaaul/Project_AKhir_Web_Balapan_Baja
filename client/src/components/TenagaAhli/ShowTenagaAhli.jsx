@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import TenagaAhli from "./TenagaAhli";
 import FormTambahTenagaAhli from "./FormTambahTenagaAhli";
 import axios from "axios";
+import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineEdit, AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import "./TenagaAhli.css";
 
-export default function ShowTenagaAhli({notSuper}) {
+export default function ShowTenagaAhli({ notSuper }) {
   const [tenagaAhli, setTenagaAhli] = useState([]);
   const [isFormOpen, setIsFormOpen] = useState(false);
   const [selectedTenagaAhli, setSelectedTenagaAhli] = useState(null);
@@ -58,11 +59,13 @@ export default function ShowTenagaAhli({notSuper}) {
       tenaga.nama.toLowerCase().includes(searchTerm.toLowerCase()) ||
       tenaga.alamat.toLowerCase().includes(searchTerm.toLowerCase())
   );
-  
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredTenagaAhli.slice(indexOfFirstItem, indexOfLastItem);
+  const currentItems = filteredTenagaAhli.slice(
+    indexOfFirstItem,
+    indexOfLastItem
+  );
 
   const totalPages = Math.ceil(filteredTenagaAhli.length / itemsPerPage);
 
@@ -71,56 +74,84 @@ export default function ShowTenagaAhli({notSuper}) {
   };
 
   return (
-    <div>
-      {!notSuper && (
-        <>
-        <button
-          className="btn btn-primary"
-          onClick={() => handleOpenFormForEdit()}
-        >
-          Tambah Tenaga Ahli
-        </button>
-        {isFormOpen && (
-          <FormTambahTenagaAhli
-            onClose={handleCloseForm}
-            onTenagaAhliUpdated={fetchTenagaAhli}
-            initialData={selectedTenagaAhli}
-          />
+    <div className="kelola-tenaga-ahli-container">
+      <h1 className="page-title">
+        <img src="images/rating.png" alt="rating" className="title-icon" />
+        Tenaga Ahli
+      </h1>
+      <div className="actions-container">
+        {!notSuper && (
+          <button
+            className="btn btn-primary"
+            onClick={() => handleOpenFormForEdit()}
+          >
+            <AiOutlinePlus />
+            Tambah Tenaga Ahli
+          </button>
         )}
-        </>
-      )}
-      <input
-        type="text"
-        placeholder="Cari tenaga ahli..."
-        value={searchTerm}
-        onChange={handleSearchChange}
-        style={{ margin: "10px 0", padding: "8px", width: "100%" }}
-      />
-
-      {currentItems.map((tenaga, index) => (
-        <TenagaAhli
-          key={tenaga._id}
-          no={indexOfFirstItem + index + 1}
-          {...tenaga}
-          onEdit={() => handleOpenFormForEdit(tenaga)}
-          onDelete={() => handleDeleteTenagaAhli(tenaga._id)}
-          notSuper={notSuper}
+        <input
+          type="text"
+          placeholder="Cari tenaga ahli..."
+          value={searchTerm}
+          onChange={handleSearchChange}
+          className="search-bar"
         />
-      ))}
+      </div>
+      {isFormOpen && (
+        <FormTambahTenagaAhli
+          onClose={handleCloseForm}
+          onTenagaAhliUpdated={fetchTenagaAhli}
+          initialData={selectedTenagaAhli}
+        />
+      )}
 
-      <div style={{ marginTop: "20px", textAlign: "center" }}>
+      <table className="tenaga-ahli-table">
+        <thead>
+          <tr>
+            <th>No</th>
+            <th>NPWP</th>
+            <th>Nama</th>
+            <th>Alamat</th>
+            {!notSuper && <th>Aksi</th>}
+          </tr>
+        </thead>
+        <tbody>
+          {currentItems.map((tenaga, index) => (
+            <tr key={tenaga._id}>
+              <td>{indexOfFirstItem + index + 1}</td>
+              <td>{tenaga.npwp}</td>
+              <td>{tenaga.nama}</td>
+              <td>{tenaga.alamat}</td>
+              {!notSuper && (
+                <td>
+                  <button
+                    className="btn-edit"
+                    onClick={() => handleOpenFormForEdit(tenaga)}
+                  >
+                    <AiOutlineEdit />
+                    Edit
+                  </button>
+                  <button
+                    className="btn-delete"
+                    onClick={() => handleDeleteTenagaAhli(tenaga._id)}
+                  >
+                    <AiOutlineDelete />
+                    Hapus
+                  </button>
+                  <button onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`}><AiOutlineEye />Detail</button>
+                </td>
+              )}
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <div className="pagination">
         {Array.from({ length: totalPages }, (_, i) => (
           <button
             key={i}
             onClick={() => handlePageChange(i + 1)}
-            style={{
-              margin: "0 5px",
-              padding: "5px 10px",
-              backgroundColor: currentPage === i + 1 ? "#007bff" : "#fff",
-              color: currentPage === i + 1 ? "#fff" : "#000",
-              border: "1px solid #ddd",
-              borderRadius: "4px",
-            }}
+            className={`pagination-button ${currentPage === i + 1 ? "active" : ""}`}
           >
             {i + 1}
           </button>
