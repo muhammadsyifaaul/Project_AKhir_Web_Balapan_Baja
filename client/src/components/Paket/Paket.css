@@ -6,6 +6,7 @@
 }
 
 .paket-container {
+  display: block;
   margin: 40px auto;
   padding: 20px;
   max-width: 1200px;
@@ -124,7 +125,7 @@
 .paket-container {
   margin: 40px auto;
   padding: 20px;
-  max-width: 1200px;
+  max-width: fit-content;
   background-color: #fff;
   border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -164,7 +165,7 @@
 }
 
 #Paket-form .btn-tambah:hover {
-  background-color: #0056b3;
+  background-color: #fa8451;
 }
 
 /* Filter and Search Styles */
@@ -225,6 +226,11 @@
   text-align: center;
   border-bottom: 1px solid #ddd;
   color: #555;
+}
+#Paket-form table td:last-child {
+  display: flex;
+  justify-content: center;
+  gap: 5px; /* Jarak antar tombol */
 }
 
 /* Responsive Layout */
