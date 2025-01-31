@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import PaketList from "./PaketList";
 import "./Paket.css";
 
-export default function Paket({ fromPenyedia, penyedias, notSuper}) {
+export default function Paket({ fromPenyedia, fromTenagaAhli, penyedias, allPaket, notSuper }) {
   const navigate = useNavigate();
   const [paket, setPaket] = useState([]);
-  const [filteredPaket, setFilteredPaket] = useState([]);
+  const [filteredPaket, setFilteredPaket] = useState([]); // pastikan diinisialisasi dengan array kosong
   const [opdList, setOpdList] = useState([]);
   const [selectedOpd, setSelectedOpd] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
@@ -15,24 +14,28 @@ export default function Paket({ fromPenyedia, penyedias, notSuper}) {
   const [itemsPerPage] = useState(5);
 
   useEffect(() => {
-    if (!fromPenyedia) {
+    if (!fromPenyedia && !fromTenagaAhli) {
       const fetchPaket = async () => {
         try {
           const response = await axios.get("http://localhost:5000/getAllPaket");
           setPaket(response.data);
-          setFilteredPaket(response.data);
+          setFilteredPaket(response.data); // inisialisasi dengan data yang benar
           const uniqueOpd = [...new Set(response.data.map((item) => item.opd))];
           setOpdList(uniqueOpd);
         } catch (error) {
           console.error("Error fetching data:", error);
+          setFilteredPaket([]); // set ke array kosong jika gagal
         }
       };
       fetchPaket();
-    } else {
+    } else if (fromPenyedia) {
       setPaket(penyedias);
       setFilteredPaket(penyedias);
+    } else if (fromTenagaAhli) {
+      setPaket(allPaket);
+      setFilteredPaket(allPaket);
     }
-  }, [fromPenyedia, penyedias]);
+  }, [fromPenyedia, fromTenagaAhli, penyedias, allPaket]);
 
   const handleTambahClick = () => {
     navigate("/TambahPaket");
@@ -70,17 +73,17 @@ export default function Paket({ fromPenyedia, penyedias, notSuper}) {
     }
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
       try {
-        axios.delete(`http://localhost:5000/deletePaket/${id}`);
+        await axios.delete(`http://localhost:5000/deletePaket/${id}`);
+        setFilteredPaket(filteredPaket.filter((item) => item._id !== id));
         alert("Data berhasil dihapus.");
       } catch (error) {
         console.error("Error deleting data:", error);
         alert("Gagal menghapus data.");
       }
     }
-    setFilteredPaket(filteredPaket.filter((item) => item._id !== id));
   };
 
   const handleDetail = (id) => {
@@ -110,34 +113,34 @@ export default function Paket({ fromPenyedia, penyedias, notSuper}) {
     <div className="paket-container">
       <div id="Paket-form">
         <h2>Daftar Paket</h2>
-        {!fromPenyedia && (
+        {!fromPenyedia && !fromTenagaAhli && (
           <>
-          <button className="btn-tambah" onClick={handleTambahClick}>
-          Tambah Paket
-        </button>
-        <div className="filter-search-container">
-          <div className="filter-opd">
-            <label htmlFor="opdFilter">Filter OPD: </label>
-            <select id="opdFilter" value={selectedOpd} onChange={handleFilterChange}>
-              <option value="">Semua OPD</option>
-              {opdList.map((opd, index) => (
-                <option key={index} value={opd}>
-                  {opd}
-                </option>
-              ))}
-            </select>
-          </div>
-          <div className="search-bar">
-            <input
-              id="searchQuery"
-              type="text"
-              placeholder="Cari paket..."
-              value={searchQuery}
-              onChange={handleSearchChange}
-            />
-          </div>
-        </div>
-        </>
+            <button className="btn-tambah" onClick={handleTambahClick}>
+              Tambah Paket
+            </button>
+            <div className="filter-search-container">
+              <div className="filter-opd">
+                <label htmlFor="opdFilter">Filter OPD: </label>
+                <select id="opdFilter" value={selectedOpd} onChange={handleFilterChange}>
+                  <option value="">Semua OPD</option>
+                  {opdList.map((opd, index) => (
+                    <option key={index} value={opd}>
+                      {opd}
+                    </option>
+                  ))}
+                </select>
+              </div>
+              <div className="search-bar">
+                <input
+                  id="searchQuery"
+                  type="text"
+                  placeholder="Cari paket..."
+                  value={searchQuery}
+                  onChange={handleSearchChange}
+                />
+              </div>
+            </div>
+          </>
         )}
         {currentItems.length > 0 ? (
           <table>
@@ -166,12 +169,8 @@ export default function Paket({ fromPenyedia, penyedias, notSuper}) {
                   <td>{paket.npwpPenyedia}</td>
                   <td>{paket.namaPenyedia}</td>
                   <td>
-                    <button className="detail" onClick={() => handleDetail(paket._id)}>
-                      <i className="fas fa-info-circle"></i>
-                    </button>
-                    <button className="delete" onClick={() => handleDelete(paket._id)}>
-                      <i className="fas fa-trash-alt"></i>
-                    </button>
+                    <button onClick={() => handleDetail(paket._id)}>Detail</button>
+                    <button onClick={() => handleDelete(paket._id)}>Hapus</button>
                   </td>
                 </tr>
               ))}
@@ -182,11 +181,7 @@ export default function Paket({ fromPenyedia, penyedias, notSuper}) {
         )}
         <div className="pagination">
           {Array.from({ length: totalPages }, (_, index) => (
-            <button
-              key={index}
-              className={`pagination-btn ${currentPage === index + 1 ? "active" : ""}`}
-              onClick={() => handlePageChange(index + 1)}
-            >
+            <button key={index} className={`pagination-btn ${currentPage === index + 1 ? "active" : ""}`} onClick={() => handlePageChange(index + 1)}>
               {index + 1}
             </button>
           ))}

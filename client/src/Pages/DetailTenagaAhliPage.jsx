@@ -1,14 +1,50 @@
-import { useParams } from "react-router-dom";
-import DetailTenagaAhli from "../components/TenagaAhli/DetailTenagaAhli";
+import { useParams, useNavigate } from "react-router-dom";
 import MainLayout from "../components/MainLayout";
+import { useEffect, useState } from "react";
+import Paket from "../components/Paket/Paket";
 
-export default function DetailTenagaAhliPage({notSuper}) {
-    const { id } = useParams(); 
-    return (
-        <div>
-            <MainLayout>
-                <DetailTenagaAhli _id={id} notSuper={notSuper} />
-            </MainLayout>
-        </div>
-    );
+export default function DetailTenagaAhliPage({ notSuper }) {
+  const { id } = useParams(); // Ambil ID tenaga ahli dari URL
+  const navigate = useNavigate();
+  const [allPaket, setAllPaket] = useState([]);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  const fetchPaketTenagaAhli = async () => {
+    try {
+      const response = await fetch(`http://localhost:5000/getAllPaketTenagaAhli/${id}`);
+      const data = await response.json();
+      if (response.status === 404) {
+        setError(data.message);
+      } else {
+        setAllPaket(data);
+      }
+    } catch (error) {
+      setError("Error fetching data");
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPaketTenagaAhli();
+  }, [id]);
+
+  const handleDelete = (idPaket) => {
+    setAllPaket((prevPaket) => prevPaket.filter((paket) => paket._id !== idPaket));
+  };
+
+  return (
+    <MainLayout>
+      {loading ? (
+        <p>Loading...</p>
+      ) : error ? (
+        <p>{error}</p>
+      ) : (
+        <Paket fromTenagaAhli={true} allPaket={allPaket} notSuper={notSuper} handleDelete={handleDelete} />
+      )}
+      <button onClick={() => navigate(-1)}>Kembali</button>
+    </MainLayout>
+  );
 }
