@@ -192,25 +192,41 @@ exports.deleteUser = async (req, res) => {
   }
 };
 
+const argon2 = require("argon2");
+
 exports.updateUser = async (req, res) => {
   const id = req.params.id;
   const { username, name, password, role } = req.body;
 
   try {
+
+    let hashedPassword;
+    if (password) {
+      hashedPassword = await argon2.hash(password); 
+    }
+
     const updatedUser = await User.findByIdAndUpdate(
       id,
-      { username, name, password, role },
+      { 
+        username, 
+        name, 
+        password: hashedPassword || password, 
+        role 
+      },
       { new: true }
     );
+
     if (!updatedUser) {
       return res.status(404).json({ message: "User not found" });
     }
-    res.status(200).json({ message: "User updated successfully" });
+
+    res.status(200).json({ message: "User updated successfully", user: updatedUser });
   } catch (error) {
     console.error("Error updating user:", error);
     res.status(500).json({ message: "Error updating user" });
   }
 };
+
 
 exports.editPenyedia = async (req, res) => {
   try {
