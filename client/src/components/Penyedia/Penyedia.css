@@ -154,6 +154,65 @@ input[type="number"] {
     font-weight: bold;
     color: #333;
 }
+
+.search-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+/* Tombol tambah penyedia dan search */
+.penyedia-container>div {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+/* Tombol tambah penyedia */
+.add-btn {
+    font-size: 15px;
+    font-weight: bold; 
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px; /* Jarak antara ikon dan teks */
+    width: 160px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #ff6e31; /* Hijau */
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease; /* Efek hover lebih halus */
+}
+
+.add-btn svg {
+    font-size: 30px; /* Ukuran ikon sedikit lebih besar */
+}
+
+.add-btn:hover {
+    background-color: #fa8451; /* Hijau gelap untuk hover */
+    transform: scale(1.05); /* Sedikit memperbesar tombol saat hover */
+}
+
+
+.search-input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    width: 200px;
+}
+
+.penyedia-container input[type="text"] {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    flex: 1;
+}
 /* Lebar kolom */
 .penyedia-table th:nth-child(1), 
 .penyedia-table td:nth-child(1) { /* Kolom No */
@@ -224,65 +283,6 @@ input[type="number"] {
 }
 
 
-.search-input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px;
-}
-
-/* Tombol tambah penyedia dan search */
-.penyedia-container>div {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-/* Tombol tambah penyedia */
-.add-btn {
-    font-size: 15px;
-    font-weight: bold; 
-    padding: 10px 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px; /* Jarak antara ikon dan teks */
-    width: 160px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    background-color: #28a745; /* Hijau */
-    color: white;
-    transition: background-color 0.3s ease, transform 0.2s ease; /* Efek hover lebih halus */
-}
-
-.add-btn svg {
-    font-size: 30px; /* Ukuran ikon sedikit lebih besar */
-}
-
-.add-btn:hover {
-    background-color: #218838; /* Hijau gelap untuk hover */
-    transform: scale(1.05); /* Sedikit memperbesar tombol saat hover */
-}
-
-
-.search-input {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    width: 200px;
-}
-
-.penyedia-container input[type="text"] {
-    padding: 8px;
-    font-size: 14px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    flex: 1;
-}
-
 .pagination-container {
     display: flex;
     justify-content: center; 
@@ -291,14 +291,11 @@ input[type="number"] {
 }
 
 .pagination-container .pagination-btn {
-    padding: 6px 10px 
-    font-size: 14px; 
-    border: 1px solid #ccc;
-    background-color: #f8f9fa;
-    color: #333;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s, color 0.3s;
+    max-width: auto;
+    min-width: 30px; /* Hindari tombol terlalu kecil */
+    max-width: 50px; /* Batasi lebar tombol */
+    padding: 6px 10px; /* Sesuaikan padding agar lebih proporsional */
+    text-align: center; /* Pusatkan teks */
 }
 
 .pagination-container .pagination-btn:hover {
@@ -307,6 +304,7 @@ input[type="number"] {
 }
 
 .pagination-container .pagination-btn.active {
-    background-color: #007bff; /* Biru */
+    background-color: #007bff; /* Warna biru untuk tombol aktif */
     color: white;
 }
+

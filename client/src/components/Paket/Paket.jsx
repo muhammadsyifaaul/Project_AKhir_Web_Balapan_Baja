@@ -3,6 +3,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Paket.css";
 
+
 export default function Paket({
   fromPenyedia,
   fromTenagaAhli,
@@ -10,6 +11,7 @@ export default function Paket({
   allPaket,
   notSuper,
 }) {
+
   const navigate = useNavigate();
   const [paket, setPaket] = useState([]);
   const [filteredPaket, setFilteredPaket] = useState([]);
@@ -58,6 +60,8 @@ export default function Paket({
     }
   }, [fromPenyedia, fromTenagaAhli, penyedias, allPaket]);
 
+
+
   const handleTambahClick = () => {
     navigate("/TambahPaket");
   };
@@ -94,17 +98,8 @@ export default function Paket({
     }
   };
 
-  const handleDelete = async (id) => {
-    if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-      try {
-        await axios.delete(`http://localhost:5000/deletePaket/${id}`);
-        setFilteredPaket(filteredPaket.filter((item) => item._id !== id));
-        alert("Data berhasil dihapus.");
-      } catch (error) {
-        console.error("Error deleting data:", error);
-        alert("Gagal menghapus data.");
-      }
-    }
+  const handleDelete = (id) => {
+    setFilteredPaket(filteredPaket.filter((item) => item._id !== id));
   };
 
   const handleDetail = (id) => {

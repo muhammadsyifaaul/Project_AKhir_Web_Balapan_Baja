@@ -138,7 +138,8 @@ export default function ShowTenagaAhli({ notSuper }) {
                     <AiOutlineDelete />
                     Hapus
                   </button>
-                  <button onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`}><AiOutlineEye />Detail</button>
+                  <button className="btn-detail"
+                   onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`}><AiOutlineEye />Detail</button>
                 </td>
               )}
             </tr>
