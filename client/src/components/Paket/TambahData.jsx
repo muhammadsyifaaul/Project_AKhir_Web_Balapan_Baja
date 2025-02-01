@@ -228,7 +228,7 @@ export default function TambahData({
               />
             )}
             {isFromDetail ? null : (
-              <button onClick={cekNpwp} type="button">
+              <button onClick={cekNpwp} type="button" className="cekNpwp">
                 Cek
               </button>
             )}
@@ -355,7 +355,7 @@ export default function TambahData({
           nilaiKontrak >= 200000000 && (
             <div className="form-group">
               <label htmlFor="tenagaAhli">Tenaga Ahli</label>
-              <div style={{ display: "flex", flex: 1 }}>
+              <div style={{ display: "flex", alignItems: "center",width:"100%"}}>
                 <input
                   type="text"
                   name="tenagaAhli"
@@ -370,7 +370,7 @@ export default function TambahData({
                   id="idTenagaAhli"
                   value={idTenagaAhli}
                 />
-                <button onClick={cekTenagaAhli} type="button">
+                <button onClick={cekTenagaAhli} type="button" className="cekTenagaAhli">
                   Cek
                 </button>
               </div>

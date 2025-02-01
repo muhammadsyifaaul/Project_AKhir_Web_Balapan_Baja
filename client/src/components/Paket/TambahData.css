@@ -22,7 +22,9 @@
     flex-shrink: 0;
     text-align: right;
 }
-
+.cekNpwp,.cekTenagaAhli {
+    width: 5vw;
+}
 .form-group option {
     font-size: small;
 }
