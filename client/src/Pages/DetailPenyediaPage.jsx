@@ -33,10 +33,7 @@ export default function DetailPenyediaPage({ notSuper }) {
         <Paket fromPenyedia={true} penyedias={penyedias} notSuper={notSuper} handleDelete={handleDelete} />
       </div>
   
-      {/* Pastikan tombol kembali ada di luar paket-container */}
-      <div className="detail-penyedia-container">
-        <button className="kembali-btn" onClick={() => navigate(-1)}>Kembali</button>
-      </div>
+
     </MainLayout>
   );
   

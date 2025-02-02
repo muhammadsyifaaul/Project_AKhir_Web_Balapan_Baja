@@ -65,6 +65,7 @@ exports.tambahDataPaket = async (req, res) => {
     skp,
     jenis,
   } = req.body;
+  console.log(req.body);
 
   try {
     // if (typeof nilaiKontrak !== 'number' || nilaiKontrak <= 0) {

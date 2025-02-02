@@ -8,13 +8,50 @@
 .paket-container {
   padding: 20px;
   max-width: 1180px;
+  height: 100vh;
   background-color: #fff;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: center;
   margin-top: 2px;
   white-space: nowrap;
-  overflow-x: auto;
+  overflow: hidden; /* Menyembunyikan overflow */
 }
+
+.table-container {
+  width: 100%;
+  max-height: 70vh; /* Atur tinggi maksimum agar tidak melebihi viewport */
+  overflow-y: auto; /* Tambahkan scrollbar jika konten melebihi tinggi */
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  text-align: center;
+}
+/* Untuk Webkit (Chrome, Safari, Edge) */
+.table-container::-webkit-scrollbar {
+  width: 8px; /* Lebar scrollbar */
+}
+
+.table-container::-webkit-scrollbar-track {
+  background: transparent; /* Track scrollbar transparan */
+}
+
+.table-container::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.2); /* Warna thumb scrollbar semi-transparan */
+  border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.4); /* Warna saat hover */
+}
+
+/* Untuk Firefox */
+.table-container {
+  scrollbar-width: thin; /* Scrollbar tipis */
+  scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+
 
 /* Header Styles */
 #Paket-form h2 {
@@ -87,23 +124,14 @@
   border-color: #007bff;
 }
 
-/* Table Styles */
-#Paket-form table {
-  width: 80px;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
-}
 
 #Paket-form table th {
+  width: 100%;
   background-color: #ff6e31;
   color: white;
   font-weight: bold;
   text-align: center;
-  padding: 12px;
+  padding: 12px 1.5rem;
 }
 
 #Paket-form table td {
@@ -159,13 +187,17 @@
 }
 
 #Paket-form button i {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-right: 0;
 }
-
 .pagination {
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin: 20px 0px;
-  width: 50px;
+  margin: 20px 0;
+  width: 100%; /* Ubah dari 50px menjadi 100% */
 }
 
 .pagination-btn {
@@ -186,4 +218,11 @@
 
 .pagination-btn:hover {
   background-color: #0056b3;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
 }

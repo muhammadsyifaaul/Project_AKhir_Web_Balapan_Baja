@@ -56,14 +56,11 @@
 
 
 .Kelola-User table {
-  width: 180%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  overflow: hidden;
-  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
 }
+
 
 th {
   color: white;
