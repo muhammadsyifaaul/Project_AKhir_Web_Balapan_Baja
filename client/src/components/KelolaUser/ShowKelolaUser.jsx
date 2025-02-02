@@ -60,7 +60,7 @@ export default function ShowKelolaUser() {
           onClick={() => {
             setEditingUser(null);
             setIsFormOpen(true);
-          }}
+          }} className="tambah-user-button"
         >
           Tambah User
         </button>

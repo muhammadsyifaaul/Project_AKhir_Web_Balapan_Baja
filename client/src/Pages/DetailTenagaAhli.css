@@ -1,0 +1,30 @@
+.detail-tenagaahli-container {
+    display: flex;
+    justify-content: center; /* Pusatkan tombol */
+    align-items: center;
+    position: fixed; /* Pastikan tetap di bawah */
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: auto; /* Jangan full width */
+    text-align: center;
+}
+
+.kembali-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    background-color: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto; /* Jangan full width */
+    min-width: 100px; /* Biar tidak terlalu kecil */
+    text-align: center;
+}
+
+
+.kembali-btn:hover {
+    background-color: #5a6268;
+}

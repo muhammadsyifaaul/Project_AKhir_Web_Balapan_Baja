@@ -6,9 +6,11 @@
 }
 
 .paket-container {
+
   padding: 20px;
   max-width: 1180px;
   height: 100vh;
+
   background-color: #fff;
   display: flex;
   justify-content: center;
@@ -37,7 +39,7 @@
 }
 
 .table-container::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2); /* Warna thumb scrollbar semi-transparan */
+  background: rgba(0, 0, 0, 0.8); /* Warna thumb scrollbar semi-transparan */
   border-radius: 4px;
 }
 
@@ -45,13 +47,11 @@
   background: rgba(0, 0, 0, 0.4); /* Warna saat hover */
 }
 
-/* Untuk Firefox */
+
 .table-container {
   scrollbar-width: thin; /* Scrollbar tipis */
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
-
-
 
 /* Header Styles */
 #Paket-form h2 {
@@ -86,7 +86,7 @@
 }
 
 #Paket-form .btn-tambah:hover {
-  background-color: #0056b3;
+  background-color: #fa8451;
 }
 
 /* Filter and Search Styles */
@@ -140,6 +140,13 @@
   border-bottom: 1px solid #ddd;
   color: #555;
   position: relative;
+
+}
+#Paket-form table td:last-child {
+  display: flex;
+  justify-content: center;
+  gap: 5px; /* Jarak antar tombol */
+
 }
 
 #Paket-form table td button {
@@ -219,7 +226,6 @@
 .pagination-btn:hover {
   background-color: #0056b3;
 }
-
 .btns {
   display: flex;
   justify-content: center;

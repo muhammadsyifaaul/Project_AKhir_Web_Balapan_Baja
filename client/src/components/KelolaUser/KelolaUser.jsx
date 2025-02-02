@@ -29,10 +29,10 @@ export default function KelolaUser({ _id, no, username, name, role, onUserDelete
       <td>{role}</td>
       <td className="aksi-buttons">
         <button className="info" onClick={onEdit}>
-          <i className="fas fa-info-circle"></i> Detail
+          <i className="fas fa-info-circle"></i> 
         </button>
         <button className="delete" onClick={handleDelete}>
-          <i className="fas fa-trash-alt"></i> Delete
+          <i className="fas fa-trash-alt"></i> 
         </button>
       </td>
     </tr>

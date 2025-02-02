@@ -60,8 +60,9 @@ export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
 
   return (
     <div className="form-overlay">
-      <h1>{userData ? "Update User" : "Tambah User"}</h1>
+
       <form onSubmit={handleSubmit} className="form-box">
+      <h1>{userData ? "Update User" : "Tambah User"}</h1>
         <label htmlFor="username">Username</label>
         <input
           type="text"

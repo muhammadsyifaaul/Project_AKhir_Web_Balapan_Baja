@@ -105,7 +105,6 @@ export default function ShowPenyedia({ notSuper }) {
             <th>SKP</th>
             <th>Jenis</th>
             {!notSuper && <th>Aksi</th>}
-            <th>Details</th>
           </tr>
         </thead>
         <tbody>

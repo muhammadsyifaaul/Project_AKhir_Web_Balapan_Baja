@@ -1,7 +1,6 @@
 /* Membuat container full width */
 .kelola-user-container {
-  width: 100%;
-  max-width: 1200px;
+  width: 80%;
   margin: 0 auto;
   padding: 20px;
   box-sizing: border-box;
@@ -30,6 +29,12 @@
   border: none;
   border-radius: 4px;
   transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.tambah-user-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
 }
 
 .Kelola-User action-bar button:hover {
@@ -84,6 +89,11 @@ table tr:nth-child(odd) {
   background-color: #ffffff;
   /* Warna putih untuk baris ganjil */
 }
+.aksi-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
 
 /* Tombol Aksi */
 .kelola-user-container .pagination {
@@ -115,7 +125,6 @@ table tr:nth-child(odd) {
 .kelola-user-container button {
   font-size: 14px;
   border-radius: 5px;
-  border-align;
   width: 100px;
   text-align: center;
 }
@@ -123,11 +132,21 @@ table tr:nth-child(odd) {
 button.info {
   background-color: #007bff;
   color: white;
+  width: 1rem;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button.delete {
   background-color: #dc3545;
   color: white;
+  width: 1rem;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 button.info:hover {
@@ -136,4 +155,9 @@ button.info:hover {
 
 button.delete:hover {
   background-color: #c82333;
+}
+.form-overlay {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

@@ -85,7 +85,7 @@
 .delete-btn {
     font-size: 14px;
     font-weight: bold;
-    padding: 8px 12px;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -96,7 +96,6 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
-    margin-top: 10px; 
 }
 
 .delete-btn:hover {
