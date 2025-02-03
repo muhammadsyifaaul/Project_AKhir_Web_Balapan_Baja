@@ -125,7 +125,8 @@ exports.tambahPenyedia = async (req, res) => {
   await penyedia.save();
   console.log("Data inserted successfully");
   // const frontendUrl = process.env.FRONTEND_URL || "http://localhost:5173";
-  res.redirect(`${frontendUrl}/Penyedia`);
+  // res.redirect(`${frontendUrl}/Penyedia`);
+  res.status(200).json({ message: "Data inserted successfully" });
 };
 exports.getPaketWithNpwp = async (req, res) => {
   const npwp = req.params.npwp;
@@ -143,8 +144,7 @@ exports.tambahTenagaAhli = async (req, res) => {
   const tenagaAhli = new TenagaAhli({ npwp, nama, alamat });
   await tenagaAhli.save();
   console.log("Data inserted successfully");
-
-  res.redirect(`${frontendUrl}/TenagaAhli`);
+  res.status(200).json({ message: "Data inserted successfully" });
 };
 
 exports.getAllPaketTenagaAhli = async (req, res) => {

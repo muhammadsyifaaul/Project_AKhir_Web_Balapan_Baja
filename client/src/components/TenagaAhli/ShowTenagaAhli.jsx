@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FormTambahTenagaAhli from "./FormTambahTenagaAhli";
 import axios from "axios";
-import { AiOutlineInfoCircle, AiOutlinePlus } from "react-icons/ai";
-import { AiOutlineEdit, AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
+import { AiOutlineInfoCircle, AiOutlinePlus, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 import "./TenagaAhli.css";
 
 export default function ShowTenagaAhli({ notSuper }) {
@@ -22,6 +21,10 @@ export default function ShowTenagaAhli({ notSuper }) {
     }
   };
 
+  useEffect(() => {
+    fetchTenagaAhli();
+  }, []);
+
   const handleOpenFormForEdit = (tenagaAhli = null) => {
     setSelectedTenagaAhli(tenagaAhli);
     setIsFormOpen(true);
@@ -30,6 +33,11 @@ export default function ShowTenagaAhli({ notSuper }) {
   const handleCloseForm = () => {
     setIsFormOpen(false);
     setSelectedTenagaAhli(null);
+  };
+
+  const handleFormSubmit = async () => {
+    await fetchTenagaAhli();
+    handleCloseForm();
   };
 
   const handleDeleteTenagaAhli = async (id) => {
@@ -43,10 +51,6 @@ export default function ShowTenagaAhli({ notSuper }) {
       console.error("Error deleting tenaga ahli:", error);
     }
   };
-
-  useEffect(() => {
-    fetchTenagaAhli();
-  }, []);
 
   const handleSearchChange = (e) => {
     setSearchTerm(e.target.value);
@@ -62,10 +66,7 @@ export default function ShowTenagaAhli({ notSuper }) {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = filteredTenagaAhli.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  const currentItems = filteredTenagaAhli.slice(indexOfFirstItem, indexOfLastItem);
 
   const totalPages = Math.ceil(filteredTenagaAhli.length / itemsPerPage);
 
@@ -81,10 +82,7 @@ export default function ShowTenagaAhli({ notSuper }) {
       </h1>
       <div className="actions-container">
         {!notSuper && (
-          <button
-            className="btn btn-primary"
-            onClick={() => handleOpenFormForEdit()}
-          >
+          <button className="btn btn-primary" onClick={() => handleOpenFormForEdit()}>
             <AiOutlinePlus />
             Tambah Tenaga Ahli
           </button>
@@ -100,7 +98,7 @@ export default function ShowTenagaAhli({ notSuper }) {
       {isFormOpen && (
         <FormTambahTenagaAhli
           onClose={handleCloseForm}
-          onTenagaAhliUpdated={fetchTenagaAhli}
+          onTenagaAhliUpdated={handleFormSubmit}
           initialData={selectedTenagaAhli}
         />
       )}
@@ -112,7 +110,7 @@ export default function ShowTenagaAhli({ notSuper }) {
             <th>NPWP</th>
             <th>Nama</th>
             <th>Alamat</th>
-            {!notSuper && <th style={{textAlign: "left"}}>Aksi</th>}
+            {!notSuper && <th>Aksi</th>}
           </tr>
         </thead>
         <tbody>
@@ -124,22 +122,15 @@ export default function ShowTenagaAhli({ notSuper }) {
               <td>{tenaga.alamat}</td>
               {!notSuper && (
                 <td className="action-buttons">
-                  <button
-                    className="btn-edit"
-                    onClick={() => handleOpenFormForEdit(tenaga)}
-                  >
+                  <button className="btn-edit" onClick={() => handleOpenFormForEdit(tenaga)}>
                     <AiOutlineEdit />
-                   
                   </button>
-                  <button
-                    className="btn-delete"
-                    onClick={() => handleDeleteTenagaAhli(tenaga._id)}
-                  >
+                  <button className="btn-delete" onClick={() => handleDeleteTenagaAhli(tenaga._id)}>
                     <AiOutlineDelete />
-                    
                   </button>
-                  <button className="btn-detail"
-                   onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`}><AiOutlineInfoCircle /></button>
+                  <button className="btn-detail" onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`}>
+                    <AiOutlineInfoCircle />
+                  </button>
                 </td>
               )}
             </tr>

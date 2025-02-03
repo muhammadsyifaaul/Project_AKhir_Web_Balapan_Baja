@@ -42,9 +42,15 @@ export default function FormPenyedia({ onClose, onPenyediaAddedOrUpdated, initia
       if (initialData) {
         await axios.put(`http://localhost:5000/editPenyedia/${initialData._id}`, formData);
         setSuccess("Penyedia berhasil diperbarui");
+        alert("Penyedia berhasil diperbarui");
       } else {
-        await axios.post("http://localhost:5000/TambahPenyedia", formData);
-        setSuccess("Penyedia berhasil ditambahkan");
+        const response = await axios.post("http://localhost:5000/TambahPenyedia", formData);
+        if(response.status === 200) {
+          setSuccess("Penyedia berhasil ditambahkan");
+          alert("Penyedia berhasil ditambahkan");
+        } else {
+          setError("Gagal menambahkan penyedia");
+        }
       }
       onPenyediaAddedOrUpdated();
       onClose();

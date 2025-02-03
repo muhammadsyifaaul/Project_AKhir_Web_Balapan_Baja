@@ -27,17 +27,28 @@ export default function FormTambahTenagaAhli({
           formData
         );
         alert("Data berhasil diperbarui!");
+        onTenagaAhliUpdated();
+        onClose();
       } else {
-        await axios.post("http://localhost:5000/TambahTenagaAhli", formData);
-        alert("Data berhasil ditambahkan!");
+        const response = await axios.post(
+          "http://localhost:5000/TambahTenagaAhli",
+          formData,{ withCredentials: 'true' }
+        );
+        if (response.status === 200) {
+          alert("Data berhasil disimpan!");
+          onTenagaAhliUpdated();
+          onClose();
+        } else {
+          alert("Gagal menyimpan data.");
+        }
       }
+  
 
-      onTenagaAhliUpdated();
-      onClose();
     } catch (error) {
       console.error("Error saat menyimpan data:", error.message);
     }
   };
+  
 
   return (
     <div className="form-overlay">
