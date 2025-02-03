@@ -14,7 +14,7 @@ export default function Login() {
         };
 
         try {
-            const response = await axios.post(`http://localhost:5000/Login`, data,{ withCredentials: 'true' })
+            const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/Login`, data,{ withCredentials: 'true' })
             if (response.status !== 200) {
                 setErrorMessage(response.data.message || 'An error occurred');
             } else {

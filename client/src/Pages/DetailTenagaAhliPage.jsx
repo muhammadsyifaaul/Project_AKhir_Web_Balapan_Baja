@@ -13,7 +13,7 @@ export default function DetailTenagaAhliPage({ notSuper }) {
 
   const fetchPaketTenagaAhli = async () => {
     try {
-      const response = await fetch(`http://localhost:5000/getAllPaketTenagaAhli/${id}`);
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/getAllPaketTenagaAhli/${id}`);
       const data = await response.json();
       if (response.status === 404) {
         setError(data.message);

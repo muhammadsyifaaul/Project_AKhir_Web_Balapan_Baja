@@ -18,7 +18,7 @@ export const useTambahData = () => {
   useEffect(() => {
     const fetchOpd = async () => {
       try {
-        const response = await axios.get("http://localhost:5000/getAllOpd");
+        const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/getAllOpd`);
         setOpd(response.data);
       } catch (error) {
         console.error("Error fetching OPD data:", error);
@@ -47,7 +47,7 @@ export const useTambahData = () => {
   const cekNpwp = async () => {
     try {
       const response = await fetch(
-        `http://localhost:5000/cekNpwp/${npwpPenyedia}`
+        `${import.meta.env.VITE_REACT_APP_API_URL}/cekNpwp/${npwpPenyedia}`
       );
       if (!response.ok) {
         throw new Error("Penyedia tidak ditemukan");
@@ -84,7 +84,7 @@ export const useTambahData = () => {
   const cekTenagaAhli = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:5000/cekTenagaAhli?tenagaAhli=${inputTenagaAhli}`
+        `${import.meta.env.VITE_REACT_APP_API_URL}/cekTenagaAhli?tenagaAhli=${inputTenagaAhli}`
       );
       setInputTenagaAhli(`${response.data.npwp} ${response.data.nama}`);
       setIdTenagaAhli(response.data._id);

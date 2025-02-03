@@ -15,7 +15,7 @@ export default function ShowPenyedia({ notSuper }) {
 
   const handlePenyediaAddedOrUpdated = async () => {
     try {
-      const response = await fetch("http://localhost:5000/getPenyedia");
+      const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/getPenyedia`);
       const data = await response.json();
       setPenyedias(data);
     } catch (error) {
@@ -36,7 +36,7 @@ export default function ShowPenyedia({ notSuper }) {
   const handleDeletePenyedia = async (id) => {
     try {
       if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-        await axios.delete(`http://localhost:5000/deletePenyedia/${id}`);
+        await axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/deletePenyedia/${id}`);
         setPenyedias((prev) => prev.filter((penyedia) => penyedia._id !== id));
         alert("Data berhasil dihapus");
       }

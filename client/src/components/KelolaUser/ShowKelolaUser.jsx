@@ -14,7 +14,7 @@ export default function ShowKelolaUser() {
 
   const fetchUsers = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/getAllUser");
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/getAllUser`);
       const updatedUsers = response.data.map((user) => ({
         ...user,
         name: user.name?.trim() || "Tidak ada nama",

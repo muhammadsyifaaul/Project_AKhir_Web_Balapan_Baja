@@ -5,7 +5,7 @@ export default function KelolaUser({ _id, no, username, name, role, onUserDelete
   const handleDelete = async () => {
     if (confirm("Apakah Anda yakin ingin menghapus user ini?")) {
       try {
-        const response = await fetch(`http://localhost:5000/deleteUser/${_id}`, {
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/deleteUser/${_id}`, {
           method: "DELETE",
         });
 

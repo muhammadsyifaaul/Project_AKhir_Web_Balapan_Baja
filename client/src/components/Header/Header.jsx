@@ -6,7 +6,7 @@ export default function Header() {
 
   const handleLogout = () => {
     if (window.confirm("Apakah Anda yakin ingin keluar?")) {
-      fetch("http://localhost:5000/logout", {
+      fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/logout`, {
         method: "GET",
         credentials: "include", // Kirim cookie bersama permintaan
         headers: {

@@ -11,7 +11,7 @@ export default function DetailPaket({idPaket}) {
                     console.error("idPaket tidak ditemukan!");
                     return;
                 }
-                const response = await fetch(`http://localhost:5000/getPaketById/${idPaket}`);
+                const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/getPaketById/${idPaket}`);
                 if (!response.ok) {
                     throw new Error("Gagal mendapatkan data paket");
                 }

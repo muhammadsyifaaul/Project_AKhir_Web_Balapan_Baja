@@ -25,12 +25,12 @@ export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
     try {
       if (userData) {
         const response = await axios.put(
-          `http://localhost:5000/updateUser/${userData._id}`,
+          `${import.meta.env.VITE_REACT_APP_API_URL}/updateUser/${userData._id}`,
           { username, name, password, role }
         );
         setMessage(response.data.message);
       } else {
-        const response = await axios.post("http://localhost:5000/addUser", {
+        const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/addUser`, {
           username,
           name,
           password,

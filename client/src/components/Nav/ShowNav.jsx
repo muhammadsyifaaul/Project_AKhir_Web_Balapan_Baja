@@ -9,7 +9,7 @@ export default function ShowNav() {
 
   useEffect(() => {
     const fetchUser = async () => {
-      const response = await axios.get("http://localhost:5000/getUser", {
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/getUser`, {
         withCredentials: true,
       });
       console.log(response.data);

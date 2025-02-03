@@ -14,7 +14,7 @@ export default function ShowTenagaAhli({ notSuper }) {
 
   const fetchTenagaAhli = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/getTenagaAhli");
+      const response = await axios.get(`${import.meta.env.VITE_REACT_APP_API_URL}/getTenagaAhli`);
       setTenagaAhli(response.data);
     } catch (error) {
       console.error("Error fetching tenaga ahli:", error);
@@ -43,7 +43,7 @@ export default function ShowTenagaAhli({ notSuper }) {
   const handleDeleteTenagaAhli = async (id) => {
     try {
       if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
-        await axios.delete(`http://localhost:5000/deleteTenagaAhli/${id}`);
+        await axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/deleteTenagaAhli/${id}`);
         fetchTenagaAhli();
         alert("Data berhasil dihapus");
       }
@@ -121,7 +121,7 @@ export default function ShowTenagaAhli({ notSuper }) {
               <td>{tenaga.nama}</td>
               <td>{tenaga.alamat}</td>
               {!notSuper && (
-                <td className="action-buttons">
+                <td className="action-buttons" style={{width: "100%"}}>
                   <button className="btn-edit" onClick={() => handleOpenFormForEdit(tenaga)}>
                     <AiOutlineEdit />
                   </button>

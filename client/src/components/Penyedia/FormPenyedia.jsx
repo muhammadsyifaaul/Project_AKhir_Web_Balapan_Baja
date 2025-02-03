@@ -40,11 +40,11 @@ export default function FormPenyedia({ onClose, onPenyediaAddedOrUpdated, initia
     setSuccess(null);
     try {
       if (initialData) {
-        await axios.put(`http://localhost:5000/editPenyedia/${initialData._id}`, formData);
+        await axios.put(`${import.meta.env.VITE_REACT_APP_API_URL}/editPenyedia/${initialData._id}`, formData);
         setSuccess("Penyedia berhasil diperbarui");
         alert("Penyedia berhasil diperbarui");
       } else {
-        const response = await axios.post("http://localhost:5000/TambahPenyedia", formData);
+        const response = await axios.post(`${import.meta.env.VITE_REACT_APP_API_URL}/TambahPenyedia`, formData);
         if(response.status === 200) {
           setSuccess("Penyedia berhasil ditambahkan");
           alert("Penyedia berhasil ditambahkan");

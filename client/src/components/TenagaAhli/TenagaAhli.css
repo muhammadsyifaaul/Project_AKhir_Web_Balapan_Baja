@@ -131,7 +131,7 @@
   .kelola-tenaga-ahli-container {
     width: 100%;
     padding: 20px;
-    max-width: 800px;
+    max-width: 1000px;
     margin: 0 auto;
   }
   
@@ -271,4 +271,6 @@
   align-items: center;
  }
   
-  
+  .action-buttons button {
+    width: 3vw;
+  }

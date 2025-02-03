@@ -24,7 +24,7 @@ export default function PaketList(props) {
     if (window.confirm("Apakah Anda yakin ingin menghapus data ini?")) {
       setIsDeleting(true); // ✅ Set tombol menjadi loading
       try {
-        await axios.delete(`http://localhost:5000/deletePaket/${idPaket}`);
+        await axios.delete(`${import.meta.env.VITE_REACT_APP_API_URL}/deletePaket/${idPaket}`);
         alert("Data berhasil dihapus.");
         handleDelete(idPaket); // ✅ Hapus dari state di parent
       } catch (error) {

@@ -58,7 +58,7 @@ export default function TambahData({
     <div className="container">
       {isFromDetail ? <h2>Detail Paket</h2> : null}
       <form
-        action="http://localhost:5000/TambahDataPaket"
+        action={`${import.meta.env.VITE_REACT_APP_API_URL}/TambahDataPaket`}
         method="post"
         autoComplete="off"
       >

@@ -12,7 +12,7 @@ export default function DetailPenyediaPage({ notSuper }) {
   useEffect(() => {
     const fetchPenyedias = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/getPenyedia/${npwp}`);
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_API_URL}/getPenyedia/${npwp}`);
         const data = await response.json();
         setPenyedias(data);
       } catch (error) {

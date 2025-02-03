@@ -23,7 +23,7 @@ export default function FormTambahTenagaAhli({
     try {
       if (initialData) {
         await axios.put(
-          `http://localhost:5000/updateTenagaAhli/${initialData._id}`,
+          `${import.meta.env.VITE_REACT_APP_API_URL}/updateTenagaAhli/${initialData._id}`,
           formData
         );
         alert("Data berhasil diperbarui!");
@@ -31,7 +31,7 @@ export default function FormTambahTenagaAhli({
         onClose();
       } else {
         const response = await axios.post(
-          "http://localhost:5000/TambahTenagaAhli",
+          `${import.meta.env.VITE_REACT_APP_API_URL}/TambahTenagaAhli`,
           formData,{ withCredentials: 'true' }
         );
         if (response.status === 200) {
