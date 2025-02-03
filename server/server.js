@@ -5,7 +5,7 @@ const connectDb = require("./Config/connectDb");
 const cors = require("cors");
 require("dotenv").config();
 const port = process.env.PORT;
-const mainRoutes = require("./Routes/mainRoutes");
+const mainRoutes = require("./Routes/MainRoutes");
 
 // app.use(
 //     session({
