@@ -11,7 +11,7 @@ import {
   PenyediaPage,
   TambahPaketPage,
   TenagaAhliPage,
-} from "./Pages";
+} from "./pages";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 
