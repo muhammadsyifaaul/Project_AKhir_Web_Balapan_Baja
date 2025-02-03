@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
-import MainLayout from "../components/MainLayout";
+import MainLayout from "./components/MainLayout";
 import { useEffect, useState } from "react";
-import Paket from "../components/Paket/Paket";
+import Paket from "./components/Paket/Paket";
 import "./DetailTenagaAhli.css";
 
 export default function DetailTenagaAhliPage({ notSuper }) {

@@ -12,16 +12,16 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-d
 //   TambahPaketPage,
 //   TenagaAhliPage,
 // } from "./pages/Index";
-import DataPaketPage from "./pages/DataPaketPage";
-import DetailPaketPage from "./pages/DetailPaketPage";
-import DetailPenyediaPage from "./pages/DetailPenyediaPage";
-import DetailTenagaAhliPage from "./pages/DetailTenagaAhliPage";
-import HomePage from "./pages/HomePage";
-import KelolaUserPage from "./pages/KelolaUserPage";
-import LoginPage from "./pages/LoginPage";
-import PenyediaPage from "./pages/PenyediaPage";
-import TambahPaketPage from "./pages/TambahPaketPage";
-import TenagaAhliPage from "./pages/TenagaAhliPage";
+import DataPaketPage from "./DataPaketPage";
+import DetailPaketPage from "./DetailPaketPage";
+import DetailPenyediaPage from "./DetailPenyediaPage";
+import DetailTenagaAhliPage from "./DetailTenagaAhliPage";
+import HomePage from "./HomePage";
+import KelolaUserPage from "./KelolaUserPage";
+import LoginPage from "./LoginPage";
+import PenyediaPage from "./PenyediaPage";
+import TambahPaketPage from "./TambahPaketPage";
+import TenagaAhliPage from "./TenagaAhliPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 
