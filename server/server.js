@@ -69,7 +69,7 @@ app.use(
   });
     
   
-const authRoutes = require("./Routes/authRoutes");
+const authRoutes = require("./Routes/AuthRoutes");
 
 connectDb();
 app.use("/", authRoutes);
