@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FormTambahTenagaAhli from "./FormTambahTenagaAhli";
 import axios from "axios";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineInfoCircle, AiOutlinePlus } from "react-icons/ai";
 import { AiOutlineEdit, AiOutlineDelete, AiOutlineEye } from "react-icons/ai";
 import "./TenagaAhli.css";
 
@@ -123,23 +123,23 @@ export default function ShowTenagaAhli({ notSuper }) {
               <td>{tenaga.nama}</td>
               <td>{tenaga.alamat}</td>
               {!notSuper && (
-                <td>
+                <td className="action-buttons">
                   <button
                     className="btn-edit"
                     onClick={() => handleOpenFormForEdit(tenaga)}
                   >
                     <AiOutlineEdit />
-                    Edit
+                   
                   </button>
                   <button
                     className="btn-delete"
                     onClick={() => handleDeleteTenagaAhli(tenaga._id)}
                   >
                     <AiOutlineDelete />
-                    Hapus
+                    
                   </button>
                   <button className="btn-detail"
-                   onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`}><AiOutlineEye />Detail</button>
+                   onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`}><AiOutlineInfoCircle /></button>
                 </td>
               )}
             </tr>

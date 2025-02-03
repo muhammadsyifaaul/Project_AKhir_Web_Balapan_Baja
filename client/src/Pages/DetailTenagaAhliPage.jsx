@@ -47,10 +47,7 @@ export default function DetailTenagaAhliPage({ notSuper }) {
           <Paket fromTenagaAhli={true} allPaket={allPaket} notSuper={notSuper} handleDelete={handleDelete} />
         )}
 
-        {/* Tombol kembali */}
-        <div className="detail-tenagaahli-container">
-          <button className="kembali-btn" onClick={() => navigate(-1)}>Kembali</button>
-        </div>
+       
       </div>
     </MainLayout>
 

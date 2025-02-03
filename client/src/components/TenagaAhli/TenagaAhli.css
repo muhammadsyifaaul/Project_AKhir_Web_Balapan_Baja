@@ -70,14 +70,13 @@
     min-height: 0;
   }
   
-  table th, table td {
+  table th, table tr {
     padding: 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
     white-space: nowrap; 
     padding: 12px;
     text-align: left;
-    border-bottom: 1px solid #ddd;
   }
   
   table th {
@@ -192,6 +191,7 @@
     background-color: #e0a800; /* Hijau */
     color: black;
     text-decoration: none;
+    margin-top: 0.7rem;
     border-radius: 4px;
     transition: background-color 0.3s ease, transform 0.2s ease;
   }
@@ -265,6 +265,10 @@
     color: white;
   }
   
- 
+ .action-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ }
   
   

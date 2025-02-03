@@ -2,8 +2,6 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
 import {
   DataPaketPage,
-  DetailAksiPenyediaPage,
-  DetailAksiTenagaAhliPage,
   DetailPaketPage,
   DetailPenyediaPage,
   DetailTenagaAhliPage,
@@ -84,22 +82,6 @@ const App = () => {
           element={
             <ProtectedRoute>
               <DetailPaketPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/DetailAksiPenyedia"
-          element={
-            <ProtectedRoute>
-              <DetailAksiPenyediaPage />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="/DetailAksiTenagaAhli"
-          element={
-            <ProtectedRoute>
-              <DetailAksiTenagaAhliPage />
             </ProtectedRoute>
           }
         />

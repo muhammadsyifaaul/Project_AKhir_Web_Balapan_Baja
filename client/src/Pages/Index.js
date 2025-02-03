@@ -1,6 +1,4 @@
 export { default as DataPaketPage } from './DataPaketPage';
-export { default as DetailAksiPenyediaPage } from './DetailAksiPenyediaPage';
-export { default as DetailAksiTenagaAhliPage } from './DetailAksiTenagaAhliPage';
 export { default as DetailPaketPage } from './DetailPaketPage';
 export { default as DetailPenyediaPage } from './DetailPenyediaPage';
 export { default as DetailTenagaAhliPage } from './DetailTenagaAhliPage';
