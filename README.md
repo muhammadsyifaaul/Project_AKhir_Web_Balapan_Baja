@@ -25,3 +25,5 @@ Preview
 ![image](https://github.com/user-attachments/assets/10719f2e-3804-4b9c-8007-cfe001e4634f)
 ![image](https://github.com/user-attachments/assets/f0e806cc-5ea1-43cc-8ac4-7a36acf54bb6)
 ![image](https://github.com/user-attachments/assets/c85c3f0e-2f9b-4c19-b4a3-61403a234971)
+Live View
+[Link](https://project-a-khir-web-balapan-baja-itp6.vercel.app)
