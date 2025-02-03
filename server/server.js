@@ -21,7 +21,7 @@ const mainRoutes = require("./Routes/mainRoutes");
 const MongoStore = require('connect-mongo');
 
 const corsOptions = {
-  origin: ['http://localhost:5173'], // Tambahkan domain frontend
+  origin: [`${process.env.FRONTEND_URL}`], // Tambahkan domain frontend
   credentials: true, // Izinkan pengiriman cookie
 };
 
