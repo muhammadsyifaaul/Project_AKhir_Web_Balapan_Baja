@@ -9,7 +9,7 @@ Selamat datang di aplikasi *Balapan Baja*. Aplikasi ini dirancang untuk membantu
 - **Kelola User:** Mengatur akses dan peran pengguna dengan aman.
 
 ## Tentang
-Aplikasi ini dibuat untuk mendukung Bagian Pengadaan Barang/Jasa dengan memastikan proses yang lebih teratur dan mudah diakses.
+Aplikasi ini dibuat untuk memenuhi penugasan magang di Diskominfo Semarang dalam mendukung Bagian Pengadaan Barang/Jasa dengan memastikan proses yang lebih teratur dan mudah diakses.
 ## Contributors
 - [@Muhammad Syifaaul Jinan](https://github.com/muhammadsyifaaul)
 - [@ArdanaYazidDirrisqo](https://github.com/ArdanaYazidDirrisqo)
