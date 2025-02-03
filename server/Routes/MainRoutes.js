@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 require('dotenv').config();
-const authController = require('../Controllers/authControllers');
+const authController = require('../Controllers/AuthControllers');
 const { getPenyedia, getTenagaAhli, getAllUser, getAllOpd, cekNpwp, cekTenagaAhli, tambahDataPaket, getAllPaket, tambahPenyedia, getPaketWithNpwp, getPaketById, tambahTenagaAhli, getAllPaketTenagaAhli, addUser, deleteUser, updateUser, editPenyedia, deletePenyedia, updateTenagaAhli, deleteTenagaAhli, deletePaket } = require('../Controllers/mainControllers');
 
 router.get('/Home', authController.protectedRoute, (req, res) => {
