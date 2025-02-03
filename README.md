@@ -11,10 +11,10 @@ Selamat datang di aplikasi *Balapan Baja*. Aplikasi ini dirancang untuk membantu
 ## Tentang
 Aplikasi ini dibuat untuk mendukung Bagian Pengadaan Barang/Jasa dengan memastikan proses yang lebih teratur dan mudah diakses.
 ## Colaborators
-- [@Muhammad Syifaaul Jinan]((https://github.com/muhammadsyifaaul))
-- [@ArdanaYazidDirrisqo]((https://github.com/ArdanaYazidDirrisqo))
-- [@Dimas adip setyawan]((https://github.com/Dimawww))
-- [@RaihanMhrdhka]((https://github.com/RaihanMhrdhka))
+- [@Muhammad Syifaaul Jinan](https://github.com/muhammadsyifaaul)
+- [@ArdanaYazidDirrisqo](https://github.com/ArdanaYazidDirrisqo)
+- [@Dimas adip setyawan](https://github.com/Dimawww)
+- [@RaihanMhrdhka](https://github.com/RaihanMhrdhka)
 
 
 Preview
