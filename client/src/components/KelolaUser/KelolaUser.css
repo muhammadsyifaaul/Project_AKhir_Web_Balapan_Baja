@@ -161,3 +161,18 @@ button.delete:hover {
   flex-direction: column;
   align-items: center;
 }
+.form-box h1 {
+  text-align: center;
+}
+.form-box input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.btns {
+  margin-top: 1rem;
+  display: flex;
+  gap: 1rem;
+}

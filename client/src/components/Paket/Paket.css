@@ -16,13 +16,13 @@
   justify-content: center;
   margin-top: 2px;
   white-space: nowrap;
-  overflow: hidden; /* Menyembunyikan overflow */
+  overflow: hidden; 
 }
 
 .table-container {
   width: 100%;
-  max-height: 70vh; /* Atur tinggi maksimum agar tidak melebihi viewport */
-  overflow-y: auto; /* Tambahkan scrollbar jika konten melebihi tinggi */
+  max-height: 70vh; 
+  overflow-y: auto; 
   border-collapse: collapse;
   margin-top: 20px;
   background-color: #fff;
@@ -35,16 +35,16 @@
 }
 
 .table-container::-webkit-scrollbar-track {
-  background: transparent; /* Track scrollbar transparan */
+  background: transparent; 
 }
 
 .table-container::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.8); /* Warna thumb scrollbar semi-transparan */
+  background: rgba(0, 0, 0, 0.8); 
   border-radius: 4px;
 }
 
 .table-container::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.4); /* Warna saat hover */
+  background: rgba(0, 0, 0, 0.4);
 }
 
 

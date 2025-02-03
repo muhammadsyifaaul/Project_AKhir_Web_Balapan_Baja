@@ -90,7 +90,7 @@ export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
           onChange={(e) => setPassword(e.target.value)}
           required={!userData}
         />
-        <label htmlFor="role">Role</label>
+        <label htmlFor="role">Role : </label>
         <select
           name="role"
           value={role}
@@ -100,10 +100,12 @@ export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
           <option value="Admin OPD">Admin OPD</option>
           <option value="Super Admin">Super Admin</option>
         </select>
+        <div className="btns">
         <button type="submit">{userData ? "Update" : "Submit"}</button>
         <button type="button" onClick={onClose}>
           Cancel
         </button>
+        </div>
       </form>
 
       {popupVisible && (
