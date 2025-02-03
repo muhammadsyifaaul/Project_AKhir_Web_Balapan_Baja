@@ -32,7 +32,7 @@ export default function FormTambahTenagaAhli({
       } else {
         const response = await axios.post(
           `${import.meta.env.VITE_REACT_APP_API_URL}/TambahTenagaAhli`,
-          formData,{ withCredentials: 'true' }
+          formData
         );
         if (response.status === 200) {
           alert("Data berhasil disimpan!");

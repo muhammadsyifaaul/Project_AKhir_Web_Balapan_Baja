@@ -1,27 +1,27 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-// import {
-//   DataPaketPage,
-//   DetailPaketPage,
-//   DetailPenyediaPage,
-//   DetailTenagaAhliPage,
-//   HomePage,
-//   KelolaUserPage,
-//   LoginPage,
-//   PenyediaPage,
-//   TambahPaketPage,
-//   TenagaAhliPage,
-// } from "./pages/Index";
-import DataPaketPage from "./DataPaketPage";
-import DetailPaketPage from "./DetailPaketPage";
-import DetailPenyediaPage from "./DetailPenyediaPage";
-import DetailTenagaAhliPage from "./DetailTenagaAhliPage";
-import HomePage from "./HomePage";
-import KelolaUserPage from "./KelolaUserPage";
-import LoginPage from "./LoginPage";
-import PenyediaPage from "./PenyediaPage";
-import TambahPaketPage from "./TambahPaketPage";
-import TenagaAhliPage from "./TenagaAhliPage";
+import {
+  DataPaketPage,
+  DetailPaketPage,
+  DetailPenyediaPage,
+  DetailTenagaAhliPage,
+  HomePage,
+  KelolaUserPage,
+  LoginPage,
+  PenyediaPage,
+  TambahPaketPage,
+  TenagaAhliPage,
+} from "./pages/Index";
+// import DataPaketPage from "./pages/DataPaketPage";
+// import DetailPaketPage from "./DetailPaketPage";
+// import DetailPenyediaPage from "./pages/DetailPenyediaPage";
+// import DetailTenagaAhliPage from "./DetailTenagaAhliPage";
+// import HomePage from "./HomePage";
+// import KelolaUserPage from "./pages/KelolaUserPage";
+// import LoginPage from "./pages/LoginPage";
+// import PenyediaPage from "./pages/PenyediaPage";
+// import TambahPaketPage from "./TambahPaketPage";
+// import TenagaAhliPage from "./TenagaAhliPage";
 import ProtectedRoute from "./components/ProtectedRoute";
 import PublicRoute from "./components/PublicRoute";
 

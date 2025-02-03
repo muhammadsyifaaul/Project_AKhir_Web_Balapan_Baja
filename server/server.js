@@ -21,7 +21,7 @@ const mainRoutes = require("./Routes/MainRoutes");
 const MongoStore = require('connect-mongo');
 
 const corsOptions = {
-  origin: [`${process.env.FRONTEND_URL}`], // Tambahkan domain frontend
+  origin: [`${process.env.FRONTEND_URL}` || "http://localhost:5173"], // Tambahkan domain frontend
   credentials: true, // Izinkan pengiriman cookie
 };
 
@@ -75,8 +75,6 @@ connectDb();
 app.use("/", authRoutes);
 app.use(mainRoutes);
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
+app.listen(port, () => {
+  console.log(`Server running at http://localhost:${port}`);
 });
-
