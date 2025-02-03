@@ -11,6 +11,7 @@ export const useTambahData = () => {
   const [dataPenyedia, setDataPenyedia] = useState({});
   const [inputTenagaAhli, setInputTenagaAhli] = useState("");
   const [idTenagaAhli, setIdTenagaAhli] = useState("");
+  const [errorTenagaAhli, setErrorTenagaAhli] = useState("");
   const [errorNpwp, setErrorNpwp] = useState("");
   const [errorSkpZero, setErrorSkpZero] = useState(false);
 
@@ -89,6 +90,7 @@ export const useTambahData = () => {
       setIdTenagaAhli(response.data._id);
     } catch (error) {
       console.error("Error fetching data:", error);
+      alert("Error fetching data");
     }
   };
 
@@ -125,6 +127,7 @@ export const useTambahData = () => {
     errorNpwp,
     cekNpwp,
     inputTenagaAhli,
+    errorTenagaAhli,
     idTenagaAhli,
     handleInputTenagaAhli,
     cekTenagaAhli,

@@ -112,7 +112,7 @@ export default function ShowTenagaAhli({ notSuper }) {
             <th>NPWP</th>
             <th>Nama</th>
             <th>Alamat</th>
-            {!notSuper && <th>Aksi</th>}
+            {!notSuper && <th style={{textAlign: "left"}}>Aksi</th>}
           </tr>
         </thead>
         <tbody>

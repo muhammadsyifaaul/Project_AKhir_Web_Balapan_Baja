@@ -30,6 +30,7 @@ export default function TambahData({
     errorNpwp,
     opd,
     nilaiKontrak,
+    errorTenagaAhli,
     dataPenyedia,
     inputTenagaAhli,
     idTenagaAhli,
@@ -347,10 +348,16 @@ export default function TambahData({
               name="tenagaAhli"
               id="tenagaAhli"
               placeholder="NPWP atau Nama"
-              value={tenagaAhliFromDetail}
-              disabled
+              onChange={(e) => handleInputTenagaAhli(e.target.value)}
+              value={inputTenagaAhli}
             />
+            <input type="hidden" name="idTenagaAhli" id="idTenagaAhli" value={idTenagaAhli} />
+            <button onClick={cekTenagaAhli} type="button" className="cekTenagaAhli">
+              Cek
+            </button>
+            
           </div>
+          
         ) : (
           nilaiKontrak >= 200000000 && (
             <div className="form-group">

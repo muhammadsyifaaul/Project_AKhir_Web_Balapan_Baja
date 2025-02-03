@@ -93,11 +93,11 @@ export default function ShowKelolaUser() {
       <table>
         <thead>
           <tr>
-            <th>No</th>
-            <th>Username</th>
-            <th>Nama</th>
-            <th>Role</th>
-            <th>Aksi</th>
+            <th style={{textAlign: "center"}}>No</th>
+            <th style={{textAlign: "center"}}>Username</th>
+            <th style={{textAlign: "center"}}>Nama</th>
+            <th style={{textAlign: "center"}}>Role</th>
+            <th style={{textAlign: "left"}}>Aksi</th>
           </tr>
         </thead>
         <tbody>

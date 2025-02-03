@@ -27,7 +27,7 @@ export default function KelolaUser({ _id, no, username, name, role, onUserDelete
       <td>{username}</td>
       <td>{name}</td>
       <td>{role}</td>
-      <td className="aksi-buttons">
+      <td className="aksi-buttons" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
         <button className="info" onClick={onEdit}>
           <i className="fas fa-info-circle"></i> 
         </button>
