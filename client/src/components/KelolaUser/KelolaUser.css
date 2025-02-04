@@ -30,6 +30,7 @@
   border-radius: 4px;
   transition: background-color 0.3s ease, transform 0.2s ease;
 }
+
 .tambah-user-button {
   display: flex;
   align-items: center;
@@ -89,9 +90,10 @@ table tr:nth-child(odd) {
   background-color: #ffffff;
   /* Warna putih untuk baris ganjil */
 }
+
 .aksi-buttons {
   display: flex;
-  gap: 1rem;
+  gap: 0.5rem;
 }
 
 /* Tombol Aksi */
@@ -155,14 +157,17 @@ button.info:hover {
 button.delete:hover {
   background-color: #c82333;
 }
+
 .form-overlay {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
+
 .form-box h1 {
   text-align: center;
 }
+
 .form-box input[type="text"] {
   width: 100%;
   padding: 10px;
@@ -170,8 +175,15 @@ button.delete:hover {
   border: 1px solid #ccc;
   border-radius: 5px;
 }
+
 .btns {
   margin-top: 1rem;
   display: flex;
   gap: 1rem;
+}
+
+.actions-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
 }

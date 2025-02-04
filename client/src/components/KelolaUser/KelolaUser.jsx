@@ -1,5 +1,7 @@
 import React from "react";
 import "./KelolaUser.css";
+import { AiOutlineInfoCircle, AiOutlinePlus, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
+
 
 export default function KelolaUser({ _id, no, username, name, role, onUserDeleted, onEdit }) {
   const handleDelete = async () => {
@@ -27,12 +29,12 @@ export default function KelolaUser({ _id, no, username, name, role, onUserDelete
       <td>{username}</td>
       <td>{name}</td>
       <td>{role}</td>
-      <td className="aksi-buttons" style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-        <button className="info" onClick={onEdit}>
-          <i className="fas fa-info-circle"></i> 
+      <td className="aksi-buttons" >
+        <button className="btn-detail" onClick={onEdit} style={{backgroundColor: "#1087ee"}}>
+        <AiOutlineInfoCircle/>
         </button>
-        <button className="delete" onClick={handleDelete}>
-          <i className="fas fa-trash-alt"></i> 
+        <button className="btn-delete" onClick={handleDelete} style={{backgroundColor: "#f44336"}}>
+          <AiOutlineDelete/>
         </button>
       </td>
     </tr>

@@ -16,30 +16,32 @@
   justify-content: center;
   margin-top: 2px;
   white-space: nowrap;
-  overflow: hidden; 
+  overflow: hidden;
 }
 
 .table-container {
   width: 100%;
-  max-height: 70vh; 
-  overflow-y: auto; 
+  max-height: 70vh;
+  overflow-y: auto;
   border-collapse: collapse;
   margin-top: 20px;
   background-color: #fff;
   border-radius: 8px;
   text-align: center;
 }
+
 /* Untuk Webkit (Chrome, Safari, Edge) */
 .table-container::-webkit-scrollbar {
-  width: 8px; /* Lebar scrollbar */
+  width: 8px;
+  /* Lebar scrollbar */
 }
 
 .table-container::-webkit-scrollbar-track {
-  background: transparent; 
+  background: transparent;
 }
 
 .table-container::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.8); 
+  background: rgba(0, 0, 0, 0.8);
   border-radius: 4px;
 }
 
@@ -49,7 +51,8 @@
 
 
 .table-container {
-  scrollbar-width: thin; /* Scrollbar tipis */
+  scrollbar-width: thin;
+  /* Scrollbar tipis */
   scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
 }
 
@@ -142,17 +145,15 @@
   position: relative;
 
 }
+
 #Paket-form table td:last-child {
   display: flex;
   justify-content: center;
-  gap: 5px; /* Jarak antar tombol */
+  gap: 5px;
+  /* Jarak antar tombol */
 
 }
 
-#Paket-form table td button {
-  margin: 2px;
-  width: 40px;
-}
 
 /* Responsive Layout */
 @media (max-width: 768px) {
@@ -199,12 +200,14 @@
   align-items: center;
   margin-right: 0;
 }
+
 .pagination {
   display: flex;
   justify-content: center;
   align-items: center;
   margin: 20px 0;
-  width: 100%; /* Ubah dari 50px menjadi 100% */
+  width: 100%;
+  /* Ubah dari 50px menjadi 100% */
 }
 
 .pagination-btn {
@@ -226,6 +229,7 @@
 .pagination-btn:hover {
   background-color: #0056b3;
 }
+
 .btns {
   display: flex;
   justify-content: center;

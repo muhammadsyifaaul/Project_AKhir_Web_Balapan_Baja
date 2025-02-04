@@ -16,12 +16,13 @@ export default function Penyedia({ _id, no, npwp, nama, alamat, skp, jenis, onEd
           <button className="edit-btn" onClick={onEdit} style={{ padding: "0", width: "2.5rem", height: "2rem" }}>
             <AiOutlineEdit />
           </button>
+          <a className="details-btn" href={`/Penyedia/${npwp}`} style={{backgroundColor: "#1087ee",padding: "0",  width: "2.5rem", height: "2rem"}}>
+            <AiOutlineInfoCircle />
+          </a>
           <button className="delete-btn" onClick={() => onDelete(_id)} style={{ padding: "0",  width: "2.5rem", height: "2rem"}}>
             <AiOutlineDelete />
           </button>
-          <a className="details-btn" href={`/Penyedia/${npwp}`}>
-            <AiOutlineInfoCircle />
-          </a>
+          
         </td>
       )}
     </tr>
