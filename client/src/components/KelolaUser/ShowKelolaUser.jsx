@@ -3,6 +3,7 @@ import KelolaUser from "./KelolaUser";
 import FormKelolaUser from "./FormKelolaUser";
 import axios from "axios";
 import "./KelolaUser.css";
+import { AiOutlinePlus } from "react-icons/ai";
 
 export default function ShowKelolaUser() {
   const [users, setUsers] = useState([]);
@@ -53,27 +54,21 @@ export default function ShowKelolaUser() {
 
   return (
     <div className="kelola-user-container">
-      <h1>Kelola User</h1>
+      <div className="penyedia-title">
+        <img src="images/management.png" alt="management" className="penyedia-icon" />
+        Kelola User
+      </div>
 
-      <div className="action-bar">
+      <div className="actions-container">
         <button
           onClick={() => {
             setEditingUser(null);
             setIsFormOpen(true);
-          }} className="tambah-user-button"
-        >
+          }} className="add-btn"
+        > <AiOutlinePlus />
           Tambah User
         </button>
-        <div
-          style={{
-            marginBottom: "20px",
-            marginTop: "10px",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-          }}
-        ></div>
-
+        
         <input
           type="text"
           placeholder="Cari user..."
@@ -116,7 +111,7 @@ export default function ShowKelolaUser() {
         </tbody>
       </table>
 
-      <div className="pagination">
+      <div className="pagination-container">
         {Array.from({ length: totalPages }, (_, index) => (
           <button
             key={index}

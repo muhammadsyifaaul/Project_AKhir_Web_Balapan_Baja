@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
 import { useTambahData } from "./logic/useTambahData";
 import "./TambahData.css";
 
@@ -229,7 +228,7 @@ export default function TambahData({
               />
             )}
             {isFromDetail ? null : (
-              <button onClick={cekNpwp} type="button" className="cekNpwp">
+              <button onClick={cekNpwp} type="button" className="cekNpwp" style={{ backgroundColor: "#242c9c", marginTop: "0.15rem" }}>
                 Cek
               </button>
             )}
@@ -239,8 +238,8 @@ export default function TambahData({
         {errorSkpZero && <div className="errSkp0">
           <p>Skp Penyedia 0</p>
           <button onClick={handleClose}>Close</button>
-          </div>
-          }
+        </div>
+        }
 
         <div className="form-group">
           <label htmlFor="namaPenyedia">Nama Penyedia</label>
@@ -350,19 +349,20 @@ export default function TambahData({
               placeholder="NPWP atau Nama"
               onChange={(e) => handleInputTenagaAhli(e.target.value)}
               value={inputTenagaAhli}
+              disabled
             />
-            <input type="hidden" name="idTenagaAhli" id="idTenagaAhli" value={idTenagaAhli} />
-            <button onClick={cekTenagaAhli} type="button" className="cekTenagaAhli">
+            <input type="hidden" name="idTenagaAhli" id="idTenagaAhli" value={idTenagaAhli}  />
+            {/* <button onClick={cekTenagaAhli} type="button" className="cekTenagaAhli" style={{ backgroundColor: "#242c9c", marginBottom: "auto" }}>
               Cek
-            </button>
-            
+            </button> */}
+
           </div>
-          
+
         ) : (
           nilaiKontrak >= 200000000 && (
             <div className="form-group">
               <label htmlFor="tenagaAhli">Tenaga Ahli</label>
-              <div style={{ display: "flex", alignItems: "center",width:"100%"}}>
+              <div style={{ display: "flex", alignItems: "center", width: "100%" }}>
                 <input
                   type="text"
                   name="tenagaAhli"
@@ -370,6 +370,7 @@ export default function TambahData({
                   placeholder="NPWP atau Nama"
                   onChange={(e) => handleInputTenagaAhli(e.target.value)}
                   value={inputTenagaAhli}
+                  
                 />
                 <input
                   type="hidden"
@@ -377,7 +378,7 @@ export default function TambahData({
                   id="idTenagaAhli"
                   value={idTenagaAhli}
                 />
-                <button onClick={cekTenagaAhli} type="button" className="cekTenagaAhli">
+                <button onClick={cekTenagaAhli} type="button" className="cekTenagaAhli" style={{ backgroundColor: "#242c9c", marginBottom: "auto" }}>
                   Cek
                 </button>
               </div>
@@ -387,12 +388,12 @@ export default function TambahData({
 
         <div className="button-group">
           {isFromDetail ? (
-            <button type="button" onClick={() => navigate(-1)}>
+            <button type="button" onClick={() => navigate(-1)}style={{ maxWidth: "10rem"}}>
               Kembali
             </button>
           ) : (
             <>
-              <button type="reset" onClick={handleResetState}>
+              <button type="reset" onClick={handleResetState} style={{ backgroundColor: "#ff6e31", color: "white" }}>
                 Reset
               </button>
               <button type="submit">Tambah Data</button>

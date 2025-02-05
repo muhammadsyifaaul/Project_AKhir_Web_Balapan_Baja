@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './KelolaUser.css';
+import "../Penyedia/FormPenyedia.css";
 
 export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
   const [username, setUsername] = useState("");
@@ -14,7 +14,7 @@ export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
     if (userData) {
       setUsername(userData.username || "");
       setName(userData.name || "");
-      setPassword(""); 
+      setPassword("");
       setRole(userData.role || "Admin OPD");
     }
   }, [userData]);
@@ -62,49 +62,57 @@ export default function FormKelolaUser({ onClose, onUserAdded, userData }) {
     <div className="form-overlay">
 
       <form onSubmit={handleSubmit} className="form-box">
-      <h1>{userData ? "Update User" : "Tambah User"}</h1>
-        <label htmlFor="username">Username</label>
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <label htmlFor="name">Name</label>
-        <input
-          type="text"
-          name="name"
-          placeholder="Name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-        />
-        <label htmlFor="password">Password</label>
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required={!userData}
-        />
-        <label htmlFor="role">Role : </label>
-        <select
-          name="role"
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          required
-        >
-          <option value="Admin OPD">Admin OPD</option>
-          <option value="Super Admin">Super Admin</option>
-        </select>
-        <div className="btns">
-        <button type="submit">{userData ? "Update" : "Submit"}</button>
-        <button type="button" onClick={onClose}>
-          Cancel
-        </button>
+        <h1>{userData ? "Update User" : "Tambah User"}</h1>
+        <div className="form-bundle">
+          <label htmlFor="username">Username</label>
+          <input
+            type="text"
+            name="username"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-bundle">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            name="name"
+            placeholder="Name"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+          />
+        </div>
+        <div className="form-bundle">
+          <label htmlFor="password">Password</label>
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required={!userData}
+          />
+        </div>
+        <div className="form-bundle">
+          <label htmlFor="role">Role : </label>
+          <select
+            name="role"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            required
+          >
+            <option value="Admin OPD">Admin OPD</option>
+            <option value="Super Admin">Super Admin</option>
+          </select>
+        </div>
+        <div className="button" style={{ marginTop: "1rem" }}>
+          <button type="submit">{userData ? "Update" : "Simpan"}</button>
+          <button type="button" onClick={onClose}>
+            Batal
+          </button>
         </div>
       </form>
 

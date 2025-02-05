@@ -118,7 +118,7 @@ input[type="number"] {
 }
 
 .form-tambah-penyedia button[type="submit"] {
-    background-color: #007bff;
+    background-color: #242c9c;
     color: white;
 }
 
@@ -127,12 +127,12 @@ input[type="number"] {
 }
 
 .form-tambah-penyedia button[type="button"] {
-    background-color: #6c757d;
+    background-color: #ff6e31;
     color: white;
 }
 
 .form-tambah-penyedia button[type="button"]:hover {
-    background-color: #5a6268;
+    background-color: #e5632b;
 }
 
 /* Tabel penyedia */

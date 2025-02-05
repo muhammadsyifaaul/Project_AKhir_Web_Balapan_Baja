@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import "./Paket.css";
+import { AiOutlineInfoCircle, AiOutlinePlus, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
 export default function Paket({
   fromPenyedia,
@@ -127,10 +128,14 @@ export default function Paket({
   return (
     <div className="paket-container">
       <div id="Paket-form">
-        <h2>Daftar Paket</h2>
+        <div className="penyedia-title">
+          <img src="images/package.png" alt="package" className="penyedia-icon" />
+          Daftar Paket
+        </div>
         {!fromPenyedia && !fromTenagaAhli && (
           <>
-            <button className="btn-tambah" onClick={handleTambahClick}>
+            <button className="add-btn" onClick={handleTambahClick} style={{ marginBottom: "10px" }}>
+              <AiOutlinePlus />
               Tambah Paket
             </button>
             <div className="filter-search-container">
@@ -192,36 +197,37 @@ export default function Paket({
                     </td>
                     <td>
                       <button
-                        className="detail"
+                        className="btn-detail"
                         onClick={() => handleDetail(paket._id)}
+                        style={{backgroundColor: "#1087ee"}}
                       >
-                        <i className="fas fa-info-circle"></i>
+                        <AiOutlineInfoCircle />
                       </button>
                       <button
-                        className="delete"
+                        className="btn-delete"
                         onClick={() => handleDelete(paket._id)}
+                        style={{backgroundColor: "#dc3545"}}
                       >
-                        <i className="fas fa-trash-alt"></i>
+                        <AiOutlineDelete />
                       </button>
                     </td>
                   </tr>
                 ))}
               </tbody>
             </table>
-            <div className="pagination">
-              <div className="btns">
-                {Array.from({ length: totalPages }, (_, index) => (
-                  <button
-                    key={index}
-                    className={`pagination-btn ${
-                      currentPage === index + 1 ? "active" : ""
+            <div className="pagination-container">
+
+              {Array.from({ length: totalPages }, (_, index) => (
+                <button
+                  key={index}
+                  className={`pagination-btn ${currentPage === index + 1 ? "active" : ""
                     }`}
-                    onClick={() => handlePageChange(index + 1)}
-                  >
-                    {index + 1}
-                  </button>
-                ))}
-              </div>
+                  onClick={() => handlePageChange(index + 1)}
+                >
+                  {index + 1}
+                </button>
+              ))}
+
               {fromPenyedia || fromTenagaAhli ? (
                 <div className="detail-penyedia-container">
                   <button className="kembali-btn" onClick={() => navigate(-1)}>

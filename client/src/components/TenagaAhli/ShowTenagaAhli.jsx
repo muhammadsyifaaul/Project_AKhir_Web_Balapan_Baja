@@ -125,11 +125,11 @@ export default function ShowTenagaAhli({ notSuper }) {
                   <button className="btn-edit" onClick={() => handleOpenFormForEdit(tenaga)}>
                     <AiOutlineEdit />
                   </button>
+                  <button className="btn-detail" onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`} style={{backgroundColor: "#1087ee"}}>
+                    <AiOutlineInfoCircle />
+                  </button>
                   <button className="btn-delete" onClick={() => handleDeleteTenagaAhli(tenaga._id)}>
                     <AiOutlineDelete />
-                  </button>
-                  <button className="btn-detail" onClick={() => window.location.href = `/DetailTenagaAhli/${tenaga._id}`}>
-                    <AiOutlineInfoCircle />
                   </button>
                 </td>
               )}
@@ -138,12 +138,12 @@ export default function ShowTenagaAhli({ notSuper }) {
         </tbody>
       </table>
 
-      <div className="pagination">
+      <div className="pagination-container">
         {Array.from({ length: totalPages }, (_, i) => (
           <button
             key={i}
             onClick={() => handlePageChange(i + 1)}
-            className={`pagination-button ${currentPage === i + 1 ? "active" : ""}`}
+            className={`pagination-btn ${currentPage === i + 1 ? "active" : ""}`}
           >
             {i + 1}
           </button>
