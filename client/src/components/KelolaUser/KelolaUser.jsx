@@ -2,8 +2,7 @@ import React from "react";
 import "./KelolaUser.css";
 import { AiOutlineInfoCircle, AiOutlinePlus, AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
 
-
-export default function KelolaUser({ _id, no, username, name, role, onUserDeleted, onEdit }) {
+export default function KelolaUser({ _id, no, username, name, role, onUserDeleted, onEdit}) {
   const handleDelete = async () => {
     if (confirm("Apakah Anda yakin ingin menghapus user ini?")) {
       try {
@@ -29,14 +28,17 @@ export default function KelolaUser({ _id, no, username, name, role, onUserDelete
       <td>{username}</td>
       <td>{name}</td>
       <td>{role}</td>
-      <td className="aksi-buttons" >
-        <button className="btn-detail" onClick={onEdit} style={{backgroundColor: "#1087ee"}}>
-        <AiOutlineInfoCircle/>
+      <td className="aksi-buttons">
+        <button className="btn-detail" onClick={onEdit} style={{ backgroundColor: "#1087ee", width: "3rem" }}>
+          <AiOutlineInfoCircle />
         </button>
-        <button className="btn-delete" onClick={handleDelete} style={{backgroundColor: "#f44336"}}>
-          <AiOutlineDelete/>
-        </button>
+        {name !== "Super Admin" && (
+          <button className="btn-delete" onClick={handleDelete} style={{ backgroundColor: "#f44336" }}>
+            <AiOutlineDelete />
+          </button>
+        )}
       </td>
     </tr>
   );
 }
+

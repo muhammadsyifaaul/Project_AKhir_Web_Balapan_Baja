@@ -105,7 +105,7 @@ export default function ShowKelolaUser() {
               name={user.name}
               role={user.role}
               onUserDeleted={fetchUsers}
-              onEdit={() => handleEditUser(user)} // Pastikan penulisan benar
+              onEdit={() => handleEditUser(user)} 
             />
           ))}
         </tbody>
